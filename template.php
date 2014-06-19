@@ -20,6 +20,10 @@ function boushh_fett_icons_alter(&$icons){
   $icons['set default'] = 'check-circle';
   $icons['manage fields'] = 'tasks';
   $icons['update'] = 'arrow-up';
+  $icons['^save'] = array('icon' => 'save', 'class' => array('primary'));
+  $icons['^add'] = array('icon' => 'plus', 'class' => array('primary'));
+  $icons['^update'] = array('icon' => 'refresh');
+  $icons['^reset'] = array('icon' => 'undo');
 }
 
 /**
@@ -145,117 +149,6 @@ function boushh_preprocess_page(&$vars) {
     $vars['ops']['bar'] += $bar;
   }
 }
-
-
-/**
- * Implements template_preprocess_node
- *
- */
-//function boushh_preprocess_node(&$vars) {
-//}
-
-
-/**
- * Implements hook_preprocess_block()
- */
-//function boushh_preprocess_block(&$vars) {
-//}
-
-
-//function boushh_preprocess_views_view(&$vars) {
-//}
-
-
-/**
- * Implements template_preprocess_panels_pane().
- *
- */
-//function boushh_preprocess_panels_pane(&$vars) {
-//}
-
-
-/**
- * Implements template_preprocess_views_views_fields().
- *
- */
-//function boushh_preprocess_views_view_fields(&$vars) {
-//}
-
-
-/**
- * Implements theme_form_element_label()
- * Use foundation tooltips
- */
-//function boushh_form_element_label($vars) {
-//}
-
-
-/**
- * Implements hook_preprocess_button().
- */
-//function boushh_preprocess_button(&$vars) {
-//}
-
-
-/**
- * Implements hook_form_alter()
- * Example of using foundation sexy buttons
- */
-//function boushh_form_alter(&$form, &$form_state, $form_id) {
-//  // Sexy submit buttons
-//  if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
-//    $form['actions']['submit']['#attributes'] = array('class' => array('primary', 'button', 'radius'));
-//  }
-//}
-
-// Sexy preview buttons
-//function boushh_form_comment_form_alter(&$form, &$form_state) {
-//  $form['actions']['preview']['#attributes']['class'][] = array('class' => array('secondary', 'button', 'radius'));
-//}
-
-
-/**
- * Implements template_preprocess_panels_pane().
- */
-// function zurb_foundation_preprocess_panels_pane(&$vars) {
-// }
-
-
-/**
-* Implements template_preprocess_views_views_fields().
-*/
-// function THEMENAME_preprocess_views_view_fields(&$vars) {
-// }
-
-
-/**
- * Implements hook_css_alter().
- */
-//function boushh_css_alter(&$css) {
-//  // Always remove base theme CSS.
-//  $theme_path = drupal_get_path('theme', 'zurb_foundation');
-//
-//  foreach($css as $path => $values) {
-//    if(strpos($path, $theme_path) === 0) {
-//      unset($css[$path]);
-//    }
-//  }
-//}
-
-
-/**
- * Implements hook_js_alter().
- */
-//function boushh_js_alter(&$js) {
-//  // Always remove base theme JS.
-//  $theme_path = drupal_get_path('theme', 'zurb_foundation');
-//
-//  foreach($js as $path => $values) {
-//    if(strpos($path, $theme_path) === 0) {
-//      unset($js[$path]);
-//    }
-//  }
-//}
 
 /**
  * Implements theme_menu_local_action().
@@ -442,46 +335,6 @@ function boushh_links($vars) {
   return $output;
 }
 
-// /**
-//  * Implements theme_ctools_dropdown().
-//  */
-// function boushh_ctools_dropdown($vars) {
-//   // dsm($vars);
-//   // dsm('CTOOLS DROPDOWN');
-//   // Provide a unique identifier for every dropdown on the page.
-//   static $id = 0;
-//   $id++;
-
-//   $class = 'ctools-dropdown-no-js ctools-dropdown' . ($vars['class'] ? (' ' . $vars['class']) : '');
-
-//   ctools_add_js('dropdown');
-//   ctools_add_css('dropdown');
-
-//   $output = '';
-
-//   $output .= '<div class="' . $class . '" id="ctools-dropdown-' . $id . '">';
-//   $output .= '<div class="ctools-dropdown-link-wrapper">';
-//   if ($vars['image']) {
-//     $output .= '<a href="#" class="ctools-dropdown-link ctools-dropdown-image-link">' . $vars['title'] . '</a>';
-//   }
-//   else {
-//     $output .= '<a href="#" class="ctools-dropdown-link ctools-dropdown-text-link">' . check_plain($vars['title']) . '</a>';
-//   }
-
-//   $output .= '</div>'; // wrapper
-//   $output .= '<div class="ctools-dropdown-container-wrapper">';
-//   $output .= '<div class="ctools-dropdown-container">';
-//   $output .= theme_links(array('links' => $vars['links'], 'attributes' => array(), 'heading' => ''));
-//   $output .= '</div>'; // container
-//   $output .= '</div>'; // container wrapper
-//   $output .= '</div>'; // dropdown
-//   return $output;
-// }
-
-// function boushh_links__ctools_links($vars) {
-//   dsm($vars);
-// }
-
 /**
  * Implements theme_links__ctools_dropbutton
  */
@@ -578,14 +431,6 @@ function boushh_button($vars) {
     $element['#attributes']['class'][] = 'button';
   }
 
-  if(!boushh_class_exists($element['#attributes'], array('tiny','small','medium','large'))){
-    $element['#attributes']['class'][] = 'tiny';
-  }
-
-  if(!boushh_class_exists($element['#attributes'], array('primary','secondary','success','alert'))){
-    $element['#attributes']['class'][] = 'secondary';
-  }
-
   // Prepare input whitelist - added to ensure ajax functions don't break
   $whitelist = _fett_element_whitelist();
 
@@ -595,7 +440,17 @@ function boushh_button($vars) {
   else {
     // Add Font Awesome Icon
     $temp = array();
-    fett_icon_link($label, $temp, FALSE);
+    fett_icon_button($label, $element);
+    // boushh_icon_button($label, $element);
+
+    if(!boushh_class_exists($element['#attributes'], array('tiny','small','medium','large'))){
+      $element['#attributes']['class'][] = 'tiny';
+    }
+
+    if(!boushh_class_exists($element['#attributes'], array('primary','secondary','success','alert'))){
+      $element['#attributes']['class'][] = 'secondary';
+    }
+
     return '<button' . drupal_attributes($element['#attributes']) . '>'. $label ."</button>\n"; // This line break adds inherent margin between multiple buttons
   }
 }
