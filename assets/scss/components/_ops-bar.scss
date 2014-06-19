@@ -296,7 +296,7 @@ $opsbar-arrows: true !default; //Set false to remove the triangle icon from the 
           font-size: $opsbar-link-font-size;
           font-weight: $opsbar-link-weight;
           text-transform: $opsbar-link-text-transform;
-          border-top:2px solid #fff;
+          border-top:2px solid #dddddd;
           @include transition(all 0.2s ease-in-out 0s);
 
           i.fa{
@@ -386,8 +386,10 @@ $opsbar-arrows: true !default; //Set false to remove the triangle icon from the 
           font-size:$opsbar-secondary-link-font-size;
           color:$opsbar-secondary-link-color;
           background:$opsbar-secondary-link-bg-color;
+          border-color: $primary-color;
           &:hover{
             background:$opsbar-secondary-link-bg-hover;
+            border-color: scale-color($primary-color, $lightness: 25%);
           }
         }
 
