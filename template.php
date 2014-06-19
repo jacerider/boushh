@@ -20,10 +20,16 @@ function boushh_fett_icons_alter(&$icons){
   $icons['set default'] = 'check-circle';
   $icons['manage fields'] = 'tasks';
   $icons['update'] = 'arrow-up';
+  $icons['upload'] = 'upload';
+  $icons['@font-your-face'] = 'font';
+  $icons['google webfont loader settings'] = 'google';
   $icons['^save'] = array('icon' => 'save', 'class' => array('primary'));
   $icons['^add'] = array('icon' => 'plus', 'class' => array('primary'));
+  $icons['^create'] = array('icon' => 'plus', 'class' => array('primary'));
   $icons['^update'] = array('icon' => 'refresh');
-  $icons['^reset'] = array('icon' => 'undo');
+  $icons['^reset'] = array('icon' => 'history');
+  $icons['^undo'] = array('icon' => 'undo');
+  $icons['^refine'] = array('icon' => 'search');
 }
 
 /**
@@ -77,6 +83,8 @@ function boushh_preprocess_html(&$vars) {
  */
 function boushh_preprocess_page(&$vars) {
 
+  $vars['copyright'] = 'Powered by '.theme('image', array('path' => drupal_get_path('theme','boushh') . '/favicon.ico')).' '.l('August Ash', 'http://augustash.com', array('target'=>'_blank'));
+
   $vars['ops'] = array();
   $bar = NULL;
   if(!empty($vars['action_links'])){
@@ -115,18 +123,6 @@ function boushh_preprocess_page(&$vars) {
     }
     $tabs['primary'] = $combined;
   }
-  // if(!empty($vars['tabs']['#secondary'])){
-  //   $items = $vars['tabs']['#secondary'];
-  //   $last = key( array_slice( $items, -1, 1, TRUE ) );
-  //   foreach($items as $key => &$item){
-  //     $item['#theme'] = $item['#theme'] . '__ops';
-  //     // $item['#link']['attributes']['class'][] = 'has-form';
-  //     if($key == 0) $item['#link']['prefix'] = '<li class="divider"></li>';
-  //     if($key == $last) $item['#link']['suffix'] = '<li class="divider"></li>';
-  //     // $item['#link']['localized_options']['attributes']['class'][] = 'button';
-  //   }
-  //   $tabs['secondary'] = $items;
-  // }
   if(!empty($tabs)){
     $bar['left']['#prefix'] = '<ul class="left">';
     $bar['left']['#suffix'] = '</ul>';
