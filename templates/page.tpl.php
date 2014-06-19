@@ -103,7 +103,7 @@
 
         <?php if ($title && !$is_front): ?>
           <?php print render($title_prefix); ?>
-          <h1 id="page-title" class="title"><?php print $title; ?></h1>
+          <h1 id="page-title" class="title"><i class="fa fa-th"></i> <?php print $title; ?></h1>
           <?php print render($title_suffix); ?>
         <?php endif; ?>
 
@@ -166,6 +166,12 @@
     </footer>
     <!--/.footer-->
   <?php endif; ?>
+
+  <div class="l-copyright row">
+    <div id="copyright" class="large-12 columns">
+      <small><?php print $copyright; ?></small>
+    </div>
+  </div>
 
   <?php if ($messages && $fett_messages_modal): print $messages; endif; ?>
 </div>
