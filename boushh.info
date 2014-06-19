@@ -1,0 +1,59 @@
+name = Boushh
+description = An admin theme of awesomeness based on Fett.
+screenshot = assets/images/screenshot.png
+core = 7.x
+version = 1.0
+engine = phptemplate
+base theme = fett
+
+
+;-------------- F E A T U R E S -------------
+features[] = logo
+features[] = favicon
+features[] = name
+features[] = slogan
+; features[] = node_user_picture
+features[] = comment_user_picture
+features[] = comment_user_verification
+features[] = main_menu
+features[] = secondary_menu
+
+
+;-------------- R E G I O N S -------------
+regions[page_header]              = Page header
+regions[page_footer]           = Page footer
+regions[help]                  = Help
+regions[content]               = Content
+regions[boushh_sidebar_first]  = Left Sidebar
+regions[boushh_sidebar_second] = Right Sidebar
+
+
+;-------------- S C S S -------------
+; These files are empty, just uncomment this line and start editing!
+
+; Libraries
+stylesheets[all][] = assets/scss/libraries/_variables.scss
+stylesheets[all][] = assets/scss/libraries/_mixins.scss
+
+; Components
+; stylesheets[all][] = assets/scss/components/_typography.scss
+; stylesheets[all][] = assets/scss/components/_header.scss
+; stylesheets[all][] = assets/scss/components/_footer.scss
+; stylesheets[all][] = assets/scss/components/_blocks.scss
+stylesheets[all][] = assets/scss/components/_ops-bar.scss
+
+; Sections
+stylesheets[all][] = assets/scss/sections/_global.scss
+
+
+;-------------- S C R I P T -------------
+; This file is empty, just uncomment this line and start editing!
+; scripts[] = assets/js/theme.js
+
+
+;-------------- S E T T I N G S -------------
+settings[fett_css_onefile] = 1
+settings[fett_js_footer] = 1
+settings[fett_js_onefile] = 1
+settings[fett_html_tags] = 1
+settings[fett_foundation_settings] = 1

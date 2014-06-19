@@ -1,0 +1,45 @@
+////////////////////////////////////////////////////////////////////////////////
+//// Theme Settings
+////////////////////////////////////////////////////////////////////////////////
+
+body{
+
+  #page{
+    background-image: url("/sites/all/themes/boushh/assets/images/themeSettings-bg.jpg") !important;
+  }
+
+  #block-system-main{
+    margin-top: 98px;
+  }
+
+  &.boushh{
+    .main-content{
+      background-image: url("/sites/all/themes/boushh/assets/images/themeSettings-bg.jpg") !important;
+    }
+  }
+}
+
+#system-theme-settings{
+
+  #edit-fett-status,
+  #edit-fett-icons{
+
+    .fieldset-wrapper{
+
+      table.system-status-report tr.ok{
+        background-color: #c7b79d;
+        text-shadow: 0 1px 0 #e6d3b7;
+      }
+
+      table.system-status-report tr.info{
+        background-color: #896d63;
+        text-shadow: 0 1px 0 #b08c80;
+      }
+
+      table.system-status-report tr.warning{
+        background-color: #f6ecb0;
+        text-shadow: 0 1px 0 #fffdd3;
+      }
+    }
+  }
+}

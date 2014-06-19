@@ -1,0 +1,687 @@
+//
+// Top Bar Variables
+//
+$include-html-top-bar-classes: $include-html-classes !default;
+
+// Background color for the top bar
+$opsbar-bg-color: #404040 !default;
+$opsbar-bg: none !default;
+
+$opsbar-secondary-link-font-size: rem-calc(12) !default;
+$opsbar-secondary-link-color: #333 !default;
+$opsbar-secondary-link-bg-color: #e7e7e7 !default;
+$opsbar-secondary-link-active-color: #7f7f7f !default;
+$opsbar-secondary-link-bg-hover: scale-color(#e7e7e7, $lightness: -14%) !default;
+$opsbar-secondary-link-bg-active: #efefef !default;
+$opsbar-secondary-link-bg-active-hover: scale-color($opsbar-secondary-link-bg-active, $lightness: -14%) !default;
+
+// Height and margin
+$opsbar-height: 35px !default;
+$opsbar-margin-bottom: rem-calc(20) !default;
+
+// Controlling the styles for the title in the top bar
+$opsbar-title-weight: $font-weight-normal !default;
+$opsbar-title-font-size: rem-calc(17) !default;
+
+// Style the top bar dropdown elements
+$opsbar-dropdown-bg: #404040 !default;
+$opsbar-dropdown-link-color: #fff !default;
+$opsbar-dropdown-link-bg: #404040 !default;
+$opsbar-dropdown-link-weight: $font-weight-normal !default;
+$opsbar-dropdown-toggle-size: 5px !default;
+$opsbar-dropdown-toggle-color: #fff !default;
+$opsbar-dropdown-toggle-alpha: 0.4 !default;
+
+// Set the link colors and styles for top-level nav
+$opsbar-link-color: #fff !default;
+$opsbar-link-color-hover: #fff !default;
+$opsbar-link-color-active: #efefef !default;
+$opsbar-link-color-active-hover: #fff !default;
+$opsbar-link-weight: $font-weight-normal !default;
+$opsbar-link-font-size: rem-calc(12) !default;
+$opsbar-link-icon-size: rem-calc(15) !default;
+$opsbar-link-hover-lightness: -10% !default; // Darken by 10%
+$opsbar-link-bg: $opsbar-bg !default;
+$opsbar-link-bg-hover: #272727 !default;
+$opsbar-link-bg-color-hover: #ffffff !default;
+$opsbar-link-bg-active: #272727 !default;
+$opsbar-link-bg-active-hover: scale-color($opsbar-link-bg-active, $lightness: -14%) !default;
+// $opsbar-link-font-family: $body-font-family !default;
+$opsbar-link-font-family: $font1 !default;
+$opsbar-link-text-transform: none !default;
+$opsbar-link-padding: $opsbar-height / 3 !default;
+
+$opsbar-button-font-size: 0.75rem !default;
+$opsbar-button-top: 7px !default;
+
+$opsbar-dropdown-label-color: #777 !default;
+$opsbar-dropdown-label-text-transform: uppercase !default;
+$opsbar-dropdown-label-font-weight: $font-weight-bold !default;
+$opsbar-dropdown-label-font-size: rem-calc(10) !default;
+$opsbar-dropdown-label-bg: #333 !default;
+
+// Top menu icon styles
+$opsbar-menu-link-transform: uppercase !default;
+$opsbar-menu-link-font-size: rem-calc(13) !default;
+$opsbar-menu-link-weight: $font-weight-bold !default;
+$opsbar-menu-link-color: #fff !default;
+$opsbar-menu-icon-color: #fff !default;
+$opsbar-menu-link-color-toggled: #888 !default;
+$opsbar-menu-icon-color-toggled: #888 !default;
+
+// Transitions and breakpoint styles
+$opsbar-transition-speed: 300ms !default;
+// Using rem-calc for the below breakpoint causes issues with top bar
+$opsbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
+$opsbar-media-query: $medium-up !default;
+
+// Divider Styles
+$opsbar-divider-border-bottom: solid 1px scale-color($opsbar-bg-color, $lightness: 13%) !default;
+$opsbar-divider-border-top: solid 1px scale-color($opsbar-bg-color, $lightness: -50%) !default;
+
+// Sticky Class
+$opsbar-sticky-class: ".sticky" !default;
+$opsbar-arrows: true !default; //Set false to remove the triangle icon from the menu item
+
+@include exports("ops-bar") {
+
+  @if $include-html-top-bar-classes {
+
+    // Used to provide media query values for javascript components.
+    // This class is generated despite the value of $include-html-top-bar-classes
+    // to ensure width calculations work correctly.
+    meta.foundation-mq-topbar {
+      font-family: "/" + unquote($opsbar-media-query) + "/";
+      width: $opsbar-breakpoint;
+    }
+
+    /* Wrapped around .ops-bar to contain to grid width */
+    .contain-to-grid {
+      width: 100%;
+      background: $opsbar-bg;
+
+      .ops-bar { margin-bottom: $opsbar-margin-bottom; }
+    }
+
+    // Wrapped around .ops-bar to make it stick to the top
+    .fixed {
+      width: 100%;
+      #{$default-float}: 0;
+      position: fixed;
+      top: 0;
+      z-index: 99;
+
+      &.expanded:not(.ops-bar) {
+          overflow-y: auto;
+          height: auto;
+          width: 100%;
+          max-height: 100%;
+
+        .title-area {
+          position: fixed;
+          width: 100%;
+          z-index: 99;
+        }
+        // Ensure you can scroll the menu on small screens
+        .ops-bar-section {
+          z-index: 98;
+          margin-top: $opsbar-height;
+        }
+      }
+    }
+
+    .ops-bar {
+      overflow: hidden;
+      height: $opsbar-height;
+      line-height: $opsbar-height;
+      position: relative;
+      background: $opsbar-bg;
+      margin-bottom: $opsbar-margin-bottom;
+
+      // Topbar Global list Styles
+      ul {
+        margin-bottom: 0;
+        list-style: none;
+      }
+
+      .row { max-width: none; }
+
+      form,
+      input { margin-bottom: 0; }
+
+      input { height: auto; padding-top: .35rem; padding-bottom: .35rem; font-size: $opsbar-button-font-size; }
+
+      .button, button {
+        padding-top: .45rem;
+        padding-bottom: .35rem;
+        margin-bottom: 0;
+        font-size: $opsbar-button-font-size;
+          // position: relative;
+          // top: -1px;
+
+      }
+
+      // Title Area
+      .title-area {
+        position: relative;
+        margin: 0;
+      }
+
+      .name {
+        height: $opsbar-height;
+        margin: 0;
+        font-size: $rem-base;
+
+        h1 {
+          line-height: $opsbar-height;
+          font-size: $opsbar-title-font-size;
+          margin: 0;
+          a {
+            font-weight: $opsbar-title-weight;
+            color: $opsbar-link-color;
+            width: 75%;
+            display: block;
+            padding: 0 $opsbar-link-padding;
+          }
+        }
+      }
+
+      // Menu toggle button on small devices
+      .toggle-topbar {
+        position: absolute;
+        #{$opposite-direction}: 0;
+        top: 0;
+
+        a {
+          color: $opsbar-link-color;
+          text-transform: $opsbar-menu-link-transform;
+          font-size: $opsbar-menu-link-font-size;
+          font-weight: $opsbar-menu-link-weight;
+          position: relative;
+          display: block;
+          padding: 0 $opsbar-link-padding;
+          height: $opsbar-height;
+          line-height: $opsbar-height;
+        }
+
+        // Adding the class "menu-icon" will add the 3-line icon people love and adore.
+        &.menu-icon {
+          top: 50%;
+          margin-top: -16px;
+
+          a {
+            @if $text-direction == rtl {
+              text-indent: -58px;
+            }
+            height: 34px;
+            line-height: 33px;
+            padding: 0 $opsbar-link-padding+25 0 $opsbar-link-padding;
+            color: $opsbar-menu-link-color;
+            position: relative;
+
+            & {
+              // @include hamburger icon
+              //
+              // We use this to create the icon with three lines aka the hamburger icon, the menu-icon or the navicon
+              // $width - Width of hamburger icon
+              // $left - If false, icon will be centered horizontally || explicitly set value in rem
+              // $top - If false, icon will be centered vertically || explicitly set value in rem
+              // $thickness - thickness of lines in hamburger icon, set value in px
+              // $gap - spacing between the lines in hamburger icon, set value in px
+              // $color - icon color
+              // $hover-color - icon color during hover, here it is set the same as $color because the values are changed on line 264
+              // $offcanvas - Set to false of @include in topbar
+              @include hamburger(16px, false, 0, 1px, 6px, $opsbar-menu-icon-color, $opsbar-menu-icon-color, false);
+            }
+          }
+        }
+      }
+
+      // Change things up when the top-bar is expanded
+      &.expanded {
+        height: auto;
+        background: transparent;
+
+        .title-area { background: $opsbar-bg; }
+
+        .toggle-topbar {
+          a { color: $opsbar-menu-link-color-toggled;
+            &::after {
+              // Shh, don't tell, but box-shadows create the menu icon :)
+              box-shadow: 0 10px 0 1px $opsbar-menu-icon-color-toggled,
+                          0 16px 0 1px $opsbar-menu-icon-color-toggled,
+                          0 22px 0 1px $opsbar-menu-icon-color-toggled;
+            }
+          }
+        }
+      }
+
+
+
+    }
+
+    // Right and Left Navigation that stacked by default
+    .ops-bar-section {
+      #{$default-float}: 0;
+      position: relative;
+      width: auto;
+      @include single-transition($default-float, $opsbar-transition-speed);
+
+      ul {
+        padding: 0;
+        width: 100%;
+        height: auto;
+        display: block;
+        font-size: $rem-base;
+        margin: 0;
+      }
+
+      .divider,
+      [role="separator"] {
+        border-top: $opsbar-divider-border-top;
+        clear: both;
+        height: 1px;
+        width: 100%;
+      }
+
+      ul li {
+        background: $opsbar-dropdown-bg;
+        & > a {
+          display: block;
+          width: 100%;
+          color: $opsbar-link-color;
+          padding: 12px 0 12px 0;
+          padding-#{$default-float}: $opsbar-link-padding;
+          font-family: $opsbar-link-font-family;
+          font-size: $opsbar-link-font-size;
+          font-weight: $opsbar-link-weight;
+          text-transform: $opsbar-link-text-transform;
+          border-top:2px solid #fff;
+          @include transition(all 0.2s ease-in-out 0s);
+
+          i.fa{
+            font-size: $opsbar-link-icon-size;
+          }
+
+
+          &.button {
+            font-size: $opsbar-link-font-size;
+            padding-#{$opposite-direction}: $opsbar-link-padding;
+            padding-#{$default-float}: $opsbar-link-padding;
+            @include button-style($bg:$primary-color);
+          }
+          &.button.secondary { @include button-style($bg:$secondary-color); }
+          &.button.success { @include button-style($bg:$success-color); }
+          &.button.alert { @include button-style($bg:$alert-color); }
+        }
+
+        > button {
+          font-size: $opsbar-link-font-size;
+          padding-#{$opposite-direction}: $opsbar-link-padding;
+          padding-#{$default-float}: $opsbar-link-padding;
+          @include button-style($bg:$primary-color);
+
+          &.secondary { @include button-style($bg:$secondary-color); }
+          &.success { @include button-style($bg:$success-color); }
+          &.alert { @include button-style($bg:$alert-color); }
+        }
+
+        // Apply the hover link color when it has that class
+        &:hover:not(.has-form) > a {
+          background-color: $opsbar-link-bg-color-hover;
+          border-color: scale-color($primary-color, $lightness: 25%);
+          @if ($opsbar-link-bg-hover) {
+            background: $opsbar-link-bg-hover;
+          }
+          color: $opsbar-link-color-hover;
+
+        }
+
+        // Apply the active link color when it has that class
+        &.active > a {
+          background: $opsbar-link-bg-active;
+          color: $opsbar-link-color-active;
+          border-color: $primary-color;
+          &:hover {
+            background: $opsbar-link-bg-active-hover;
+            color: $opsbar-link-color-active-hover;
+          }
+        }
+      }
+
+      // Add some extra padding for list items contains buttons
+      .has-form { padding: $opsbar-link-padding; }
+
+      // Styling for list items that have a dropdown within them.
+      .has-dropdown {
+        position: relative;
+
+        & > a {
+          &:after {
+            @if ($opsbar-arrows){
+              @include css-triangle($opsbar-dropdown-toggle-size, rgba($opsbar-dropdown-toggle-color, $opsbar-dropdown-toggle-alpha), $default-float);
+            }
+            margin-#{$opposite-direction}: $opsbar-link-padding;
+            margin-top: -($opsbar-dropdown-toggle-size / 2) - 2;
+            position: absolute;
+            top: 50%;
+            #{$opposite-direction}: 0;
+          }
+        }
+
+        &.moved { position: static;
+          & > .dropdown {
+            @include topbar-show-dropdown();
+            width: 100%;
+          }
+          & > a:after {
+            display: none;
+          }
+        }
+      }
+
+      li.secondary:not(.has-form){
+
+        & > a:not(.button){
+          font-size:$opsbar-secondary-link-font-size;
+          color:$opsbar-secondary-link-color;
+          background:$opsbar-secondary-link-bg-color;
+          &:hover{
+            background:$opsbar-secondary-link-bg-hover;
+          }
+        }
+
+        &.active > a:not(.button){
+          color:$opsbar-secondary-link-active-color;
+          background:$opsbar-secondary-link-bg-active;
+          &:hover{
+            background:$opsbar-secondary-link-bg-active-hover;
+          }
+        }
+      }
+
+      // Styling elements inside of dropdowns
+      .dropdown {
+        padding: 0;
+        position: absolute;
+        #{$default-float}: 100%;
+        top: 0;
+        z-index: 99;
+        @include topbar-hide-dropdown();
+
+        li {
+          width: 100%;
+          height: auto;
+
+          a {
+            font-weight: $opsbar-dropdown-link-weight;
+            padding: 8px $opsbar-link-padding;
+            &.parent-link {
+              font-weight: $opsbar-link-weight;
+            }
+          }
+
+          &.title h5 {
+            margin-bottom: 0;
+            margin-top: 0;
+            a {
+              color: $opsbar-link-color;
+              line-height: $opsbar-height / 2;
+              display: block;
+            }
+          }
+          &.has-form { padding: 8px $opsbar-link-padding; }
+          .button, button { top: auto; }
+        }
+
+        label {
+          padding: 8px $opsbar-link-padding 2px;
+          margin-bottom: 0;
+          text-transform: $opsbar-dropdown-label-text-transform;
+          color: $opsbar-dropdown-label-color;
+          font-weight: $opsbar-dropdown-label-font-weight;
+          font-size: $opsbar-dropdown-label-font-size;
+        }
+      }
+    }
+
+    .js-generated { display: block; }
+
+
+    // Top Bar styles intended for screen sizes above the breakpoint.
+    @media #{$opsbar-media-query} {
+      .ops-bar {
+        background: $opsbar-bg;
+        @include clearfix;
+        overflow: visible;
+
+        .toggle-topbar { display: none; }
+
+        .title-area { float: $default-float; }
+        .name h1 a { width: auto; }
+
+        input,
+        .button,
+        button {
+          font-size: rem-calc(14);
+          position: relative;
+          top: $opsbar-button-top;
+        }
+
+        &.expanded { background: $opsbar-bg; }
+      }
+
+      .contain-to-grid .ops-bar {
+        max-width: $row-width;
+        margin: 0 auto;
+        margin-bottom: $opsbar-margin-bottom;
+      }
+
+      .ops-bar-section {
+        @include single-transition(none,0,0);
+        #{$default-float}: 0 !important;
+
+        ul {
+          width: auto;
+          height: auto !important;
+          display: inline;
+
+          li {
+            float: $default-float;
+            .js-generated { display: none; }
+          }
+        }
+
+        li {
+          &.hover {
+            > a:not(.button) {
+              background-color: $opsbar-link-bg-color-hover;
+              @if ($opsbar-link-bg-hover) {
+                background: $opsbar-link-bg-hover;
+              }
+              color: $opsbar-link-color-hover;
+            }
+          }
+          &:not(.has-form) {
+            a:not(.button) {
+              padding: 0 $opsbar-link-padding;
+              line-height: $opsbar-height;
+              background: $opsbar-link-bg;
+              &:hover {
+                background-color: $opsbar-link-bg-color-hover;
+                @if ($opsbar-link-bg-hover) {
+                  background: $opsbar-link-bg-hover;
+                }
+              }
+            }
+          }
+          &.active:not(.has-form) {
+            a:not(.button) {
+              padding: 0 $opsbar-link-padding;
+              line-height: $opsbar-height;
+              color: $opsbar-link-color-active;
+              background: $opsbar-link-bg-active;
+              &:hover { background: $opsbar-link-bg-active-hover; }
+            }
+          }
+        }
+
+        .has-dropdown {
+
+          @if($opsbar-arrows){
+
+            & > a {
+              padding-#{$opposite-direction}: $opsbar-link-padding + 20 !important;
+              &:after {
+                @include css-triangle($opsbar-dropdown-toggle-size, rgba($opsbar-dropdown-toggle-color, $opsbar-dropdown-toggle-alpha), top);
+                margin-top: -($opsbar-dropdown-toggle-size / 2);
+                top: $opsbar-height / 2;
+              }
+            }
+
+          }
+
+          &.moved { position: relative;
+            & > .dropdown {
+              @include topbar-hide-dropdown();
+            }
+          }
+
+          &.hover, &.not-click:hover {
+            & > .dropdown {
+              @include topbar-show-dropdown();
+            }
+          }
+
+          .dropdown li.has-dropdown {
+            & > a {
+              &:after {
+                border: none;
+                content: "\00bb";
+                top: 1rem;
+                margin-top: -1px;
+                #{$opposite-direction}: 5px;
+                line-height: 1.2;
+              }
+            }
+          }
+
+        }
+
+        .dropdown {
+          #{$default-float}: 0;
+          top: auto;
+          background: transparent;
+          min-width: 100%;
+
+          li {
+            a {
+              color: $opsbar-dropdown-link-color;
+              line-height: $opsbar-height;
+              white-space: nowrap;
+              padding: 12px $opsbar-link-padding;
+              background: $opsbar-dropdown-link-bg;
+            }
+
+            &:not(.has-form) a:not(.button) {
+              color: $opsbar-dropdown-link-color;
+              background: $opsbar-dropdown-link-bg;
+            }
+            &:not(.has-form):hover > a:not(.button) {
+              color: $opsbar-link-color-hover;
+              background-color: $opsbar-link-bg-color-hover;
+              @if ($opsbar-link-bg-hover) {
+                background: $opsbar-link-bg-hover;
+              }
+            }
+
+            label {
+              white-space: nowrap;
+              background: $opsbar-dropdown-label-bg;
+            }
+
+            // Second Level Dropdowns
+            .dropdown {
+              #{$default-float}: 100%;
+              top: 0;
+            }
+          }
+        }
+
+        & > ul > .divider,
+        & > ul > [role="separator"] {
+          border-bottom: none;
+          border-top: none;
+          border-#{$opposite-direction}: $opsbar-divider-border-bottom;
+          clear: none;
+          height: $opsbar-height;
+          width: 0;
+        }
+
+        .has-form {
+          background: $opsbar-link-bg;
+          padding: 0 $opsbar-height / 3;
+          height: $opsbar-height;
+        }
+
+        // Position overrides for ul.right and ul.left
+        .right {
+          li .dropdown {
+            #{$default-float}: auto;
+            #{$opposite-direction}: 0;
+
+            li .dropdown { #{$opposite-direction}: 100%; }
+          }
+        }
+        .left {
+          // overflow:hidden;
+
+          li .dropdown {
+            #{$opposite-direction}: auto;
+            #{$default-float}: 0;
+
+            li .dropdown { #{$default-float}: 100%; }
+          }
+
+          li{
+            position:relative;
+          }
+
+          li.active:not(.secondary) {
+            box-shadow: 4px 2px 6px -4px rgba(0, 0, 0, 0.75);
+            z-index:10;
+          }
+        }
+      }
+
+      // Degrade gracefully when Javascript is disabled. Displays dropdown and changes
+      // background & text color on hover.
+      .no-js .ops-bar-section {
+        ul li {
+          // Apply the hover link color when it has that class
+          &:hover > a {
+            background-color: $opsbar-link-bg-color-hover;
+            @if ($opsbar-link-bg-hover) {
+              background: $opsbar-link-bg-hover;
+            }
+            color: $opsbar-link-color-hover;
+          }
+
+          // Apply the active link color when it has that class
+          &:active > a {
+            background: $opsbar-link-bg-active;
+            color: $opsbar-link-color-active;
+          }
+        }
+
+        .has-dropdown {
+          &:hover {
+            & > .dropdown {
+              @include topbar-show-dropdown();
+            }
+          }
+        }
+      }
+    }
+  }
+}
