@@ -1,0 +1,21 @@
+////////////////////////////////////////////////////////////////////////////////
+// Context
+////////////////////////////////////////////////////////////////////////////////
+
+#context-blockform{
+  .odd:hover{
+    background: $table-bg;
+  }
+
+  td.blocks .label{
+    width:100%;
+    text-align: left;
+    color:#3f3f3f;
+    font-size:rem-calc(14);
+    padding:rem-calc(10);
+
+    a{
+      background:none;
+    }
+  }
+}

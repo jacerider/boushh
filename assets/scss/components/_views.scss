@@ -1,0 +1,108 @@
+////////////////////////////////////////////////////////////////////////////////
+// Views UI
+////////////////////////////////////////////////////////////////////////////////
+
+.views-ui-view-title{
+  font-family:$font_custom;
+  font-size:rem-calc(16);
+  padding-bottom:rem-calc(5);
+}
+
+.views-ui-view-displays,
+.views-ui-view-storage,
+.views-ui-view-base{
+  font-size:rem-calc(12);
+  line-height:rem-calc(15);
+}
+
+.ctools-export-ui-enabled{
+  .views-ui-view-displays,
+  .views-ui-view-storage,
+  .views-ui-view-base{
+    color:#7f7f7f;
+  }
+}
+
+.views-displays{
+
+  .secondary{
+    margin:0;
+  }
+
+  h2,
+  .ctools-toggle{
+    font-family:$font_custom;
+    color: $primary-color;
+    font-size:rem-calc(17);
+    font-weight:700;
+  }
+
+  h3{
+    font-weight:700;
+    font-size:rem-calc(14);
+    line-height:rem-calc(26);
+  }
+
+  .label{
+    font-family:$font_custom;
+    background:none;
+    color:#7f7f7f;
+    font-weight:700;
+    text-transform: uppercase;
+  }
+}
+
+#views-ajax-popup{
+  background:#f6f6f6;
+
+  #views-ajax-title{
+    font-family:$font_custom;
+    background:#f6f6f6;
+    font-size:rem-calc(16);
+    text-transform: uppercase;
+    color:#646464;
+    font-weight:600;
+  }
+
+  #views-filterable-options-controls{
+    margin:0;
+    padding: rem-calc(0 0 20);
+    @include clearfix();
+
+    .form-item{
+      width: rem-calc(200);
+      margin: rem-calc(0 10 0);
+      float:left;
+    }
+  }
+
+  #views-ajax-body{
+    background:#fff;
+  }
+
+  .views-override{
+    background:#f6f6f6;
+
+    label{
+      color:#646464;
+      font-size:rem-calc(11);
+      text-transform: uppercase;
+    }
+  }
+
+  table{
+    width:100%;
+  }
+
+  .even .form-type-checkbox{
+    background:$table-even-row-bg;
+  }
+
+  .form-buttons{
+    background:#f6f6f6;
+
+    button{
+      margin:rem-calc(15 0 0);
+    }
+  }
+}

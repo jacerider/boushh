@@ -36,10 +36,9 @@ stylesheets[all][] = assets/scss/libraries/_variables.scss
 stylesheets[all][] = assets/scss/libraries/_mixins.scss
 
 ; Components
-; stylesheets[all][] = assets/scss/components/_typography.scss
-; stylesheets[all][] = assets/scss/components/_header.scss
-; stylesheets[all][] = assets/scss/components/_footer.scss
-; stylesheets[all][] = assets/scss/components/_blocks.scss
+stylesheets[all][] = assets/scss/components/_forms.scss
+stylesheets[all][] = assets/scss/components/_views.scss
+stylesheets[all][] = assets/scss/components/_context.scss
 stylesheets[all][] = assets/scss/components/_ops-bar.scss
 
 ; Sections
