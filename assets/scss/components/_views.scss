@@ -54,6 +54,13 @@
 
 #views-ajax-popup{
   background:#f6f6f6;
+  height:auto !important;
+  // box-sizing: initial;
+
+  // &:before,
+  // &:after{
+  //   box-sizing: initial;
+  // }
 
   #views-ajax-title{
     font-family:$font_custom;
@@ -62,6 +69,10 @@
     text-transform: uppercase;
     color:#646464;
     font-weight:600;
+  }
+
+  .scroll{
+    border-color:#e9e9e9;
   }
 
   #views-filterable-options-controls{
@@ -78,15 +89,51 @@
 
   #views-ajax-body{
     background:#fff;
+    overflow:hidden;
+    // box-sizing: initial;
+
+    // &:before,
+    // &:after{
+    //   box-sizing: initial;
+    // }
+  }
+
+  .views-add-form-selected{
+    margin:0;
+    padding:0;
+    font-size:rem-calc(11);
+    color:#7f7f7f;
+    background:#f6f6f6;
   }
 
   .views-override{
-    background:#f6f6f6;
+    // display:none;
+    background:none;
+    margin:0;
+    position:absolute;
+    right:rem-calc(10);
+    top:1px;
+
+    // .form-item-override-dropdown{
+
+    //   & > *{
+    //     float:left;
+    //   }
+    // }
 
     label{
+      display:block;
+      position:absolute;
+      left:0;
+      top:10px;
       color:#646464;
       font-size:rem-calc(11);
       text-transform: uppercase;
+    }
+
+    .form-select{
+      margin-left:rem-calc(20);
+      border:none;
     }
   }
 
@@ -100,9 +147,10 @@
 
   .form-buttons{
     background:#f6f6f6;
+    padding:rem-calc(15);
 
     button{
-      margin:rem-calc(15 0 0);
+      margin:rem-calc(0);
     }
   }
 }

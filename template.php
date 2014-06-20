@@ -12,6 +12,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['rearrange'] = 'bars';
   $icons['list'] = 'list';
   $icons['disable'] = 'ban';
+  $icons['uninstall'] = 'times';
   $icons['remove'] = 'ban';
   $icons['clone'] = 'copy';
   $icons['export'] = 'external-link';
@@ -21,15 +22,64 @@ function boushh_fett_icons_alter(&$icons){
   $icons['manage fields'] = 'tasks';
   $icons['update'] = 'arrow-up';
   $icons['upload'] = 'upload';
-  $icons['@font-your-face'] = 'font';
+  $icons['basic page'] = 'file';
+  $icons['reports'] = 'bar-chart-o';
+  $icons['people'] = 'users';
+  $icons['modules'] = 'building';
+  $icons['content'] = 'files-o';
+  $icons['configuration'] = 'sliders';
+  $icons['context'] = 'magnet';
+  $icons['views'] = 'paper-plane';
+  $icons['content types'] = 'pencil-square-o';
+  $icons['site information'] = 'info-circle';
+  $icons['account settings'] = 'user';
+  $icons['image styles'] = 'picture-o';
+  $icons['image toolkit'] = 'camera';
+  $icons['date and time'] = 'calendar';
+  $icons['regional settings'] = 'language';
+  $icons['url aliases'] = 'link';
+  $icons['rss publishing'] = 'rss';
+  $icons['logging and errors'] = 'terminal';
+  $icons['maintenance mode'] = 'umbrella';
+  $icons['sonar'] = 'soundcloud';
+  $icons['file system'] = 'file-o';
+  $icons['blocks'] = 'puzzle-piece';
+  $icons['features'] = 'anchor';
+  $icons['appearance'] = 'magic';
+  $icons['structure'] = 'institution';
+  $icons['text formats'] = 'text-height';
   $icons['google webfont loader settings'] = 'google';
+  $icons['assets'] = 'rebel';
+  $icons['ip address blocking'] = 'ban';
+  $icons['actions'] = 'rocket';
+  $icons['jquery update'] = 'arrow-up';
+  $icons['performance'] = 'space-shuttle';
+  $icons['valet'] = 'car';
+  $icons['cron'] = 'history';
+  $icons['menu block'] = 'tasks';
+  $icons['external links'] = 'external-link';
+  $icons['boxes'] = 'th';
+  $icons['patterns'] = 'qrcode';
+  $icons['page titles'] = 'text-width';
+  $icons['url redirects'] = 'mail-forward';
+  $icons['clean urls'] = 'random';
   $icons['^save'] = array('icon' => 'save', 'class' => array('primary'));
+  $icons['^edit'] = array('icon' => 'edit', 'class' => array('primary'));
+  $icons['^list'] = array('icon' => 'list', 'class' => array('primary'));
+  $icons['^manage'] = array('icon' => 'list', 'class' => array('primary'));
   $icons['^add'] = array('icon' => 'plus', 'class' => array('primary'));
   $icons['^create'] = array('icon' => 'plus', 'class' => array('primary'));
   $icons['^update'] = array('icon' => 'refresh');
+  $icons['update$'] = array('icon' => 'refresh');
   $icons['^reset'] = array('icon' => 'history');
   $icons['^undo'] = array('icon' => 'undo');
   $icons['^refine'] = array('icon' => 'search');
+  $icons['^webform'] = array('icon' => 'th-list');
+  $icons['^@font-your-face'] = array('icon' => 'font');
+  $icons['^exo '] = array('icon' => 'empire');
+  $icons['^devel '] = array('icon' => 'bug');
+  $icons['^quickbar '] = array('icon' => 'barcode');
+  $icons['^delete '] = array('icon' => 'trash-o');
 }
 
 /**
@@ -82,6 +132,11 @@ function boushh_preprocess_html(&$vars) {
  *
  */
 function boushh_preprocess_page(&$vars) {
+
+  $vars['title'] = drupal_get_title();
+  if(!fett_icon($vars['title'])){
+    $vars['title'] = '<i class="fa fa-th"></i> ' . drupal_get_title();
+  }
 
   $vars['copyright'] = 'Powered by '.theme('image', array('path' => drupal_get_path('theme','boushh') . '/favicon.ico')).' '.l('August Ash', 'http://augustash.com', array('target'=>'_blank'));
 
@@ -454,8 +509,8 @@ function boushh_button($vars) {
 /**
  * Implements theme_form_element().
  */
-function boushh_form_element($variables) {
-  $element = &$variables['element'];
+function boushh_form_element($vars) {
+  $element = &$vars['element'];
 
   // This function is invoked as theme wrapper, but the rendered form element
   // may not necessarily have been processed by form_builder().
@@ -496,13 +551,13 @@ function boushh_form_element($variables) {
   switch ($element['#title_display']) {
     case 'before':
     case 'invisible':
-      $output .= ' ' . theme('form_element_label', $variables);
+      $output .= ' ' . theme('form_element_label', $vars);
       $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
       break;
 
     case 'after':
       $output .= ' ' . $prefix . $element['#children'] . $suffix;
-      $output .= ' ' . theme('form_element_label', $variables) . "\n";
+      $output .= ' ' . theme('form_element_label', $vars) . "\n";
       break;
 
     case 'none':
@@ -518,6 +573,95 @@ function boushh_form_element($variables) {
 
   $output .= "</div>\n";
 
+  return $output;
+}
+
+/**
+ * Implements theme_node_add_list().
+ */
+function boushh_node_add_list($vars) {
+  fett_foundation_add_js('foundation.equalizer.js');
+
+  $content = $vars['content'];
+  $output = '';
+
+  if ($content) {
+    $output = '<ul class="node-type-list small-block-grid-2 medium-block-grid-4 large-block-grid-6" data-equalizer data-options="equalize_on_stack: true">';
+    foreach ($content as $item) {
+      $output .= '<li>';
+      // $output .= '<div class="panel">';
+      $options = array();
+      $title = $item['title'];
+      if(!empty($item['description'])){
+        $output .= '<a href="'.url($item['href']).'" data-tooltip data-options="disable_for_touch:true" title="'.filter_xss_admin($item['description']).'" data-equalizer-watch>';
+      }
+      else{
+        $output .= '<a href="'.url($item['href']).'" data-equalizer-watch>';
+      }
+      if($icon = fett_icon_link($title, $options, TRUE)){
+        $output .= '<span class="icon">' . $title . '</span>';
+      }
+      elseif(module_exists('fawesome')){
+        $output .= '<span class="icon"><i class="fa fa-file-text"></i></span>';
+      }
+      $output .= '<span class="title">' . $item['title'] . '</span>';
+      // $output .= '<span class="description">' . filter_xss_admin($item['description']) . '</span>';
+      $output .= '</a>';
+      // $output .= '</div>';
+      $output .= '</li>';
+    }
+    $output .= '</ul>';
+  }
+  else {
+    $output = '<p>' . t('You have not created any content types yet. Go to the <a href="@create-content">content type creation page</a> to add a new content type.', array('@create-content' => url('admin/structure/types/add'))) . '</p>';
+  }
+  return $output;
+}
+
+/**
+ * Implements theme_admin_block_content().
+ */
+function boushh_admin_block_content($vars) {
+  fett_foundation_add_js('foundation.equalizer.js');
+
+  $content = $vars['content'];
+  $output = '';
+  $two_cols = arg(1);
+
+  if (!empty($content)) {
+    $class = 'admin-list';
+    $class .= $two_cols ? ' small-block-grid-1 medium-block-grid-2 large-block-grid-4 cols-2' : ' small-block-grid-2 medium-block-grid-4 large-block-grid-5 xlarge-block-grid-6 cols-1';
+    if ($compact = system_admin_compact_mode()) {
+      $class .= ' compact';
+    }
+    $output .= '<ul class="'.$class.'" data-equalizer data-options="equalize_on_stack: true">';
+    foreach ($content as $item) {
+      $output .= '<li>';
+      // $output .= '<div class="panel">';
+      if(!empty($item['description']) && !$compact){
+        $output .= '<a href="'.url($item['href']).'" data-tooltip data-options="disable_for_touch:true" title="'.htmlspecialchars(strip_tags($item['description'])).'" data-equalizer-watch>';
+      }
+      else{
+        $output .= '<a href="'.url($item['href']).'" data-equalizer-watch>';
+      }
+      $options = array();
+      $title = $item['title'];
+      if($icon = fett_icon_link($title, $options, TRUE)){
+        $output .= '<span class="icon">' . $title . '</span>';
+      }
+      elseif(module_exists('fawesome')){
+        $output .= '<span class="icon"><i class="fa fa-circle-o"></i></span>';
+      }
+      $output .= '<span class="title">' . $item['title'] . '</span>';
+      // if (!$compact && isset($item['description'])) {
+      //   $output .= '<span>' . filter_xss_admin($item['description']) . '</span>';
+      // }
+      $output .= '</a>';
+      // $output .= '</div>';
+      $output .= '</li>';
+    }
+    $output .= '</ul>';
+  }
   return $output;
 }
 
