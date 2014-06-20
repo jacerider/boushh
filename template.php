@@ -39,7 +39,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['regional settings'] = 'language';
   $icons['url aliases'] = 'link';
   $icons['rss publishing'] = 'rss';
-  $icons['logging and errors'] = 'terminal';
+  $icons['logging and errors'] = 'bug';
   $icons['maintenance mode'] = 'umbrella';
   $icons['sonar'] = 'soundcloud';
   $icons['file system'] = 'file-o';
@@ -50,6 +50,8 @@ function boushh_fett_icons_alter(&$icons){
   $icons['text formats'] = 'text-height';
   $icons['google webfont loader settings'] = 'google';
   $icons['assets'] = 'rebel';
+  $icons['asset instances'] = 'rebel';
+  $icons['asset types'] = 'rebel';
   $icons['ip address blocking'] = 'ban';
   $icons['actions'] = 'rocket';
   $icons['jquery update'] = 'arrow-up';
@@ -61,6 +63,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['boxes'] = 'th';
   $icons['patterns'] = 'qrcode';
   $icons['page titles'] = 'text-width';
+  $icons['menu trail by path'] = 'compass';
   $icons['url redirects'] = 'mail-forward';
   $icons['clean urls'] = 'random';
   $icons['^save'] = array('icon' => 'save', 'class' => array('primary'));
@@ -77,7 +80,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['^webform'] = array('icon' => 'th-list');
   $icons['^@font-your-face'] = array('icon' => 'font');
   $icons['^exo '] = array('icon' => 'empire');
-  $icons['^devel '] = array('icon' => 'bug');
+  $icons['^devel '] = array('icon' => 'code');
   $icons['^quickbar '] = array('icon' => 'barcode');
   $icons['^delete '] = array('icon' => 'trash-o');
 }
@@ -187,13 +190,17 @@ function boushh_preprocess_page(&$vars) {
 
     $vars['ops']['#prefix'] = '<nav class="ops-bar" data-topbar>';
     $vars['ops']['#suffix'] = '</nav>';
+    // $items = array();
+    // $items[] = array('data' => '<a href="#"><span>Menu</span></a>', 'class' => array('toggle-topbar','menu-icon'));
+    // // dsm($items);
+    // // $items = array();
+    // $vars['ops']['title'] = array(
+    //   '#theme' => 'item_list',
+    //   '#items' => $items,
+    //   '#attributes' => array('class' => array('title-area')),
+    // );
 
-    $items = array();
-    $vars['ops']['title'] = array(
-      '#theme' => 'item_list',
-      '#items' => $items,
-      '#attributes' => array('class' => array('title-area')),
-    );
+    $vars['ops']['title']['#markup'] = '<ul class="title-area"><li class="name"><h1></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span>Actions</span></a></li></ul>';
 
     $vars['ops']['bar']['#prefix'] = '<section class="ops-bar-section">';
     $vars['ops']['bar']['#suffix'] = '</section>';
@@ -586,14 +593,14 @@ function boushh_node_add_list($vars) {
   $output = '';
 
   if ($content) {
-    $output = '<ul class="node-type-list small-block-grid-2 medium-block-grid-4 large-block-grid-6" data-equalizer data-options="equalize_on_stack: true">';
+    $output = '<ul class="node-type-list small-block-grid-2 medium-block-grid-5 large-block-grid-8" data-equalizer data-options="equalize_on_stack: true">';
     foreach ($content as $item) {
       $output .= '<li>';
       // $output .= '<div class="panel">';
       $options = array();
       $title = $item['title'];
       if(!empty($item['description'])){
-        $output .= '<a href="'.url($item['href']).'" data-tooltip data-options="disable_for_touch:true" title="'.filter_xss_admin($item['description']).'" data-equalizer-watch>';
+        $output .= '<a href="'.url($item['href']).'" class="has-tip" data-tooltip data-options="disable_for_touch:true" title="'.filter_xss_admin($item['description']).'" data-equalizer-watch>';
       }
       else{
         $output .= '<a href="'.url($item['href']).'" data-equalizer-watch>';
@@ -626,7 +633,7 @@ function boushh_admin_block_content($vars) {
 
   $content = $vars['content'];
   $output = '';
-  $two_cols = arg(1);
+  $two_cols = arg(1) && !arg(2);
 
   if (!empty($content)) {
     $class = 'admin-list';
@@ -639,7 +646,7 @@ function boushh_admin_block_content($vars) {
       $output .= '<li>';
       // $output .= '<div class="panel">';
       if(!empty($item['description']) && !$compact){
-        $output .= '<a href="'.url($item['href']).'" data-tooltip data-options="disable_for_touch:true" title="'.htmlspecialchars(strip_tags($item['description'])).'" data-equalizer-watch>';
+        $output .= '<a href="'.url($item['href']).'" class="has-tip" data-tooltip data-options="disable_for_touch:true" title="'.htmlspecialchars(strip_tags($item['description'])).'" data-equalizer-watch>';
       }
       else{
         $output .= '<a href="'.url($item['href']).'" data-equalizer-watch>';
@@ -662,6 +669,33 @@ function boushh_admin_block_content($vars) {
     }
     $output .= '</ul>';
   }
+  return $output;
+}
+
+function boushh_admin_page($variables) {
+  $blocks = $variables['blocks'];
+  $stripe = 0;
+  $container = array();
+  foreach ($blocks as $block) {
+    if ($block_output = theme('admin_block', array('block' => $block))) {
+      if (empty($block['position'])) {
+        // perform automatic striping.
+        $block['position'] = ++$stripe % 2 ? 'left' : 'right';
+      }
+      if (!isset($container[$block['position']])) {
+        $container[$block['position']] = '';
+      }
+      $container[$block['position']] .= $block_output;
+    }
+  }
+  $output = '<div class="admin row">';
+  // $output .= theme('system_compact_link');
+  foreach ($container as $id => $data) {
+    $output .= '<div class="large-6 columns">';
+    $output .= $data;
+    $output .= '</div>';
+  }
+  $output .= '</div>';
   return $output;
 }
 

@@ -154,3 +154,23 @@
     }
   }
 }
+
+#views-ui-edit-form{
+  .form-actions{
+    margin:0;
+  }
+}
+
+#views-preview-wrapper{
+  #views-ui-preview-form{
+    .form-type-textfield label{
+      height:auto;
+    }
+  }
+
+  .views-query-info{
+    table{
+      margin:0;
+    }
+  }
+}
