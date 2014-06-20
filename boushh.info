@@ -36,9 +36,11 @@ stylesheets[all][] = assets/scss/libraries/_variables.scss
 stylesheets[all][] = assets/scss/libraries/_mixins.scss
 
 ; Components
+stylesheets[all][] = assets/scss/components/_jquery-ui.scss
 stylesheets[all][] = assets/scss/components/_forms.scss
 stylesheets[all][] = assets/scss/components/_views.scss
 stylesheets[all][] = assets/scss/components/_context.scss
+stylesheets[all][] = assets/scss/components/_ctools.scss
 stylesheets[all][] = assets/scss/components/_ops-bar.scss
 
 ; Sections

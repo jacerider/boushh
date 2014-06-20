@@ -1,0 +1,31 @@
+.ctools-dropbutton{
+
+  &.open{
+    li + li{
+      border:none;
+    }
+  }
+
+  .ctools-content{
+    border:none;
+  }
+
+  .ctools-link{
+    border:none;
+  }
+}
+
+.ctools-button{
+  background-color:$secondary-color;
+  border:none;
+
+  a{
+    color:#3f3f3f;
+  }
+}
+
+.ctools-content{
+  ul.actions{
+    margin:0;
+  }
+}
