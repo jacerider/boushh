@@ -36,7 +36,8 @@ function boushh_fett_icons_alter(&$icons){
   $icons['image styles'] = 'picture-o';
   $icons['image toolkit'] = 'camera';
   $icons['date and time'] = 'calendar';
-  $icons['regional settings'] = 'language';
+  $icons['regional settings'] = 'globe';
+  $icons['module filter'] = 'filter';
   $icons['url aliases'] = 'link';
   $icons['rss publishing'] = 'rss';
   $icons['logging and errors'] = 'bug';
@@ -46,6 +47,9 @@ function boushh_fett_icons_alter(&$icons){
   $icons['blocks'] = 'puzzle-piece';
   $icons['features'] = 'anchor';
   $icons['appearance'] = 'magic';
+  $icons['help'] = 'question-circle';
+  $icons['permissions'] = 'lock';
+  $icons['roles'] = 'users';
   $icons['structure'] = 'institution';
   $icons['text formats'] = 'text-height';
   $icons['google webfont loader settings'] = 'google';
@@ -72,6 +76,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['^manage'] = array('icon' => 'list', 'class' => array('primary'));
   $icons['^add'] = array('icon' => 'plus', 'class' => array('primary'));
   $icons['^create'] = array('icon' => 'plus', 'class' => array('primary'));
+  $icons['^import'] = array('icon' => 'download');
   $icons['^update'] = array('icon' => 'refresh');
   $icons['update$'] = array('icon' => 'refresh');
   $icons['^reset'] = array('icon' => 'history');
@@ -546,8 +551,28 @@ function boushh_form_element($vars) {
   if (!isset($element['#title'])) {
     $element['#title_display'] = 'none';
   }
-  $prefix = isset($element['#field_prefix']) ? '<span class="field-prefix">' . $element['#field_prefix'] . '</span> ' : '';
-  $suffix = isset($element['#field_suffix']) ? ' <span class="field-suffix">' . $element['#field_suffix'] . '</span>' : '';
+  // $prefix = isset($element['#field_prefix']) ? '<span class="field-prefix">' . $element['#field_prefix'] . '</span> ' : '';
+  // $suffix = isset($element['#field_suffix']) ? ' <span class="field-suffix">' . $element['#field_suffix'] . '</span>' : '';
+
+  $prefix = '';
+  $suffix = '';
+  if(!empty($element['#field_prefix']) || !empty($element['#field_suffix'])){
+    $prefix .= '<div class="row collapse">';
+    $class = !empty($element['#field_prefix']) && !empty($element['#field_suffix']) ? 'small-6 large-8 columns' : 'small-9 large-10 columns';
+    if(!empty($element['#field_prefix'])){
+      $prefix .= '<div class="small-3 large-2 columns">';
+      $prefix .= '<span class="field-prefix prefix">' . $element['#field_prefix'] . '</span> ';
+      $prefix .= '</div>';
+    }
+    $prefix .= '<div class="'.$class.'">';
+    $suffix .= '</div>';
+    if(!empty($element['#field_suffix'])){
+      $suffix .= '<div class="small-3 large-2 columns">';
+      $suffix .= '<span class="field-suffix postfix">' . $element['#field_suffix'] . '</span> ';
+      $suffix .= '</div>';
+    }
+    $suffix .= '</div>';
+  }
 
   if(isset($element['#field_prefix']) || isset($element['#field_suffix'])){
     $attributes['class'][] = 'field-inline';
@@ -608,9 +633,6 @@ function boushh_node_add_list($vars) {
       if($icon = fett_icon_link($title, $options, TRUE)){
         $output .= '<span class="icon">' . $title . '</span>';
       }
-      elseif(module_exists('fawesome')){
-        $output .= '<span class="icon"><i class="fa fa-file-text"></i></span>';
-      }
       $output .= '<span class="title">' . $item['title'] . '</span>';
       // $output .= '<span class="description">' . filter_xss_admin($item['description']) . '</span>';
       $output .= '</a>';
@@ -633,11 +655,11 @@ function boushh_admin_block_content($vars) {
 
   $content = $vars['content'];
   $output = '';
-  $two_cols = arg(1) && !arg(2);
+  $two_cols = arg(1) == 'config' && !arg(2);
 
   if (!empty($content)) {
     $class = 'admin-list';
-    $class .= $two_cols ? ' small-block-grid-1 medium-block-grid-2 large-block-grid-4 cols-2' : ' small-block-grid-2 medium-block-grid-4 large-block-grid-5 xlarge-block-grid-6 cols-1';
+    $class .= $two_cols ? ' small-block-grid-2 medium-block-grid-2 large-block-grid-1 cols-2' : ' small-block-grid-2 medium-block-grid-4 large-block-grid-5 xlarge-block-grid-6 cols-1';
     if ($compact = system_admin_compact_mode()) {
       $class .= ' compact';
     }
@@ -645,12 +667,13 @@ function boushh_admin_block_content($vars) {
     foreach ($content as $item) {
       $output .= '<li>';
       // $output .= '<div class="panel">';
-      if(!empty($item['description']) && !$compact){
-        $output .= '<a href="'.url($item['href']).'" class="has-tip" data-tooltip data-options="disable_for_touch:true" title="'.htmlspecialchars(strip_tags($item['description'])).'" data-equalizer-watch>';
-      }
-      else{
+      // I don't think we need the descriptions.
+      // if(!empty($item['description']) && !$compact){
+      //   $output .= '<a href="'.url($item['href']).'" class="has-tip" data-tooltip data-options="disable_for_touch:true" title="'.htmlspecialchars(strip_tags($item['description'])).'" data-equalizer-watch>';
+      // }
+      // else{
         $output .= '<a href="'.url($item['href']).'" data-equalizer-watch>';
-      }
+      // }
       $options = array();
       $title = $item['title'];
       if($icon = fett_icon_link($title, $options, TRUE)){
@@ -676,22 +699,25 @@ function boushh_admin_page($variables) {
   $blocks = $variables['blocks'];
   $stripe = 0;
   $container = array();
+  $column = 0;
   foreach ($blocks as $block) {
     if ($block_output = theme('admin_block', array('block' => $block))) {
-      if (empty($block['position'])) {
-        // perform automatic striping.
-        $block['position'] = ++$stripe % 2 ? 'left' : 'right';
+      if (!isset($container[$column])) {
+        $container[$column] = '';
       }
-      if (!isset($container[$block['position']])) {
-        $container[$block['position']] = '';
+      $container[$column] .= $block_output;
+      if($column == 2){
+        $column = 0;
       }
-      $container[$block['position']] .= $block_output;
+      else{
+        $column++;
+      }
     }
   }
-  $output = '<div class="admin row">';
+  $output = '<div class="admin-page row">';
   // $output .= theme('system_compact_link');
   foreach ($container as $id => $data) {
-    $output .= '<div class="large-6 columns">';
+    $output .= '<div class="large-4 columns">';
     $output .= $data;
     $output .= '</div>';
   }

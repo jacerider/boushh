@@ -28,8 +28,12 @@ form{
   }
 
   .field-inline{
-    input{
-      width:auto;
+    // input{
+    //   width:auto;
+    //   display:inline-block;
+    // }
+
+    .form-type-radio{
       display:inline-block;
     }
   }
