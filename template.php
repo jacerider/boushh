@@ -10,6 +10,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['save'] = 'save';
   $icons['cancel'] = 'undo';
   $icons['rearrange'] = 'bars';
+  $icons['and/or, rearrange'] = 'bars';
   $icons['list'] = 'list';
   $icons['disable'] = 'ban';
   $icons['uninstall'] = 'times';
@@ -53,9 +54,9 @@ function boushh_fett_icons_alter(&$icons){
   $icons['structure'] = 'institution';
   $icons['text formats'] = 'text-height';
   $icons['google webfont loader settings'] = 'google';
-  $icons['assets'] = 'rebel';
-  $icons['asset instances'] = 'rebel';
-  $icons['asset types'] = 'rebel';
+  $icons['assets'] = 'cubes';
+  // $icons['asset instances'] = 'rebel';
+  $icons['asset types'] = 'cubes';
   $icons['ip address blocking'] = 'ban';
   $icons['actions'] = 'rocket';
   $icons['jquery update'] = 'arrow-up';
@@ -81,13 +82,15 @@ function boushh_fett_icons_alter(&$icons){
   $icons['update$'] = array('icon' => 'refresh');
   $icons['^reset'] = array('icon' => 'history');
   $icons['^undo'] = array('icon' => 'undo');
+  $icons['^revert'] = array('icon' => 'undo');
   $icons['^refine'] = array('icon' => 'search');
   $icons['^webform'] = array('icon' => 'th-list');
   $icons['^@font-your-face'] = array('icon' => 'font');
   $icons['^exo '] = array('icon' => 'empire');
   $icons['^devel '] = array('icon' => 'code');
   $icons['^quickbar '] = array('icon' => 'barcode');
-  $icons['^delete '] = array('icon' => 'trash-o');
+  $icons['delete'] = array('icon' => 'trash-o', 'class' => array('alert'));
+  $icons['^delete '] = array('icon' => 'trash-o', 'class' => array('alert'));
 }
 
 /**
@@ -358,6 +361,9 @@ function boushh_links($vars) {
     foreach ($links as $key => $link) {
       $class = array($key);
 
+      $use_tooltip = isset($link['tooltip']) && $link['tooltip'] === FALSE ? FALSE : TRUE;
+      $hide_text = isset($link['hide_text']) && $link['hide_text'] === FALSE ? FALSE : TRUE;
+
       // Add first, last and active classes to the list of links to help out themers.
       if ($i == 1) {
         $class[] = 'first';
@@ -371,7 +377,7 @@ function boushh_links($vars) {
       $output .= '<li' . drupal_attributes(array('class' => $class)) . '>';
 
       if (isset($link['href'])) {// Add Font Awesome Icon
-        fett_icon_link($link['title'], $link, TRUE, TRUE);
+        fett_icon_link($link['title'], $link, $hide_text, $use_tooltip);
         $link_text = $link['title'];
         // Pass in $link as $options, they share the same keys.
         $output .= l($link_text, $link['href'], $link);
@@ -465,6 +471,11 @@ function boushh_links__ctools_dropbutton($vars) {
       }
     }
 
+    foreach($vars['links'] as &$link){
+      $link['tooltip'] = FALSE;
+      $link['hide_text'] = FALSE;
+    }
+
     // Call theme_links to render the list of links.
     // $output .= theme_links(array('links' => $vars['links'], 'attributes' => $vars['attributes'], 'heading' => ''));
     $output .= theme('links', array('links' => $vars['links'], 'attributes' => $vars['attributes'], 'heading' => ''));
@@ -510,7 +521,7 @@ function boushh_button($vars) {
       $element['#attributes']['class'][] = 'tiny';
     }
 
-    if(!boushh_class_exists($element['#attributes'], array('primary','secondary','success','alert'))){
+    if(!boushh_class_exists($element['#attributes'], array('primary','secondary','success','alert','text'))){
       $element['#attributes']['class'][] = 'secondary';
     }
 
@@ -556,7 +567,7 @@ function boushh_form_element($vars) {
 
   $prefix = '';
   $suffix = '';
-  if(!empty($element['#field_prefix']) || !empty($element['#field_suffix'])){
+  if((!empty($element['#field_prefix']) && strip_tags($element['#field_prefix'])) || (!empty($element['#field_suffix']) && strip_tags($element['#field_suffix']))){
     $prefix .= '<div class="row collapse">';
     $class = !empty($element['#field_prefix']) && !empty($element['#field_suffix']) ? 'small-6 large-8 columns' : 'small-9 large-10 columns';
     if(!empty($element['#field_prefix'])){
@@ -695,8 +706,11 @@ function boushh_admin_block_content($vars) {
   return $output;
 }
 
-function boushh_admin_page($variables) {
-  $blocks = $variables['blocks'];
+/**
+ * Implements theme_admin_page().
+ */
+function boushh_admin_page($vars) {
+  $blocks = $vars['blocks'];
   $stripe = 0;
   $container = array();
   $column = 0;
@@ -722,6 +736,82 @@ function boushh_admin_page($variables) {
     $output .= '</div>';
   }
   $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Implements theme_confirm_form().
+ */
+function boushh_confirm_form($vars) {
+  if(isset($vars['form']['actions']['cancel'])){
+    if(fett_icon($vars['form']['actions']['cancel']['#title'])){
+      $vars['form']['actions']['cancel']['#options']['html'] = TRUE;
+      $vars['form']['actions']['cancel']['#options']['attributes']['class'][] = 'button';
+      $vars['form']['actions']['cancel']['#options']['attributes']['class'][] = 'text';
+    }
+  }
+  return drupal_render_children($vars['form']);
+}
+
+/**
+ * Implements theme_filter_guidelines().
+ */
+function boushh_filter_guidelines($variables) {
+  // fett_foundation_add_js('foundation.tooltip.js');
+  $format = $variables['format'];
+  $attributes['class'][] = 'filter-guidelines-item';
+  $attributes['class'][] = 'filter-guidelines-' . $format->format;
+  $output = '<div' . drupal_attributes($attributes) . '>';
+  $output .= '<h3>' . check_plain($format->name) . '</h3>';
+  $output .= theme('filter_tips', array('tips' => _filter_tips($format->format, FALSE)));
+  $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Implements theme_filter_tips().
+ */
+function boushh_filter_tips($variables) {
+  static $count;
+  fett_foundation_add_js('foundation.reveal.js');
+  $count++;
+  $tips = $variables['tips'];
+  $long = $variables['long'];
+  $output = '<a href="#" data-reveal-id="filter-tip-'.$count.'" class="filter-tip"><i class="fa fa-question-circle"></i></a><div id="filter-tip-'.$count.'" class="reveal-modal" data-reveal>';
+
+  $multiple = count($tips) > 1;
+  // if ($multiple) {
+  //   $output = '<h2>' . t('Text Formats') . '</h2>';
+  // }
+
+  if (count($tips)) {
+    if ($multiple) {
+      $output .= '<div class="compose-tips">';
+    }
+    foreach ($tips as $name => $tiplist) {
+      if ($multiple) {
+        $output .= '<div class="filter-type filter-' . drupal_html_class($name) . '">';
+        $output .= '<h3>' . $name . '</h3>';
+      }
+
+      if (count($tiplist) > 0) {
+        $output .= '<ul class="tips">';
+        foreach ($tiplist as $tip) {
+          $output .= '<li' . ($long ? ' id="filter-' . str_replace("/", "-", $tip['id']) . '">' : '>') . $tip['tip'] . '</li>';
+        }
+        $output .= '</ul>';
+      }
+
+      if ($multiple) {
+        $output .= '</div>';
+      }
+    }
+    if ($multiple) {
+      $output .= '</div>';
+    }
+  }
+  $output .= '</div>';
+
   return $output;
 }
 
