@@ -4,27 +4,10 @@
 
 form{
 
-  input[type="text"],
-  input[type="password"],
-  input[type="date"],
-  input[type="datetime"],
-  input[type="datetime-local"],
-  input[type="month"],
-  input[type="week"],
-  input[type="email"],
-  input[type="number"],
-  input[type="search"],
-  input[type="tel"],
-  input[type="time"],
-  input[type="url"],
-  textarea{
-    margin:rem-calc(0 0 5);
-  }
-
-  input[type="file"],
-  input[type="checkbox"],
-  input[type="radio"]{
-    margin:0;
+  table{
+    button{
+      margin:0;
+    }
   }
 
   .field-inline{
@@ -35,6 +18,12 @@ form{
 
     .form-type-radio{
       display:inline-block;
+      min-width:rem-calc(45);
+      padding-right:0;
+
+      label{
+        margin:0;
+      }
     }
   }
 
@@ -57,26 +46,44 @@ form{
   //   }
   // }
 
-  .exposed-filters{
-    .filter-wrapper{
-      padding:0;
-      font-size:rem-calc(12);
+  .filter-wrapper{
+    padding:0;
+    font-size:rem-calc(12);
 
-      .filter-help a{
-        display:block;
-        font-size:rem-calc(11);
-        line-height:rem-calc(14);
-      }
+    .fieldset-wrapper{
+      @include clearfix();
+    }
 
-      .form-item-body-format{
-        margin:0;
-      }
+    .form-item{
+      margin:0;
+      display:inline-block;
+    }
 
-      .filter-list{
-        margin:0;
+    .filter-guidelines{
+      display:inline-block;
+      padding:rem-calc(30 0 0 10);
+
+      .filter-tip{
+        font-size:rem-calc(18);
       }
     }
 
+    .filter-help a{
+      display:block;
+      font-size:rem-calc(11);
+      line-height:rem-calc(14);
+    }
+
+    .form-item-body-format{
+      margin:0;
+    }
+
+    .filter-list{
+      margin:0;
+    }
+  }
+
+  .exposed-filters{
     button{
       padding:rem-calc(8 14);
     }
@@ -88,6 +95,60 @@ form{
     button{
       margin-bottom:0;
     }
+  }
+
+  $file-upload-color: #c0392b;
+  $file-upload-size: 300px;
+
+  .file-upload-wrapper {
+    position: relative;
+    margin-bottom: 5px;
+    //border: 1px solid #ccc;
+  }
+
+  .form-managed-file{
+    .image-widget-data{
+      width:auto;
+      float:none;
+    }
+
+    .form-type-textfield{
+      @include clearfix();
+      clear:both;
+    }
+  }
+
+  .file-upload-input {
+    // width: $file-upload-size;
+    // color: #fff;
+    // font-size: 16px;
+    // padding: 11px 17px;
+    // border: none;
+    // background-color: $file-upload-color;
+    // @include transition(all 0.2s ease-in);
+    // float: left; /* IE 9 Fix */
+    // &:hover, &:focus {
+    //   background-color: darken($file-upload-color, 5);
+    //   outline: none;
+    // }
+  }
+
+  .file-upload-button {
+    margin:0;
+    // cursor: pointer;
+    // display: inline-block;
+    // color: #fff;
+    // font-size: 16px;
+    // text-transform: uppercase;
+    // padding: 11px 20px;
+    // border: none;
+    // margin-left: -1px;
+    // background-color: darken($file-upload-color, 10);
+    // float: left; /* IE 9 Fix */
+    // @include transition(all 0.2s ease-in);
+    // &:hover {
+    //   background-color: darken($file-upload-color, 20);
+    // }
   }
 }
 
