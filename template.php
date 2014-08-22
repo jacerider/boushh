@@ -1,5 +1,11 @@
 <?php
 
+// jQuery Fix for Views which sets jQuery version to 1.7 for compatability.
+if(strpos($_GET['q'], 'admin/structure/views/') !== FALSE){
+  global $conf;
+  $conf['jquery_update_jquery_admin_version'] = '1.7';
+}
+
 /**
  * Implements hook_fett_icons_alter().
  */
@@ -508,12 +514,11 @@ function boushh_button($vars) {
   // Prepare input whitelist - added to ensure ajax functions don't break
   $whitelist = _fett_element_whitelist();
 
-  if (isset($element['#id']) && (in_array($element['#id'], $whitelist)) || preg_match('/^edit-displays-/', $element['#id'])) {
+  if (isset($element['#id']) && (in_array($element['#id'], $whitelist)) || (isset($element['#submit'][0]) && strpos($element['#submit'][0], 'views_ui_edit_form_submit_') !== FALSE)) {
     return '<input' . drupal_attributes($element['#attributes']) . ">\n"; // This line break adds inherent margin between multiple buttons
   }
   else {
     // Add Font Awesome Icon
-    $temp = array();
     fett_icon_button($label, $element);
     // boushh_icon_button($label, $element);
 
