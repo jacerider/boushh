@@ -249,12 +249,20 @@ body{
   @include clearfix();
   margin-bottom:rem-calc(20);
 
+  > .fieldset-wrapper{
+    padding-top:0;
 
-  & > *{
+    > *{
+      float:left;
+    }
+  }
+
+
+  > *{
     float:left;
   }
 
-  & *{
+  *{
     margin:0;
     padding:0;
   }
