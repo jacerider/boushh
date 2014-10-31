@@ -1,7 +1,7 @@
 <?php
 
 // jQuery Fix for Views which sets jQuery version to 1.7 for compatability.
-if(strpos($_GET['q'], 'admin/structure/views/') !== FALSE){
+if(strpos($_GET['q'], 'admin/structure/views/') !== FALSE || strpos($_GET['q'], 'admin/config/content/ckeditor/edit') !== FALSE){
   global $conf;
   $conf['jquery_update_jquery_admin_version'] = '1.7';
 }
