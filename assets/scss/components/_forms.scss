@@ -150,6 +150,24 @@ form{
     //   background-color: darken($file-upload-color, 20);
     // }
   }
+
+  div.video-widget-data{
+    float:none;
+    width:auto;
+  }
+
+  .form-managed-file .ajax-progress-bar{
+    width:100%;
+    height:rem-calc(50);
+    background:none;
+
+    .message,
+    .percentage{
+      font-size:rem-calc(12);
+      padding: rem-calc(4 0 10);
+      font-weight:300;
+    }
+  }
 }
 
 div.fieldset-wrapper{
