@@ -1,7 +1,7 @@
 <?php
 
 // jQuery Fix for Views which sets jQuery version to 1.7 for compatability.
-if(strpos($_GET['q'], 'admin/structure/views/') !== FALSE){
+if(strpos($_GET['q'], 'admin/structure/views/') !== FALSE || strpos($_GET['q'], 'admin/config/content/ckeditor/edit') !== FALSE){
   global $conf;
   $conf['jquery_update_jquery_admin_version'] = '1.7';
 }
@@ -61,6 +61,11 @@ function boushh_fett_icons_alter(&$icons){
   $icons['text formats'] = 'text-height';
   $icons['google webfont loader settings'] = 'google';
   $icons['assets'] = 'cubes';
+  $icons['flags'] = 'flag';
+  $icons['entity types'] = 'cubes';
+  $icons['entities'] = 'cubes';
+  $icons['published'] = 'circle';
+  $icons['unpublished'] = 'circle-o';
   // $icons['asset instances'] = 'rebel';
   $icons['asset types'] = 'cubes';
   $icons['ip address blocking'] = 'ban';
@@ -513,6 +518,11 @@ function boushh_button($vars) {
 
   // Prepare input whitelist - added to ensure ajax functions don't break
   $whitelist = _fett_element_whitelist();
+
+  // Upload progress skip.
+  if(isset($element['#ajax']['progress']['type']) && $element['#ajax']['progress']['type'] === 'bar'){
+    $whitelist[] = $element['#id'];
+  }
 
   if (isset($element['#id']) && (in_array($element['#id'], $whitelist)) || (isset($element['#submit'][0]) && strpos($element['#submit'][0], 'views_ui_edit_form_submit_') !== FALSE)) {
     return '<input' . drupal_attributes($element['#attributes']) . ">\n"; // This line break adds inherent margin between multiple buttons
