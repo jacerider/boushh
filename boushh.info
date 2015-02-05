@@ -2,7 +2,7 @@ name = Boushh
 description = An admin theme of awesomeness based on Fett.
 screenshot = assets/images/screenshot.png
 core = 7.x
-version = 1.0
+version = "7.x-1.1"
 engine = phptemplate
 base theme = fett
 
