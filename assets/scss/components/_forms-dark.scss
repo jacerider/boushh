@@ -869,6 +869,10 @@ h1.unit-title{
   margin:0;
 }
 
+ul#views-display-menu-tabs{
+  margin-right:0;
+}
+
 #edit-display-settings-top{
   @include form-reset();
   margin:0;
@@ -947,19 +951,26 @@ h1.unit-title{
   }
 }
 
-.views-display-top .add{
-  > a{
-    @include form-button();
-    font-size:rem-calc(12);
-    padding:rem-calc(5 12 5 6);
-    font-weight:300;
+.views-display-top{
+  .ctools-button-processed{
+    right:0;
+    margin:0;
+  }
 
-    &:hover{
-      color:lighten($bdf-primary-color, 20%);
-    }
+  .add{
+    > a{
+      @include form-button();
+      font-size:rem-calc(12);
+      padding:rem-calc(5 12 5 6);
+      font-weight:300;
 
-    .icon.add{
-      background-position: center -25px;
+      &:hover{
+        color:lighten($bdf-primary-color, 20%);
+      }
+
+      .icon.add{
+        background-position: center -25px;
+      }
     }
   }
 }
