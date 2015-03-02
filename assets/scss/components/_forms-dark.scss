@@ -254,6 +254,10 @@ table{
     background:#3b4043;
     border:none;
 
+    th{
+      border:none;
+    }
+
     tr{
       background:$form-primary-bg;
       border:none;
