@@ -150,6 +150,10 @@ table{
     }
   }
 
+  .ajax-progress-throbber{
+    border-radius:0;
+  }
+
   .token-dialog{
     @include form-button();
     font-size:rem-calc(12);
@@ -1447,13 +1451,11 @@ span.postfix, label.postfix{
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Checkboxes
+// Checkboxes & Radios
 ////////////////////////////////////////////////////////////////////////////////
 
-/* $bdf-primary-color: #c0392b; //red */
-$darkenColor: darken($bdf-primary-color, 20%);
-
-.form-item.form-type-checkbox {
+.form-item.form-type-checkbox,
+.form-item.form-type-radio {
   // text-indent: rem-calc(25);
   white-space: nowrap;
   // width: 20px;
@@ -1483,7 +1485,8 @@ $darkenColor: darken($bdf-primary-color, 20%);
     }
   }
 
-  input[type=checkbox] {
+  input[type=checkbox],
+  input[type=radio] {
     visibility:hidden;
     display:none;
 
