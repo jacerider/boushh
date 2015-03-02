@@ -145,6 +145,8 @@ function boushh_preprocess_html(&$vars) {
   $vars['classes_array'][] = 'boushh';
 
   if(theme_get_setting('boushh_dark_form')){
+    // Load before Foundation includes
+    drupal_add_css(drupal_get_path('theme', 'boushh') . '/assets/scss/libraries/_settings-forms-dark.scss', array('every_page' => TRUE, 'weight' => -1001));
     drupal_add_css(drupal_get_path('theme', 'boushh') . '/assets/scss/components/_forms-dark.scss', array('every_page' => TRUE));
     $vars['classes_array'][] = 'boushh-dark';
   }
@@ -846,6 +848,32 @@ function boushh_filter_tips($variables) {
   }
   $output .= '</div>';
 
+  return $output;
+}
+
+function boushh_fieldset($variables) {
+  $element = $variables ['element'];
+  if (empty($element ['#title'])) {
+    $element['#attributes']['class'][] = 'form-wrapper-nolegend';
+  }
+  element_set_attributes($element, array('id'));
+  _form_set_class($element, array('form-wrapper'));
+
+  $output = '<fieldset' . drupal_attributes($element ['#attributes']) . '>';
+  if (!empty($element ['#title'])) {
+    // Always wrap fieldset legends in a SPAN for CSS positioning.
+    $output .= '<legend><span class="fieldset-legend">' . $element ['#title'] . '</span></legend>';
+  }
+  $output .= '<div class="fieldset-wrapper">';
+  if (!empty($element ['#description'])) {
+    $output .= '<div class="fieldset-description">' . $element ['#description'] . '</div>';
+  }
+  $output .= $element ['#children'];
+  if (isset($element ['#value'])) {
+    $output .= $element ['#value'];
+  }
+  $output .= '</div>';
+  $output .= "</fieldset>\n";
   return $output;
 }
 

@@ -1,22 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-// Variables
-////////////////////////////////////////////////////////////////////////////////
-
-$form-primary-bg: #2e383e;
-$form-secondary-bg: #232A2F;
-$form-shadow: rgba(0,0,0,0.25);
-$form-spacing: 20;
-
-$form-text-color: #fff;
-$form-primary-color: #0997c3;
-$form-success-color: #43AC6A;
-$form-warning-color: #F08A24;
-$form-info-color: #0997c3;
-$form-error-color: #F04124;
-$form-description-color: #f0c495;
-
-////////////////////////////////////////////////////////////////////////////////
-// Variables
+// Mixins
 ////////////////////////////////////////////////////////////////////////////////
 
 @mixin form-inset() {
@@ -49,6 +32,29 @@ $form-description-color: #f0c495;
   border:none;
   border-top:1px solid #28b7e5;
   margin:rem-calc(0 $form-spacing/2 0 0);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Elements outside of .page
+////////////////////////////////////////////////////////////////////////////////
+
+.boushh-dark{
+
+  #quickbar-top-bar{
+    background:$form-primary-bg;
+
+    .top-bar-section li a:not(.button){
+      background:$form-primary-bg;
+    }
+
+    .top-bar-section li a:hover:not(.button){
+      background:$form-secondary-bg;
+    }
+  }
+
+  .tooltip{
+    @include box-shadow(0 0 6px rgba(0,0,0,0.15));
+  }
 }
 
 .boushh-dark .page{
@@ -115,6 +121,43 @@ table{
     padding:0;
   }
 
+  .machine-name-value{
+    font-size:rem-calc(14);
+  }
+
+  .form-disabled{
+
+    & *{
+      opacity:.5;
+    }
+  }
+
+  .admin-link{
+    font-size:rem-calc(14);
+
+    a{
+      display:inline-block;
+      width:rem-calc(20);
+      height:rem-calc(16);
+      overflow:hidden;
+
+      &:before{
+        font-family: "FontAwesome";
+        content: "\f044";
+        padding:rem-calc(0 4);
+      }
+    }
+  }
+
+  .token-dialog{
+    @include form-button();
+    font-size:rem-calc(12);
+    padding:rem-calc(5 6);
+    margin:rem-calc(0 0 $form-spacing);
+    font-weight:300;
+    text-transform: uppercase;
+  }
+
   code{
     color:$form-description-color;
   }
@@ -169,10 +212,6 @@ form{
     margin:rem-calc(0 0 $form-spacing);
   }
 
-  > div > .form-wrapper > .fieldset-wrapper > .form-wrapper{
-    @include form-outset();
-  }
-
   // > div > div > table{
   //   @include form-inset();
   //   padding:rem-calc($form-spacing);
@@ -218,6 +257,19 @@ table{
     li{
       font-size:rem-calc(13);
       margin-bottom:0;
+    }
+  }
+
+  // If draggable table has only 1 row
+  &.tabledrag-processed .draggable:only-child{
+    .ief-tabledrag-handle{
+      visibility:hidden;
+      overflow:hidden;
+      padding:0;
+
+      > *{
+        display:none;
+      }
     }
   }
 
@@ -331,32 +383,6 @@ table{
       }
     }
 
-    // tr.warning,
-    // tr.ok{
-    //   position:relative;
-
-    //   &:before{
-    //     content: '';
-    //     position: absolute;
-    //     z-index: 8;
-    //     left: 10px;
-    //     bottom: -4px;
-    //     width: 0;
-    //     height: 0;
-    //     border: 8px dashed;
-    //     border-color: #aaa transparent;
-    //     pointer-events: none;
-    //     border-bottom-style: solid;
-    //     border-top: none;
-    //   }
-
-    //   &.merge-down{
-    //     &:before{
-    //       display:none;
-    //     }
-    //   }
-    // }
-
     tr.ok{
       background:darken($form-success-color, 20%);
       border-bottom:1px solid darken($form-success-color, 24%);
@@ -440,6 +466,10 @@ fieldset{
   margin:rem-calc($form-spacing 0);
   @include form-inset();
 
+  &.form-wrapper-nolegend{
+    padding:rem-calc($form-spacing $form-spacing 0);
+  }
+
   &:first-child{
     margin-top:0;
   }
@@ -453,24 +483,79 @@ fieldset{
     margin-top:0;
   }
 
-  > .fieldset-wrapper > .form-item{
-    @include form-reset();
-    padding: rem-calc(0 0 $form-spacing);
+  // > .fieldset-wrapper > .form-item{
+  //   @include form-reset();
+  //   padding: rem-calc(0 0 $form-spacing);
 
-    &:last-child{
-      padding-bottom:0;
-    }
-  }
+  //   &:last-child{
+  //     padding-bottom:0;
+  //   }
+  // }
 
+  // > .fieldset-wrapper > .form-item,
+  // .fieldset-wrapper > .form-wrapper > .form-item,
+  // .fieldset-wrapper > div > .form-item{
+  //   @include form-reset();
+  //   @include form-outset();
+  //   padding:rem-calc($form-spacing);
+  //   margin: rem-calc(0 0 $form-spacing);
+
+
+  // }
+
+  > .fieldset-wrapper > .form-item,
   > .fieldset-wrapper > .form-wrapper > .form-item,
-  > .fieldset-wrapper > div > .form-item{
+  > .fieldset-wrapper > fieldset > .fieldset-wrapper  > fieldset > .fieldset-wrapper > .form-item{
     @include form-reset();
     @include form-outset();
     padding:rem-calc($form-spacing);
     margin: rem-calc(0 0 $form-spacing);
   }
 
-  .fieldset-description{
+  &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > .form-item,
+  > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item{
+    @include form-reset();
+    @include form-inset();
+    padding:rem-calc($form-spacing);
+    margin: rem-calc(0 0 $form-spacing);
+  }
+
+  > .fieldset-wrapper > fieldset{
+    @include form-outset();
+  }
+
+  > .fieldset-wrapper > fieldset > .fieldset-wrapper > fieldset{
+    @include form-inset();
+    // background:red !important;
+  }
+
+
+
+  // > div > .form-wrapper > .fieldset-wrapper > .form-wrapper{
+  //   @include form-outset();
+  // }
+
+  // > div > fieldset > .fieldset-wrapper > .form-wrapper > .form-item,
+  // > div > fieldset > .fieldset-wrapper > div > .form-item{
+  //   @include form-reset();
+  //   @include form-outset();
+  //   padding:rem-calc($form-spacing);
+  //   margin: rem-calc(0 0 $form-spacing);
+  // }
+
+  // // Instance edit form
+  // &#edit-instance > .fieldset-wrapper > .form-item{
+  //   @include form-outset();
+  //   padding:rem-calc($form-spacing);
+  //   margin: rem-calc(0 0 $form-spacing);
+
+  //   // .form-item{
+  //   //   @include form-reset();
+  //   // }
+  // }
+
+  .fieldset-description,
+  .fieldset-wrapper > .description{
     text-shadow: 0 1px 0 black;
     font-weight:100;
     color:$form-description-color;
@@ -531,7 +616,8 @@ fieldset{
     @include form-reset();
 
     > .form-item{
-      display:inline-block;
+      display:block;
+      float:left;
       @include form-reset();
       margin:rem-calc(0 $form-spacing 0 0);
 
@@ -906,6 +992,12 @@ h1.unit-title{
 
   button.tiny:not(.ui-button){
     @include form-button();
+
+    &.tiny{
+      font-size:rem-calc(12);
+      padding:rem-calc(5 6);
+      font-weight:300;
+    }
   }
 }
 
@@ -925,8 +1017,10 @@ h1.unit-title{
   }
 
   &.form-type-radio{
-    @include form-reset();
-    padding:rem-calc(2 0);
+    background:none !important;
+    @include box-shadow(none !important);
+    margin:0 !important;
+    padding:rem-calc(2 0) !important;
   }
 }
 
@@ -1037,6 +1131,13 @@ div.vertical-tabs{
         padding:0;
       }
 
+      > .fieldset-wrapper > .form-item{
+        @include form-reset();
+        @include form-inset();
+        padding:rem-calc($form-spacing);
+        margin: rem-calc(0 0 $form-spacing);
+      }
+
       // .form-wrapper:last-child,
       // .form-wrapper:last-child .form-item{
       //   margin-bottom:0;
@@ -1052,9 +1153,11 @@ div.vertical-tabs{
 .form-item{
 }
 
-.resizable-textarea .grippie{
-  background-color:darken($form-secondary-bg, 5%);
-  border-color:darken($form-secondary-bg, 8%);
+.resizable-textarea{
+  .grippie{
+    background-color:darken($form-secondary-bg, 5%);
+    border-color:darken($form-secondary-bg, 8%);
+  }
 }
 
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea{
@@ -1064,6 +1167,10 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   height:rem-calc($form-spacing*3);
   padding:rem-calc(0 $form-spacing);
   margin:0;
+
+  &:disabled{
+    color:rgba($form-text-color, .5);
+  }
 
   &:focus{
     background:darken($form-secondary-bg, 5%);
@@ -1141,10 +1248,6 @@ span.postfix, label.postfix{
   color:#bfbfbf;
   margin:0;
   display:inline-block;
-}
-
-textarea{
-  padding:rem-calc($form-spacing);
 }
 
 .text-format-wrapper{
@@ -1332,6 +1435,97 @@ textarea{
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// Checkboxes
+////////////////////////////////////////////////////////////////////////////////
+
+/* $form-primary-color: #c0392b; //red */
+$darkenColor: darken($form-primary-color, 20%);
+
+.form-item.form-type-checkbox {
+  // text-indent: rem-calc(25);
+  white-space: nowrap;
+  // width: 20px;
+  // height:rem-calc(20);
+  position: relative;
+
+  label.option{
+    cursor: pointer;
+    position: relative;
+
+    &:before {
+      font-family: "FontAwesome";
+      content: "\f00c";
+      color:rgba($form-text-color, 0);
+      font-size:rem-calc(12);
+      line-height:rem-calc(12);
+      background:$form-primary-color;
+      padding:rem-calc(2 3);
+      margin:rem-calc(0 8 0 0);
+      border-top:1px solid #28b7e5;
+      text-shadow: none;
+      // opacity: 0;
+      @include transition(color 300ms);
+      // position: absolute;
+      // top: rem-calc(4);
+      // left: rem-calc(4);
+      // border: 3px solid #333;
+      // border-top: none;
+      // border-right: none;
+      // background: transparent;
+      // opacity: 0;
+      // transform: rotate(-45deg);
+    }
+    &:hover::before {
+      color:rgba($form-text-color, 0.5);
+    }
+  }
+
+  input[type=checkbox] {
+    visibility:hidden;
+    &:checked + label:before {
+      color:rgba($form-text-color, 1);
+    }
+  }
+
+  // label {
+  //   // width: rem-calc(16);
+  //   // height: rem-calc(16);
+  //   cursor: pointer;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   border-top:1px solid #28b7e5;
+  //   background: $form-primary-color;
+  //   // background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  //   // border-radius: 4px;
+  //   // box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+  //   &:after {
+  //     content: '';
+  //     width: 9px;
+  //     height: 5px;
+  //     position: absolute;
+  //     top: rem-calc(4);
+  //     left: rem-calc(4);
+  //     border: 3px solid #333;
+  //     border-top: none;
+  //     border-right: none;
+  //     background: transparent;
+  //     opacity: 0;
+  //     transform: rotate(-45deg);
+  //   }
+  //   &:hover::after {
+  //     opacity: 0.5;
+  //   }
+  // }
+  // input[type=checkbox] {
+  //   visibility: hidden;
+  //   &:checked + label:after {
+  //     opacity: 1;
+  //   }
+  // }
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // Buttons
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1360,9 +1554,10 @@ button:not(.ui-button), button.button, a.button,
   }
 
   &.tiny{
-    font-size:rem-calc(12);
+    font-size:rem-calc(11);
     padding:rem-calc(5 6);
     font-weight:300;
+    text-transform: uppercase;
   }
 
   &.secondary{
