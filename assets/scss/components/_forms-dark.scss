@@ -877,6 +877,10 @@ ul#views-display-menu-tabs{
   @include form-reset();
   margin:0;
 
+  .views-ui-display-tab-setting{
+    background:none;
+  }
+
   .ctools-button{
     top:-10px;
     right:0;
@@ -929,10 +933,6 @@ ul#views-display-menu-tabs{
 
   .even{
     background:darken($bdf-secondary-bg, 1%);
-  }
-
-  .views-ui-display-tab-setting{
-    background:none;
   }
 }
 
