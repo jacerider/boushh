@@ -1145,6 +1145,10 @@ textarea{
 
 .text-format-wrapper{
 
+  > .form-item{
+    margin-bottom:0;
+  }
+
   &:hover{
     fieldset.filter-wrapper{
       max-height:rem-calc(300);
