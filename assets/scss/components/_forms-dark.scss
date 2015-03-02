@@ -3,13 +3,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 @mixin form-inset() {
-  background: $form-secondary-bg;
-  @include box-shadow(inset 1px 1px 4px 0px $form-shadow);
+  background: $bdf-secondary-bg;
+  @include box-shadow(inset 1px 1px 4px 0px $bdf-shadow);
 }
 
 @mixin form-outset() {
-  background:$form-primary-bg;
-  @include box-shadow(1px 1px 4px $form-shadow);
+  background:$bdf-primary-bg;
+  @include box-shadow(1px 1px 4px $bdf-shadow);
 }
 
 @mixin form-reset() {
@@ -22,17 +22,17 @@
 @mixin form-button() {
   margin:0;
   border-radius:rem-calc(3);
-  background:$form-primary-color;
-  color:$form-text-color;
-  padding:rem-calc($form-spacing*.85 $form-spacing*2);
+  background:$bdf-primary-color;
+  color:$bdf-text-color;
+  padding:rem-calc($bdf-spacing*.85 $bdf-spacing*2);
   font-size:rem-calc(16);
   line-height:rem-calc(16);
   font-weight:500;
-  @include box-shadow(0px 0px 4px $form-shadow);
+  @include box-shadow(0px 0px 4px $bdf-shadow);
   @include transition(all 0.75s);
   border:none;
   border-top:1px solid #28b7e5;
-  margin:rem-calc(0 $form-spacing/2 0 0);
+  margin:rem-calc(0 $bdf-spacing/2 0 0);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -42,14 +42,14 @@
 .boushh-dark{
 
   #quickbar-top-bar{
-    background:$form-primary-bg;
+    background:$bdf-primary-bg;
 
     .top-bar-section li a:not(.button){
-      background:$form-primary-bg;
+      background:$bdf-primary-bg;
     }
 
     .top-bar-section li a:hover:not(.button){
-      background:$form-secondary-bg;
+      background:$bdf-secondary-bg;
     }
   }
 
@@ -73,10 +73,10 @@ table{
   }
 
   a{
-    color:$form-primary-color;
+    color:$bdf-primary-color;
 
     &:hover{
-      color:lighten($form-primary-color, 20%);
+      color:lighten($bdf-primary-color, 20%);
     }
   }
 
@@ -86,12 +86,12 @@ table{
     line-height:rem-calc(15);
     padding-bottom:rem-calc(5);
     display:block;
-    color:$form-text-color;
+    color:$bdf-text-color;
     text-transform: uppercase;
     text-shadow: 0 1px 0 #000;
 
     strong{
-      color:$form-text-color;
+      color:$bdf-text-color;
     }
   }
 
@@ -107,14 +107,14 @@ table{
   }
 
   .description{
-    color:$form-primary-color;
+    color:$bdf-primary-color;
     font-size:rem-calc(11);
     text-shadow: 0 1px 0 #000;
     padding:rem-calc(6 0 0);
   }
 
   h1,h2,h3{
-    color:$form-text-color;
+    color:$bdf-text-color;
   }
 
   h2{
@@ -154,13 +154,13 @@ table{
     @include form-button();
     font-size:rem-calc(12);
     padding:rem-calc(5 6);
-    margin:rem-calc(0 0 $form-spacing);
+    margin:rem-calc(0 0 $bdf-spacing);
     font-weight:300;
     text-transform: uppercase;
   }
 
   code{
-    color:$form-description-color;
+    color:$bdf-description-color;
   }
 
   .admin-requirements{
@@ -179,8 +179,8 @@ table{
 }
 
 form{
-  background:$form-primary-bg;
-  padding:rem-calc($form-spacing $form-spacing 0);
+  background:$bdf-primary-bg;
+  padding:rem-calc($bdf-spacing $bdf-spacing 0);
   border:2px solid #DDDDDD;
   color:#f5f5f5;
   position: relative;
@@ -190,32 +190,32 @@ form{
   }
 
   .alert-box{
-    margin:rem-calc(0 0 $form-spacing);
+    margin:rem-calc(0 0 $bdf-spacing);
 
     &.warning{
       background:#F08A24;
       border-color:#DE770F;
-      color:$form-text-color;
+      color:$bdf-text-color;
     }
   }
 
   .warning{
-    color:$form-description-color;
+    color:$bdf-description-color;
   }
 
   > div{
-    margin:rem-calc(0 0 $form-spacing);
+    margin:rem-calc(0 0 $bdf-spacing);
   }
 
   > div > .form-item.form-type-checkbox{
     @include form-inset();
-    padding:rem-calc($form-spacing);
-    margin:rem-calc(0 0 $form-spacing);
+    padding:rem-calc($bdf-spacing);
+    margin:rem-calc(0 0 $bdf-spacing);
   }
 
   // > div > div > table{
   //   @include form-inset();
-  //   padding:rem-calc($form-spacing);
+  //   padding:rem-calc($bdf-spacing);
   // }
 }
 
@@ -226,7 +226,7 @@ form{
 #field-display-overview-wrapper{
   position: relative;
   @include form-inset();
-  padding:rem-calc($form-spacing $form-spacing 1px);
+  padding:rem-calc($bdf-spacing $bdf-spacing 1px);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -235,19 +235,19 @@ form{
 
 table{
   width:100%;
-  margin:rem-calc(0 0 $form-spacing);
-  background:$form-secondary-bg;
+  margin:rem-calc(0 0 $bdf-spacing);
+  background:$bdf-secondary-bg;
   border:none;
   color:#f3f3f3;
-  border: 1px solid darken($form-secondary-bg, 5%);
-  @include box-shadow(1px 1px 4px $form-shadow);
+  border: 1px solid darken($bdf-secondary-bg, 5%);
+  @include box-shadow(1px 1px 4px $bdf-shadow);
 
   div.indentation{
-    // background:$form-primary-color;
-    line-height:rem-calc($form-spacing*1);
+    // background:$bdf-primary-color;
+    line-height:rem-calc($bdf-spacing*1);
 
     &:before{
-      color:rgba($form-text-color, .3);
+      color:rgba($bdf-text-color, .3);
       font-family: "FontAwesome";
       content: "\f178";
     }
@@ -275,7 +275,7 @@ table{
   }
 
   img{
-    border:4px solid darken($form-secondary-bg, 5%);
+    border:4px solid darken($bdf-secondary-bg, 5%);
     @include box-shadow(none);
 
     &.file-icon{
@@ -284,7 +284,7 @@ table{
   }
 
   thead{
-    background:darken($form-secondary-bg, 5%);
+    background:darken($bdf-secondary-bg, 5%);
 
     tr{
       th{
@@ -312,25 +312,25 @@ table{
     }
 
     tr{
-      background:$form-primary-bg;
+      background:$bdf-primary-bg;
       border:none;
 
       td.active{
-        background:darken($form-primary-bg, 3%);
+        background:darken($bdf-primary-bg, 3%);
 
         &:hover{
-          background: darken($form-primary-bg, 3%);
+          background: darken($bdf-primary-bg, 3%);
         }
       }
 
       &:hover{
-        background:$form-primary-bg;
+        background:$bdf-primary-bg;
       }
 
       td{
-        color:$form-text-color;
+        color:$bdf-text-color;
         border:none;
-        padding:rem-calc($form-spacing);
+        padding:rem-calc($bdf-spacing);
 
         > .form-item{
           @include form-reset();
@@ -358,25 +358,25 @@ table{
     tr.even{
 
       &:hover{
-        box-shadow:0 0 4px $form-primary-color;
+        box-shadow:0 0 4px $bdf-primary-color;
       }
     }
 
     tr.odd{
-      background:darken($form-primary-bg, 3%);
+      background:darken($bdf-primary-bg, 3%);
 
       td.active{
-        background:darken($form-primary-bg, 5%);
+        background:darken($bdf-primary-bg, 5%);
       }
 
       &:hover{
-        background:darken($form-primary-bg, 3%);
-        box-shadow:0 0 4px $form-primary-color;
+        background:darken($bdf-primary-bg, 3%);
+        box-shadow:0 0 4px $bdf-primary-color;
       }
     }
 
     tr.selected{
-      border-left:5px solid $form-primary-color;
+      border-left:5px solid $bdf-primary-color;
 
       td,
       td:hover{
@@ -385,51 +385,51 @@ table{
     }
 
     tr.ok{
-      background:darken($form-success-color, 20%);
-      border-bottom:1px solid darken($form-success-color, 24%);
+      background:darken($bdf-success-color, 20%);
+      border-bottom:1px solid darken($bdf-success-color, 24%);
 
       a{
-        color: lighten($form-success-color, 10%);
+        color: lighten($bdf-success-color, 10%);
       }
     }
 
     tr.info{
-      background:darken($form-info-color, 20%);
-      border-bottom:1px solid darken($form-info-color, 24%);
+      background:darken($bdf-info-color, 20%);
+      border-bottom:1px solid darken($bdf-info-color, 24%);
 
       a{
-        color: lighten($form-info-color, 10%);
+        color: lighten($bdf-info-color, 10%);
       }
     }
 
     tr.error{
-      background:darken($form-error-color, 20%);
-      border-bottom:1px solid darken($form-error-color, 24%);
+      background:darken($bdf-error-color, 20%);
+      border-bottom:1px solid darken($bdf-error-color, 24%);
 
       a{
-        color: lighten($form-error-color, 10%);
+        color: lighten($bdf-error-color, 10%);
       }
     }
 
     tr.warning{
-      background:darken($form-warning-color, 20%);
-      border-bottom:1px solid darken($form-warning-color, 24%);
+      background:darken($bdf-warning-color, 20%);
+      border-bottom:1px solid darken($bdf-warning-color, 24%);
 
       a{
-        color: lighten($form-warning-color, 10%);
+        color: lighten($bdf-warning-color, 10%);
       }
     }
 
     // tr:nth-of-type(2n){
-    //   background:$form-primary-bg;
+    //   background:$bdf-primary-bg;
     // }
   }
 }
 
 .tabledrag-toggle-weight-wrapper{
   position:absolute;
-  top:rem-calc($form-spacing*1.2);
-  right:rem-calc($form-spacing);
+  top:rem-calc($bdf-spacing*1.2);
+  right:rem-calc($bdf-spacing);
 }
 
 a.tabledrag-toggle-weight{
@@ -443,11 +443,11 @@ a.tabledrag-toggle-weight{
   overflow:hidden;
 
   &:before{
-    color:rgba($form-text-color, .7);
+    color:rgba($bdf-text-color, .7);
     font-family: "FontAwesome";
     font-size:rem-calc(20);
     content: "\f0dc";
-    padding-right:rem-calc($form-spacing);
+    padding-right:rem-calc($bdf-spacing);
   }
 }
 
@@ -456,19 +456,19 @@ a.tabledrag-toggle-weight{
 ////////////////////////////////////////////////////////////////////////////////
 
 div.form-wrapper{
-  margin:rem-calc(0 0 $form-spacing);
+  margin:rem-calc(0 0 $bdf-spacing);
 }
 
 fieldset{
   background:red;
   position:relative;
   border:none;
-  padding:rem-calc($form-spacing*2.5 $form-spacing 0);
-  margin:rem-calc($form-spacing 0);
+  padding:rem-calc($bdf-spacing*2.5 $bdf-spacing 0);
+  margin:rem-calc($bdf-spacing 0);
   @include form-inset();
 
   &.form-wrapper-nolegend{
-    padding:rem-calc($form-spacing $form-spacing 0);
+    padding:rem-calc($bdf-spacing $bdf-spacing 0);
   }
 
   &:first-child{
@@ -486,7 +486,7 @@ fieldset{
 
   // > .fieldset-wrapper > .form-item{
   //   @include form-reset();
-  //   padding: rem-calc(0 0 $form-spacing);
+  //   padding: rem-calc(0 0 $bdf-spacing);
 
   //   &:last-child{
   //     padding-bottom:0;
@@ -498,8 +498,8 @@ fieldset{
   // .fieldset-wrapper > div > .form-item{
   //   @include form-reset();
   //   @include form-outset();
-  //   padding:rem-calc($form-spacing);
-  //   margin: rem-calc(0 0 $form-spacing);
+  //   padding:rem-calc($bdf-spacing);
+  //   margin: rem-calc(0 0 $bdf-spacing);
 
 
   // }
@@ -509,16 +509,16 @@ fieldset{
   > .fieldset-wrapper > fieldset > .fieldset-wrapper  > fieldset > .fieldset-wrapper > .form-item{
     @include form-reset();
     @include form-outset();
-    padding:rem-calc($form-spacing);
-    margin: rem-calc(0 0 $form-spacing);
+    padding:rem-calc($bdf-spacing);
+    margin: rem-calc(0 0 $bdf-spacing);
   }
 
   &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > .form-item,
   > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item{
     @include form-reset();
     @include form-inset();
-    padding:rem-calc($form-spacing);
-    margin: rem-calc(0 0 $form-spacing);
+    padding:rem-calc($bdf-spacing);
+    margin: rem-calc(0 0 $bdf-spacing);
   }
 
   > .fieldset-wrapper > fieldset{
@@ -540,15 +540,15 @@ fieldset{
   // > div > fieldset > .fieldset-wrapper > div > .form-item{
   //   @include form-reset();
   //   @include form-outset();
-  //   padding:rem-calc($form-spacing);
-  //   margin: rem-calc(0 0 $form-spacing);
+  //   padding:rem-calc($bdf-spacing);
+  //   margin: rem-calc(0 0 $bdf-spacing);
   // }
 
   // // Instance edit form
   // &#edit-instance > .fieldset-wrapper > .form-item{
   //   @include form-outset();
-  //   padding:rem-calc($form-spacing);
-  //   margin: rem-calc(0 0 $form-spacing);
+  //   padding:rem-calc($bdf-spacing);
+  //   margin: rem-calc(0 0 $bdf-spacing);
 
   //   // .form-item{
   //   //   @include form-reset();
@@ -559,9 +559,9 @@ fieldset{
   .fieldset-wrapper > .description{
     text-shadow: 0 1px 0 black;
     font-weight:100;
-    color:$form-description-color;
+    color:$bdf-description-color;
     font-size:rem-calc(15);
-    padding:rem-calc(0 0 $form-spacing 0);
+    padding:rem-calc(0 0 $bdf-spacing 0);
 
     p:last-child{
       font-weight:100;
@@ -577,18 +577,18 @@ fieldset{
     position:absolute;
     top:0;
     left:0;
-    padding:rem-calc($form-spacing $form-spacing 0);
+    padding:rem-calc($bdf-spacing $bdf-spacing 0);
 
     .fieldset-legend,
     a{
       font-weight:700;
       font-size:rem-calc(15);
-      color:$form-text-color;
+      color:$bdf-text-color;
       text-transform: uppercase;
     }
 
     a{
-      color:$form-primary-color;
+      color:$bdf-primary-color;
 
       &:hover{
         color:#28b7e5;
@@ -603,7 +603,7 @@ fieldset{
   }
 
   > .fieldset-wrapper{
-    margin:rem-calc( 0 0 $form-spacing);
+    margin:rem-calc( 0 0 $bdf-spacing);
     padding:0;
   }
 }
@@ -620,7 +620,7 @@ fieldset{
       display:block;
       float:left;
       @include form-reset();
-      margin:rem-calc(0 $form-spacing 0 0);
+      margin:rem-calc(0 $bdf-spacing 0 0);
 
       label{
         font-size:rem-calc(12);
@@ -631,39 +631,39 @@ fieldset{
 
   .form-actions{
     @include form-reset();
-    padding:rem-calc($form-spacing 0 0);
+    padding:rem-calc($bdf-spacing 0 0);
   }
 }
 
 .view-filters{
-  margin-bottom:rem-calc($form-spacing);
+  margin-bottom:rem-calc($bdf-spacing);
 }
 
 .views-exposed-form{
   border:none;
   @include form-inset();
-  padding:rem-calc($form-spacing);
+  padding:rem-calc($bdf-spacing);
 
   .views-exposed-widgets{
     margin:0;
 
     &:before{
-      color:rgba($form-text-color, .3);
+      color:rgba($bdf-text-color, .3);
       font-family: "FontAwesome";
       font-size:rem-calc(70);
       content: "\f002";
       float:left;
-      padding-right:rem-calc($form-spacing);
+      padding-right:rem-calc($bdf-spacing);
     }
   }
 
   .views-exposed-widget{
-    margin:rem-calc(0 $form-spacing 0 0);
+    margin:rem-calc(0 $bdf-spacing 0 0);
     padding:0;
   }
 
   label{
-    color:$form-text-color;
+    color:$bdf-text-color;
     font-size:rem-calc(12);
     font-weight:300;
   }
@@ -674,7 +674,7 @@ fieldset{
 
   .views-submit-button,
   .views-reset-button{
-    padding:rem-calc($form-spacing 0 0);
+    padding:rem-calc($bdf-spacing 0 0);
 
     button.tiny:not(.ui-button){
       @include form-button();
@@ -685,15 +685,15 @@ fieldset{
 #ctools-export-ui-list-form{
   .ctools-export-ui-row{
     @include form-inset();
-    padding:rem-calc($form-spacing);
-    margin:rem-calc(0 0 $form-spacing);
+    padding:rem-calc($bdf-spacing);
+    margin:rem-calc(0 0 $bdf-spacing);
 
     > .form-item{
       @include form-reset();
-      margin-right:rem-calc($form-spacing);
+      margin-right:rem-calc($bdf-spacing);
 
       label{
-        color:$form-text-color;
+        color:$bdf-text-color;
         font-size:rem-calc(12);
         font-weight:300;
       }
@@ -701,7 +701,7 @@ fieldset{
 
     > .form-submit{
       @include form-button();
-      margin:rem-calc($form-spacing $form-spacing 0 0);
+      margin:rem-calc($bdf-spacing $bdf-spacing 0 0);
     }
   }
 }
@@ -713,21 +713,21 @@ fieldset{
 #ctools-export-ui-edit-item-form{
   > div > fieldset{
     // override for context. may conflict.
-    padding-top: rem-calc($form-spacing);
+    padding-top: rem-calc($bdf-spacing);
   }
 }
 
 table tbody tr.ctools-export-ui-disabled,
 table tbody tr.ctools-export-ui-disabled:hover{
   // opacity:.2;
-  background:darken($form-primary-bg, 10%);
+  background:darken($bdf-primary-bg, 10%);
 
   &.even{
-    background:darken($form-primary-bg, 12%);
+    background:darken($bdf-primary-bg, 12%);
   }
 
   td{
-    color: darken($form-text-color, 40%);
+    color: darken($bdf-text-color, 40%);
   }
 }
 
@@ -739,7 +739,7 @@ table tbody tr.ctools-export-ui-disabled:hover{
   font-weight:300;
 
   a{
-    color:$form-text-color;
+    color:$bdf-text-color;
   }
 
   li a,
@@ -766,7 +766,7 @@ table tbody tr.ctools-export-ui-disabled:hover{
 
   .ctools-collapsible-handle{
     border:none;
-    padding:rem-calc(0 0 $form-spacing/2);
+    padding:rem-calc(0 0 $bdf-spacing/2);
   }
 }
 
@@ -776,8 +776,8 @@ table tbody tr.ctools-export-ui-disabled:hover{
 
 .context-plugins{
   @include form-inset();
-  padding:rem-calc($form-spacing);
-  margin: rem-calc($form-spacing 0);
+  padding:rem-calc($bdf-spacing);
+  margin: rem-calc($bdf-spacing 0);
 
   .context-plugin-info{
     padding:0;
@@ -790,17 +790,17 @@ table tbody tr.ctools-export-ui-disabled:hover{
 
   .context-plugin-list{
     @include form-outset();
-    margin:rem-calc($form-spacing 0 0);
+    margin:rem-calc($bdf-spacing 0 0);
 
     li{
 
       a{
-        background:$form-primary-bg;
+        background:$bdf-primary-bg;
         border:none;
-        color:$form-primary-color;
+        color:$bdf-primary-color;
 
         &.active-form{
-          color:lighten($form-primary-color, 15%);
+          color:lighten($bdf-primary-color, 15%);
         }
       }
 
@@ -814,7 +814,7 @@ table tbody tr.ctools-export-ui-disabled:hover{
 
   .context-plugin-selector{
     background:none;
-    padding:rem-calc(0 $form-spacing 0 0);
+    padding:rem-calc(0 $bdf-spacing 0 0);
   }
 
   .context-plugin-forms{
@@ -833,7 +833,7 @@ h1.unit-title{
 
 .views-displays{
   @include form-inset();
-  padding:rem-calc($form-spacing $form-spacing 1px);
+  padding:rem-calc($bdf-spacing $bdf-spacing 1px);
   border:none;
 
   h3{
@@ -845,24 +845,24 @@ h1.unit-title{
   background:none;
   border:none;
   padding:0;
-  margin:rem-calc(0 0 $form-spacing);
+  margin:rem-calc(0 0 $bdf-spacing);
 }
 
 .views-ui-display-tab-bucket .ctools-button-processed{
-  top:rem-calc($form-spacing);
+  top:rem-calc($bdf-spacing);
 
   input{
     padding:rem-calc(0 10);
     display:block;
 
     &:hover{
-      color:lighten($form-primary-color, 20%);
+      color:lighten($bdf-primary-color, 20%);
     }
   }
 }
 
 #edit-display-settings{
-  margin:0;
+  margin:rem-calc(0 0 $bdf-spacing);
 }
 
 #edit-display-settings-content{
@@ -894,10 +894,10 @@ h1.unit-title{
 .views-display-columns > div.form-wrapper{
   @include flex(auto);
   @include form-outset();
-  padding:rem-calc($form-spacing $form-spacing 0);
+  padding:rem-calc($bdf-spacing $bdf-spacing 0);
   float:none;
   width:auto;
-  margin:rem-calc(0 $form-spacing/2);
+  margin:rem-calc(0 $bdf-spacing/2);
 
   &:first-child{
     margin-left:0;
@@ -911,20 +911,20 @@ h1.unit-title{
 .views-ui-display-tab-bucket{
   border:none;
   @include form-inset();
-  padding:rem-calc($form-spacing);
-  margin:rem-calc(0 0 $form-spacing);
+  padding:rem-calc($bdf-spacing);
+  margin:rem-calc(0 0 $bdf-spacing);
 
   .views-display-setting{
-    margin:rem-calc(0 $form-spacing*-1);
-    padding:rem-calc($form-spacing*.25 $form-spacing);
+    margin:rem-calc(0 $bdf-spacing*-1);
+    padding:rem-calc($bdf-spacing*.25 $bdf-spacing);
   }
 
   .odd{
-    background:darken($form-secondary-bg, 2%);
+    background:darken($bdf-secondary-bg, 2%);
   }
 
   .even{
-    background:darken($form-secondary-bg, 1%);
+    background:darken($bdf-secondary-bg, 1%);
   }
 
   .views-ui-display-tab-setting{
@@ -933,7 +933,7 @@ h1.unit-title{
 }
 
 #views-preview-wrapper{
-  margin:rem-calc($form-spacing 0 0);
+  margin:rem-calc($bdf-spacing 0 0);
   padding:0;
   border:none;
 }
@@ -943,7 +943,7 @@ h1.unit-title{
 
   .form-item{
     @include form-reset();
-    margin:rem-calc(0 0 $form-spacing);
+    margin:rem-calc(0 0 $bdf-spacing);
   }
 }
 
@@ -955,7 +955,7 @@ h1.unit-title{
     font-weight:300;
 
     &:hover{
-      color:lighten($form-primary-color, 20%);
+      color:lighten($bdf-primary-color, 20%);
     }
 
     .icon.add{
@@ -965,16 +965,16 @@ h1.unit-title{
 }
 
 .views-displays .secondary .action-list{
-  top:rem-calc($form-spacing*1.4);
+  top:rem-calc($bdf-spacing*1.4);
 
   li{
-    background:$form-primary-color;
+    background:$bdf-primary-color;
     border:none;
     font-size:rem-calc(12);
 
     input{
       &:hover{
-        color:lighten($form-primary-color, 20%);
+        color:lighten($bdf-primary-color, 20%);
       }
     }
   }
@@ -988,7 +988,7 @@ h1.unit-title{
   .fieldset-wrapper > .form-item{
     display:inline-block;
     @include form-reset();
-    margin:rem-calc(0 $form-spacing 0 0);
+    margin:rem-calc(0 $bdf-spacing 0 0);
   }
 
   button.tiny:not(.ui-button){
@@ -1008,8 +1008,8 @@ h1.unit-title{
 
 .form-item{
   @include form-inset();
-  padding:rem-calc($form-spacing);
-  margin:rem-calc(0 0 $form-spacing);
+  padding:rem-calc($bdf-spacing);
+  margin:rem-calc(0 0 $bdf-spacing);
   display:block;
 
   &.form-type-checkbox{
@@ -1037,16 +1037,16 @@ table.ief-entity-table{
 
   .ief-form.ief-form-row{
     border:none;
-    padding:rem-calc($form-spacing $form-spacing 0);
+    padding:rem-calc($bdf-spacing $bdf-spacing 0);
 
     // > .form-item,
     // .form-wrapper{
-    //   margin:rem-calc(0 0 $form-spacing);
+    //   margin:rem-calc(0 0 $bdf-spacing);
     // }
 
     .form-item .form-item{
       @include form-reset();
-      padding:rem-calc($form-spacing 0 0);
+      padding:rem-calc($bdf-spacing 0 0);
     }
   }
 
@@ -1068,7 +1068,7 @@ table.ief-entity-table{
 
 div.vertical-tabs{
   border:none;
-  margin:rem-calc($form-spacing 0);
+  margin:rem-calc($bdf-spacing 0);
   padding:rem-calc(0 0 0 290);
   @include form-inset();
 
@@ -1085,42 +1085,42 @@ div.vertical-tabs{
       @include box-shadow(none);
 
       &:hover{
-        @include background(linear-gradient(to right, darken($form-secondary-bg, 6%), rgba($form-secondary-bg, 0)));
+        @include background(linear-gradient(to right, darken($bdf-secondary-bg, 6%), rgba($bdf-secondary-bg, 0)));
         @include box-shadow(none);
       }
 
       a{
-        text-shadow: 0 1px 0 $form-shadow;
+        text-shadow: 0 1px 0 $bdf-shadow;
         text-decoration: none;
-        color:$form-text-color;
-        padding:rem-calc($form-spacing);
+        color:$bdf-text-color;
+        padding:rem-calc($bdf-spacing);
       }
 
       &.selected{
-        @include background(linear-gradient(to right, $form-primary-bg, rgba($form-secondary-bg, 0)));
+        @include background(linear-gradient(to right, $bdf-primary-bg, rgba($bdf-secondary-bg, 0)));
         @include box-shadow(0 1px 0 rgba(#000, .1));
 
         a{
           strong{
-            color:$form-primary-color;
+            color:$bdf-primary-color;
             text-decoration: none;
           }
 
           .summary{
-            color:$form-text-color;
+            color:$bdf-text-color;
           }
         }
 
         &:hover{
-          @include background(linear-gradient(to right, $form-primary-bg, rgba($form-secondary-bg, 0)));
+          @include background(linear-gradient(to right, $bdf-primary-bg, rgba($bdf-secondary-bg, 0)));
         }
       }
     }
   }
 
   div.vertical-tabs-panes{
-    padding:rem-calc($form-spacing $form-spacing 0);
-    margin:rem-calc($form-spacing);
+    padding:rem-calc($bdf-spacing $bdf-spacing 0);
+    margin:rem-calc($bdf-spacing);
     @include form-outset();
 
     fieldset.vertical-tabs-pane{
@@ -1135,8 +1135,8 @@ div.vertical-tabs{
       > .fieldset-wrapper > .form-item{
         @include form-reset();
         @include form-inset();
-        padding:rem-calc($form-spacing);
-        margin: rem-calc(0 0 $form-spacing);
+        padding:rem-calc($bdf-spacing);
+        margin: rem-calc(0 0 $bdf-spacing);
       }
 
       // .form-wrapper:last-child,
@@ -1156,27 +1156,27 @@ div.vertical-tabs{
 
 .resizable-textarea{
   .grippie{
-    background-color:darken($form-secondary-bg, 5%);
-    border-color:darken($form-secondary-bg, 8%);
+    background-color:darken($bdf-secondary-bg, 5%);
+    border-color:darken($bdf-secondary-bg, 8%);
   }
 }
 
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea{
-  background:darken($form-secondary-bg, 5%);
-  color:$form-text-color;
-  border-color:$form-primary-bg;
-  height:rem-calc($form-spacing*3);
-  padding:rem-calc(0 $form-spacing);
+  background:darken($bdf-secondary-bg, 5%);
+  color:$bdf-text-color;
+  border-color:$bdf-primary-bg;
+  height:rem-calc($bdf-spacing*3);
+  padding:rem-calc(0 $bdf-spacing);
   margin:0;
 
   &:disabled{
-    color:rgba($form-text-color, .5);
+    color:rgba($bdf-text-color, .5);
   }
 
   &:focus{
-    background:darken($form-secondary-bg, 5%);
-    border-color:$form-primary-color;
-    @include box-shadow(0 0 5px $form-primary-color);
+    background:darken($bdf-secondary-bg, 5%);
+    border-color:$bdf-primary-color;
+    @include box-shadow(0 0 5px $bdf-primary-color);
   }
 }
 
@@ -1188,14 +1188,14 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     @include form-reset();
     display:inline-block;
     width:30%;
-    margin:rem-calc(0 $form-spacing 0 0);
+    margin:rem-calc(0 $bdf-spacing 0 0);
     position: relative;
   }
 
   div.password-suggestions{
     @include form-outset();
     border:none;
-    padding:rem-calc($form-spacing);
+    padding:rem-calc($bdf-spacing);
 
     ul{
       margin-top:rem-calc(5);
@@ -1203,7 +1203,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
     li{
       font-size:rem-calc(14);
-      color:$form-description-color;
+      color:$bdf-description-color;
     }
   }
 
@@ -1221,7 +1221,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
     span{
       display:inline-block;
-      color:$form-text-color;
+      color:$bdf-text-color;
       padding:rem-calc(4 12);
       font-size:rem-calc(13);
       margin:0;
@@ -1242,10 +1242,10 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
 span.prefix, label.prefix,
 span.postfix, label.postfix{
-  background:darken($form-secondary-bg, 5%);
-  border-color:$form-primary-bg;
-  height:rem-calc($form-spacing*3);
-  line-height:rem-calc($form-spacing*3);
+  background:darken($bdf-secondary-bg, 5%);
+  border-color:$bdf-primary-bg;
+  height:rem-calc($bdf-spacing*3);
+  line-height:rem-calc($bdf-spacing*3);
   color:#bfbfbf;
   margin:0;
   display:inline-block;
@@ -1267,7 +1267,7 @@ span.postfix, label.postfix{
   fieldset.filter-wrapper{
     border:none;
     margin:rem-calc(2 0 0);
-    // padding-top: rem-calc($form-spacing);
+    // padding-top: rem-calc($bdf-spacing);
     padding:0;
     max-height:0;
     overflow:hidden;
@@ -1279,14 +1279,14 @@ span.postfix, label.postfix{
     }
 
     .filter-help{
-      padding:rem-calc($form-spacing 0);
+      padding:rem-calc($bdf-spacing 0);
 
       a{
         background:none;
         padding:0;
 
         &:after{
-          color:rgba($form-text-color, .3);
+          color:rgba($bdf-text-color, .3);
           font-family: "FontAwesome";
           content: " \f059";
         }
@@ -1295,21 +1295,21 @@ span.postfix, label.postfix{
 
     .boushh-select-wrapper,
     .boushh-select{
-      height:rem-calc($form-spacing*2);
+      height:rem-calc($bdf-spacing*2);
 
       &:before,
       &:after{
-        top: rem-calc($form-spacing/1.5);
+        top: rem-calc($bdf-spacing/1.5);
       }
     }
 
     .filter-guidelines{
-      padding:rem-calc($form-spacing*1.5 0 0 10);
+      padding:rem-calc($bdf-spacing*1.5 0 0 10);
     }
 
     .fieldset-wrapper{
       @include form-reset();
-      padding:rem-calc($form-spacing $form-spacing 0);
+      padding:rem-calc($bdf-spacing $bdf-spacing 0);
     }
 
     .form-item{
@@ -1322,17 +1322,17 @@ span.postfix, label.postfix{
   display: inline-block;
   position: relative;
   overflow: hidden;
-  height:rem-calc($form-spacing*3);
+  height:rem-calc($bdf-spacing*3);
   width:100%;
-  background: darken($form-secondary-bg, 5%);
+  background: darken($bdf-secondary-bg, 5%);
   border: 1px solid;
-  border-color: $form-primary-bg;
+  border-color: $bdf-primary-bg;
 
   &:before, &:after {
     content: '';
     position: absolute;
     z-index: 8;
-    top: rem-calc($form-spacing);
+    top: rem-calc($bdf-spacing);
     right: 10px;
     width: 0;
     height: 0;
@@ -1358,12 +1358,12 @@ span.postfix, label.postfix{
   width: 100%;
   margin: 0;
   padding: rem-calc(6 8 6 10);
-  height:rem-calc($form-spacing*3);
+  height:rem-calc($bdf-spacing*3);
   line-height: 14px;
   font-size: 12px;
-  color: $form-text-color;
+  color: $bdf-text-color;
   text-shadow: 0 1px black;
-  background:darken($form-secondary-bg, 5%) !important;
+  background:darken($bdf-secondary-bg, 5%) !important;
   border: 0;
   border-radius: 0;
   -webkit-appearance: none;
@@ -1373,7 +1373,7 @@ span.postfix, label.postfix{
 
   &:-moz-focusring {
     color: transparent !important;
-    text-shadow: 0 0 0 $form-text-color !important;
+    text-shadow: 0 0 0 $bdf-text-color !important;
     background-image: none !important;
     border:0;
   }
@@ -1381,7 +1381,7 @@ span.postfix, label.postfix{
   &:focus {
     z-index: 3;
     width: 100%;
-    color: $form-text-color;
+    color: $bdf-text-color;
     outline:none;
     // outline: 2px solid #49aff2;
     // outline: 2px solid -webkit-focus-ring-color;
@@ -1391,7 +1391,7 @@ span.postfix, label.postfix{
   > option {
     padding: 6px 8px;
     text-shadow: 0 1px rgba(white, .4);
-    color:darken($form-secondary-bg, 5%) !important;
+    color:darken($bdf-secondary-bg, 5%) !important;
     background: #b3b3b3;
     cursor: pointer;
   }
@@ -1410,8 +1410,8 @@ span.postfix, label.postfix{
 
     > option{
       padding: 2px 8px;
-      background: darken($form-secondary-bg, 5%);
-      color:$form-text-color !important;
+      background: darken($bdf-secondary-bg, 5%);
+      color:$bdf-text-color !important;
       text-shadow: 0 1px rgba(black, .4);
     }
   }
@@ -1428,7 +1428,7 @@ span.postfix, label.postfix{
 @-moz-document url-prefix() {
   select.boushh-select, select.boushh-select:-moz-focusring, select.boushh-select::-moz-focus-inner {
     color: transparent !important;
-    text-shadow: 0 0 0 $form-text-color !important;
+    text-shadow: 0 0 0 $bdf-text-color !important;
     background-image: none !important;
     border:0;
     padding-left: 6px;
@@ -1439,8 +1439,8 @@ span.postfix, label.postfix{
 // Checkboxes
 ////////////////////////////////////////////////////////////////////////////////
 
-/* $form-primary-color: #c0392b; //red */
-$darkenColor: darken($form-primary-color, 20%);
+/* $bdf-primary-color: #c0392b; //red */
+$darkenColor: darken($bdf-primary-color, 20%);
 
 .form-item.form-type-checkbox {
   // text-indent: rem-calc(25);
@@ -1456,75 +1456,31 @@ $darkenColor: darken($form-primary-color, 20%);
     &:before {
       font-family: "FontAwesome";
       content: "\f00c";
-      color:rgba($form-text-color, 0);
+      color:rgba($bdf-text-color, 0);
       font-size:rem-calc(12);
       line-height:rem-calc(12);
-      background:$form-primary-color;
+      background:$bdf-primary-color;
       padding:rem-calc(2 3);
       margin:rem-calc(0 8 0 0);
-      border-top:1px solid lighten($form-primary-color, 15%);
+      border-top:1px solid lighten($bdf-primary-color, 15%);
       text-shadow: none;
       opacity: .6;
       @include transition(all 300ms);
-      // position: absolute;
-      // top: rem-calc(4);
-      // left: rem-calc(4);
-      // border: 3px solid #333;
-      // border-top: none;
-      // border-right: none;
-      // background: transparent;
-      // opacity: 0;
-      // transform: rotate(-45deg);
     }
     &:hover::before {
-      color:rgba($form-text-color, 0.5);
+      color:rgba($bdf-text-color, 0.5);
     }
   }
 
   input[type=checkbox] {
     visibility:hidden;
+    display:none;
+
     &:checked + label:before {
-      color:rgba($form-text-color, 1);
+      color:rgba($bdf-text-color, 1);
       opacity: 1;
     }
   }
-
-  // label {
-  //   // width: rem-calc(16);
-  //   // height: rem-calc(16);
-  //   cursor: pointer;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   border-top:1px solid #28b7e5;
-  //   background: $form-primary-color;
-  //   // background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-  //   // border-radius: 4px;
-  //   // box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
-  //   &:after {
-  //     content: '';
-  //     width: 9px;
-  //     height: 5px;
-  //     position: absolute;
-  //     top: rem-calc(4);
-  //     left: rem-calc(4);
-  //     border: 3px solid #333;
-  //     border-top: none;
-  //     border-right: none;
-  //     background: transparent;
-  //     opacity: 0;
-  //     transform: rotate(-45deg);
-  //   }
-  //   &:hover::after {
-  //     opacity: 0.5;
-  //   }
-  // }
-  // input[type=checkbox] {
-  //   visibility: hidden;
-  //   &:checked + label:after {
-  //     opacity: 1;
-  //   }
-  // }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1536,12 +1492,12 @@ button:not(.ui-button), button.button, a.button,
   @include form-button();
 
   &.file-upload-button{
-    height:rem-calc($form-spacing*3);
+    height:rem-calc($bdf-spacing*3);
   }
 
   em,
   span{
-    color:$form-text-color;
+    color:$bdf-text-color;
     font-style: normal;
     font-weight:300;
   }
@@ -1554,7 +1510,7 @@ button:not(.ui-button), button.button, a.button,
 
   &.expand{
     border-radius:0;
-    padding:rem-calc($form-spacing $form-spacing*2);
+    padding:rem-calc($bdf-spacing $bdf-spacing*2);
     font-size:rem-calc(14);
     font-weight:400;
   }
@@ -1573,7 +1529,7 @@ button:not(.ui-button), button.button, a.button,
     @include box-shadow(none);
 
     &:hover{
-      color:$form-text-color;
+      color:$bdf-text-color;
       background:#75818c;
     }
   }
@@ -1582,7 +1538,7 @@ button:not(.ui-button), button.button, a.button,
     background:none;
     border:none;
     padding:rem-calc(15 0 0);
-    color:$form-text-color;
+    color:$bdf-text-color;
     line-height:rem-calc(12);
     font-weight:300;
     @include box-shadow(none);
@@ -1591,7 +1547,7 @@ button:not(.ui-button), button.button, a.button,
     &:active,
     &:focus{
       background:none;
-      color:$form-primary-color;
+      color:$bdf-primary-color;
     }
   }
 }

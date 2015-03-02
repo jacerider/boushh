@@ -2,26 +2,26 @@
 // Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-$form-primary-bg: #2e383e;
-$form-secondary-bg: #232A2F;
-// $form-primary-bg: #333333;
-// $form-secondary-bg: #262626;
-$form-shadow: rgba(0,0,0,0.25);
-$form-spacing: 20;
+$bdf-primary-bg: #2e383e;
+$bdf-secondary-bg: #232A2F;
+// $bdf-primary-bg: #333333;
+// $bdf-secondary-bg: #262626;
+$bdf-shadow: rgba(0,0,0,0.25);
+$bdf-spacing: 20;
 
-$form-text-color: #fff;
-$form-primary-color: #0997c3;
-$form-success-color: #43AC6A;
-$form-warning-color: #F08A24;
-$form-info-color: #0997c3;
-$form-error-color: #F04124;
-$form-description-color: #f0c495;
+$bdf-text-color: #fff;
+$bdf-primary-color: #0997c3;
+$bdf-success-color: #43AC6A;
+$bdf-warning-color: #F08A24;
+$bdf-info-color: #0997c3;
+$bdf-error-color: #F04124;
+$bdf-description-color: #f0c495;
 
 // Ops Bar
-$opsbar-link-bg: $form-primary-bg;
-$opsbar-link-bg-hover: $form-secondary-bg;
-$opsbar-link-bg-active: $form-secondary-bg;
+$opsbar-link-bg: $bdf-primary-bg;
+$opsbar-link-bg-hover: $bdf-secondary-bg;
+$opsbar-link-bg-active: $bdf-secondary-bg;
 
 // Tooltips
-$tooltip-bg: $form-text-color;
-$tooltip-font-color: $form-primary-bg;
+$tooltip-bg: $bdf-text-color;
+$tooltip-font-color: $bdf-primary-bg;
