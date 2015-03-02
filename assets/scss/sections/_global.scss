@@ -42,78 +42,78 @@ body{
       font-weight:normal;
     }
   }
+}
 
-  .main-content{
-    padding:rem-calc(15);
+.main-content{
+  padding:rem-calc(15);
 
-    table{
-      width:100%;
+  table{
+    width:100%;
 
-      th{
-        font-size:rem-calc(14);
-        font-weight:400;
-        text-transform: uppercase;
-        color:#7f7f7f;
+    th{
+      font-size:rem-calc(14);
+      font-weight:400;
+      text-transform: uppercase;
+      color:#7f7f7f;
+    }
+
+    td.ctools-export-ui-operations{
+      white-space: nowrap;
+
+      ul.inline-list > li{
+        display:inline-block;
+        float:none;
       }
+    }
 
-      td.ctools-export-ui-operations{
-        white-space: nowrap;
+    tr.odd,
+    tr.even{
+      @include transition(all 0.2s ease-in-out 0s);
 
-        ul.inline-list > li{
-          display:inline-block;
-          float:none;
+      &:hover{
+        background:#fffbe7;
+        td{
+          background:none;
         }
       }
+    }
 
-      tr.odd,
-      tr.even{
-        @include transition(all 0.2s ease-in-out 0s);
+    tr.odd{
+      background: $table-bg;
+    }
 
-        &:hover{
-          background:#fffbe7;
-          td{
-            background:none;
-          }
+    tr.odd{
+      .active{
+        background: scale-color($table-bg, $lightness: -2%);
+      }
+      &:hover{
+        td.active{
+          background: scale-color(#fffbe7, $lightness: -3%);
         }
       }
+    }
 
-      tr.odd{
-        background: $table-bg;
+    tr.even{
+      .active{
+        background: scale-color($table-even-row-bg, $lightness: -2%);
       }
-
-      tr.odd{
-        .active{
-          background: scale-color($table-bg, $lightness: -2%);
-        }
-        &:hover{
-          td.active{
-            background: scale-color(#fffbe7, $lightness: -3%);
-          }
+      &:hover{
+        td.active{
+          background: scale-color(#fff7dc, $lightness: -2%);
         }
       }
+    }
 
-      tr.even{
-        .active{
-          background: scale-color($table-even-row-bg, $lightness: -2%);
-        }
-        &:hover{
-          td.active{
-            background: scale-color(#fff7dc, $lightness: -2%);
-          }
-        }
-      }
+    // select,
+    // input{
+    //   width:auto;
+    //   margin:0;
+    // }
 
-      // select,
-      // input{
-      //   width:auto;
-      //   margin:0;
-      // }
-
-      ul.inline-list{
-        margin:rem-calc(8 0);
-        line-height: inherit;
-        font-size: inherit;
-      }
+    ul.inline-list{
+      margin:rem-calc(8 0);
+      line-height: inherit;
+      font-size: inherit;
     }
   }
 }

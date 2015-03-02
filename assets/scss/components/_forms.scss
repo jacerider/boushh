@@ -4,6 +4,23 @@
 
 form{
 
+  .fieldset-legend,
+  label:not(.option){
+    color:#575757;
+    font-weight:600;
+    text-transform: uppercase;
+  }
+
+  .filter-wrapper label{
+    font-weight:300;
+    text-transform: none;
+  }
+
+  textarea{
+    line-height:rem-calc(22);
+    font-size:rem-calc(15);
+  }
+
   table{
     button{
       margin:0;
@@ -179,11 +196,11 @@ div.fieldset-wrapper{
     padding-bottom:rem-calc(15);
   }
 
-  div:first-child{
+  > div:first-child{
     margin-top:0;
   }
 
-  div:last-child{
+  > div:last-child{
     margin-bottom:0;
   }
 }
@@ -202,9 +219,7 @@ div.vertical-tabs{
     li{
       @include background(linear-gradient(to right, #fff, #efefef));
       @include transition(all 0.3s ease-in-out 0s);
-      // border:none;
       border-color: #e9e9e9;
-      // border-right:1px solid #e9e9e9;
       box-shadow: inset -4px 0 8px -8px rgba(0, 0, 0, 0.75);
 
       &:hover{
@@ -260,4 +275,8 @@ div.vertical-tabs{
     padding:rem-calc(0 0 15);
     display:inline-block;
   }
+}
+
+div.vertical-tabs-panes{
+  padding:rem-calc(0 10);
 }

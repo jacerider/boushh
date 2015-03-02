@@ -144,6 +144,11 @@ function boushh_preprocess_html(&$vars) {
   // Add theme class to body
   $vars['classes_array'][] = 'boushh';
 
+  if(theme_get_setting('boushh_dark_form')){
+    drupal_add_css(drupal_get_path('theme', 'boushh') . '/assets/scss/components/_forms-dark.scss', array('every_page' => TRUE));
+    $vars['classes_array'][] = 'boushh-dark';
+  }
+
   // Add Open Sans
   drupal_add_css('@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,300italic,400italic,600italic,700italic,800italic);',$option['type'] = 'inline');
 }
@@ -671,6 +676,20 @@ function boushh_node_add_list($vars) {
     $output = '<p>' . t('You have not created any content types yet. Go to the <a href="@create-content">content type creation page</a> to add a new content type.', array('@create-content' => url('admin/structure/types/add'))) . '</p>';
   }
   return $output;
+}
+
+/**
+ * Implements theme_select().
+ */
+function boushh_select($vars) {
+  $element = $vars ['element'];
+  $wrapper_attributes = array('class' => array('boushh-select-wrapper'));
+  element_set_attributes($element, array('id', 'name', 'size'));
+  $element['#attributes']['class'][] = 'boushh-select';
+  if(!empty($element['#multiple'])) $wrapper_attributes['class'][] = 'boushh-select-multiple';
+  _form_set_class($element, array('form-select'));
+
+  return '<div' . drupal_attributes($wrapper_attributes) . '><select' . drupal_attributes($element ['#attributes']) . '>' . form_select_options($element) . '</select></div>';
 }
 
 /**

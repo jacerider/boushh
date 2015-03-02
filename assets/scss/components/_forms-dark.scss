@@ -1,0 +1,1391 @@
+////////////////////////////////////////////////////////////////////////////////
+// Variables
+////////////////////////////////////////////////////////////////////////////////
+
+$form-primary-bg: #353A3D;
+$form-secondary-bg: #2b2f32;
+$form-shadow: rgba(0,0,0,0.25);
+$form-spacing: 20;
+
+$form-text-color: #fff;
+$form-primary-color: #0997c3;
+$form-success-color: #43AC6A;
+$form-warning-color: #F08A24;
+$form-info-color: #0997c3;
+$form-error-color: #F04124;
+$form-description-color: #f0c495;
+
+////////////////////////////////////////////////////////////////////////////////
+// Variables
+////////////////////////////////////////////////////////////////////////////////
+
+@mixin form-inset() {
+  background: $form-secondary-bg;
+  @include box-shadow(inset 1px 1px 4px 0px $form-shadow);
+}
+
+@mixin form-outset() {
+  background:$form-primary-bg;
+  @include box-shadow(1px 1px 4px $form-shadow);
+}
+
+@mixin form-reset() {
+  background:none;
+  @include box-shadow(none);
+  padding:0;
+  margin:0;
+}
+
+@mixin form-button() {
+  margin:0;
+  border-radius:rem-calc(3);
+  background:$form-primary-color;
+  color:$form-text-color;
+  padding:rem-calc($form-spacing*.85 $form-spacing*2);
+  font-size:rem-calc(16);
+  font-weight:500;
+  @include box-shadow(0px 0px 4px $form-shadow);
+  @include transition(all 0.75s);
+  border:none;
+  border-top:1px solid #28b7e5;
+  margin:rem-calc(0 $form-spacing/2 0 0);
+}
+
+.boushh-dark .page{
+
+////////////////////////////////////////////////////////////////////////////////
+// Form
+////////////////////////////////////////////////////////////////////////////////
+
+form,
+table{
+
+  a,
+  input{
+    @include transition(all 0.2s ease-in-out 0s);
+  }
+
+  a{
+    color:$form-primary-color;
+
+    &:hover{
+      color:lighten($form-primary-color, 20%);
+    }
+  }
+
+  label{
+    font-weight:700;
+    font-size:rem-calc(15);
+    line-height:rem-calc(15);
+    padding-bottom:rem-calc(5);
+    display:block;
+    color:$form-text-color;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 #000;
+
+    strong{
+      color:$form-text-color;
+    }
+  }
+
+  label.option{
+    font-weight:300;
+    font-size:rem-calc(13);
+    line-height:rem-calc(13);
+    padding-bottom:0;
+    display:inline;
+    color:#e6e6e6;
+    text-transform: none;
+    text-shadow: 0 1px 0 #000;
+  }
+
+  .description{
+    color:$form-primary-color;
+    font-size:rem-calc(11);
+    text-shadow: 0 1px 0 #000;
+    padding:rem-calc(6 0 0);
+  }
+
+  h1,h2,h3{
+    color:$form-text-color;
+  }
+
+  h2{
+    margin:0;
+    padding:0;
+  }
+
+  code{
+    color:$form-description-color;
+  }
+
+  .admin-requirements{
+    color:#e6e6e6;
+
+    .admin-disabled{
+      color:#f07148;
+      text-transform: uppercase;
+    }
+
+    .admin-enabled{
+      color:#43AC6A;
+      text-transform: uppercase;
+    }
+  }
+}
+
+form{
+  background:$form-primary-bg;
+  padding:rem-calc($form-spacing $form-spacing 0);
+  border:2px solid #DDDDDD;
+  color:#f5f5f5;
+  position: relative;
+
+  .form-required{
+    color:#F08A24;
+  }
+
+  .alert-box{
+    margin:rem-calc(0 0 $form-spacing);
+
+    &.warning{
+      background:#F08A24;
+      border-color:#DE770F;
+      color:$form-text-color;
+    }
+  }
+
+  .warning{
+    color:$form-description-color;
+  }
+
+  > div{
+    margin:rem-calc(0 0 $form-spacing);
+  }
+
+  > div > .form-item.form-type-checkbox{
+    @include form-inset();
+    padding:rem-calc($form-spacing);
+    margin:rem-calc(0 0 $form-spacing);
+  }
+
+  > div > .form-wrapper > .fieldset-wrapper > .form-wrapper{
+    @include form-outset();
+  }
+
+  // > div > div > table{
+  //   @include form-inset();
+  //   padding:rem-calc($form-spacing);
+  // }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Field UI
+////////////////////////////////////////////////////////////////////////////////
+
+#field-display-overview-wrapper{
+  position: relative;
+  @include form-inset();
+  padding:rem-calc($form-spacing $form-spacing 1px);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Table
+////////////////////////////////////////////////////////////////////////////////
+
+table{
+  width:100%;
+  margin:rem-calc(0 0 $form-spacing);
+  background:$form-secondary-bg;
+  border:none;
+  color:#f3f3f3;
+  border: 1px solid darken($form-secondary-bg, 5%);
+  @include box-shadow(1px 1px 4px $form-shadow);
+
+  div.indentation{
+    // background:$form-primary-color;
+    line-height:rem-calc($form-spacing*1);
+
+    &:before{
+      color:rgba($form-text-color, .3);
+      font-family: "FontAwesome";
+      content: "\f178";
+    }
+  }
+
+  .item-list ul{
+    margin:0;
+    li{
+      font-size:rem-calc(13);
+      margin-bottom:0;
+    }
+  }
+
+  img{
+    border:4px solid darken($form-secondary-bg, 5%);
+    @include box-shadow(none);
+
+    &.file-icon{
+      border:none;
+    }
+  }
+
+  thead{
+    background:darken($form-secondary-bg, 5%);
+
+    tr{
+      th{
+        border:none;
+        font-weight:300;
+        font-size:rem-calc(11);
+        color:#d3d3d3;
+        text-transform: uppercase;
+
+        a{
+          img{
+            margin-left:rem-calc(5);
+          }
+        }
+      }
+    }
+  }
+
+  tbody{
+    background:#3b4043;
+    border:none;
+
+    tr{
+      background:$form-primary-bg;
+      border:none;
+
+      td.active{
+        background:darken($form-primary-bg, 3%);
+
+        &:hover{
+          background: darken($form-primary-bg, 3%);
+        }
+      }
+
+      &:hover{
+        background:$form-primary-bg;
+      }
+
+      td{
+        color:$form-text-color;
+        border:none;
+        padding:rem-calc($form-spacing);
+
+        > .form-item{
+          @include form-reset();
+        }
+
+        > .form-wrapper{
+          margin:0;
+        }
+
+        > div.form-item,
+        .label-input > div.form-item{
+          @include form-reset();
+
+          > .description{
+            padding:0;
+          }
+        }
+
+        > div > input[type="file"], input[type="checkbox"], input[type="radio"], select{
+          margin:0;
+        }
+      }
+    }
+
+    tr.even{
+
+      &:hover{
+        box-shadow:0 0 4px $form-primary-color;
+      }
+    }
+
+    tr.odd{
+      background:darken($form-primary-bg, 3%);
+
+      td.active{
+        background:darken($form-primary-bg, 5%);
+      }
+
+      &:hover{
+        background:darken($form-primary-bg, 3%);
+        box-shadow:0 0 4px $form-primary-color;
+      }
+    }
+
+    tr.selected{
+      border-left:5px solid $form-primary-color;
+
+      td,
+      td:hover{
+        background:none;
+      }
+    }
+
+    // tr.warning,
+    // tr.ok{
+    //   position:relative;
+
+    //   &:before{
+    //     content: '';
+    //     position: absolute;
+    //     z-index: 8;
+    //     left: 10px;
+    //     bottom: -4px;
+    //     width: 0;
+    //     height: 0;
+    //     border: 8px dashed;
+    //     border-color: #aaa transparent;
+    //     pointer-events: none;
+    //     border-bottom-style: solid;
+    //     border-top: none;
+    //   }
+
+    //   &.merge-down{
+    //     &:before{
+    //       display:none;
+    //     }
+    //   }
+    // }
+
+    tr.ok{
+      background:darken($form-success-color, 20%);
+      border-bottom:1px solid darken($form-success-color, 24%);
+
+      a{
+        color: lighten($form-success-color, 10%);
+      }
+    }
+
+    tr.info{
+      background:darken($form-info-color, 20%);
+      border-bottom:1px solid darken($form-info-color, 24%);
+
+      a{
+        color: lighten($form-info-color, 10%);
+      }
+    }
+
+    tr.error{
+      background:darken($form-error-color, 20%);
+      border-bottom:1px solid darken($form-error-color, 24%);
+
+      a{
+        color: lighten($form-error-color, 10%);
+      }
+    }
+
+    tr.warning{
+      background:darken($form-warning-color, 20%);
+      border-bottom:1px solid darken($form-warning-color, 24%);
+
+      a{
+        color: lighten($form-warning-color, 10%);
+      }
+    }
+
+    // tr:nth-of-type(2n){
+    //   background:$form-primary-bg;
+    // }
+  }
+}
+
+.tabledrag-toggle-weight-wrapper{
+  position:absolute;
+  top:rem-calc($form-spacing*1.2);
+  right:rem-calc($form-spacing);
+}
+
+a.tabledrag-toggle-weight{
+  color:#7f7f7f;
+  font-size:rem-calc(11);
+  text-transform: uppercase;
+  display:block;
+  text-align: right;
+  width:rem-calc(20);
+  height:rem-calc(20);
+  overflow:hidden;
+
+  &:before{
+    color:rgba($form-text-color, .7);
+    font-family: "FontAwesome";
+    font-size:rem-calc(20);
+    content: "\f0dc";
+    padding-right:rem-calc($form-spacing);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Fieldset
+////////////////////////////////////////////////////////////////////////////////
+
+div.form-wrapper{
+  margin:rem-calc(0 0 $form-spacing);
+}
+
+fieldset{
+  background:red;
+  position:relative;
+  border:none;
+  padding:rem-calc($form-spacing*2.5 $form-spacing 0);
+  margin:rem-calc($form-spacing 0);
+  @include form-inset();
+
+  &:first-child{
+    margin-top:0;
+  }
+
+  &:last-child{
+    margin-bottom:0;
+  }
+
+  // Handle nested fieldsets
+  fieldset:first-child{
+    margin-top:0;
+  }
+
+  > .fieldset-wrapper > .form-item{
+    @include form-reset();
+    padding: rem-calc(0 0 $form-spacing);
+
+    &:last-child{
+      padding-bottom:0;
+    }
+  }
+
+  > .fieldset-wrapper > .form-wrapper > .form-item,
+  > .fieldset-wrapper > div > .form-item{
+    @include form-reset();
+    @include form-outset();
+    padding:rem-calc($form-spacing);
+    margin: rem-calc(0 0 $form-spacing);
+  }
+
+  .fieldset-description{
+    text-shadow: 0 1px 0 black;
+    font-weight:100;
+    color:$form-description-color;
+    font-size:rem-calc(15);
+    padding:rem-calc(0 0 $form-spacing 0);
+
+    p:last-child{
+      font-weight:100;
+      font-size:rem-calc(15);
+      margin-bottom:0;
+    }
+  }
+
+  > legend{
+    background:none;
+    margin:0;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    padding:rem-calc($form-spacing $form-spacing 0);
+
+    .fieldset-legend,
+    a{
+      font-weight:700;
+      font-size:rem-calc(15);
+      color:$form-text-color;
+      text-transform: uppercase;
+    }
+
+    a{
+      color:$form-primary-color;
+
+      &:hover{
+        color:#28b7e5;
+      }
+    }
+
+    .summary{
+      font-size:rem-calc(11);
+      line-height:rem-calc(13);
+      font-weight:300;
+    }
+  }
+
+  > .fieldset-wrapper{
+    margin:rem-calc( 0 0 $form-spacing);
+    padding:0;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Filters
+////////////////////////////////////////////////////////////////////////////////
+
+.exposed-filters{
+  div.filters{
+    @include form-reset();
+
+    > .form-item{
+      display:inline-block;
+      @include form-reset();
+      margin:rem-calc(0 $form-spacing 0 0);
+
+      label{
+        font-size:rem-calc(12);
+        font-weight:300;
+      }
+    }
+  }
+
+  .form-actions{
+    @include form-reset();
+    padding:rem-calc($form-spacing 0 0);
+  }
+}
+
+.view-filters{
+  margin-bottom:rem-calc($form-spacing);
+}
+
+.views-exposed-form{
+  border:none;
+  @include form-inset();
+  padding:rem-calc($form-spacing);
+
+  .views-exposed-widgets{
+    margin:0;
+
+    &:before{
+      color:rgba($form-text-color, .3);
+      font-family: "FontAwesome";
+      font-size:rem-calc(70);
+      content: "\f002";
+      float:left;
+      padding-right:rem-calc($form-spacing);
+    }
+  }
+
+  .views-exposed-widget{
+    margin:rem-calc(0 $form-spacing 0 0);
+    padding:0;
+  }
+
+  label{
+    color:$form-text-color;
+    font-size:rem-calc(12);
+    font-weight:300;
+  }
+
+  .views-widget .form-item{
+    @include form-reset();
+  }
+
+  .views-submit-button,
+  .views-reset-button{
+    padding:rem-calc($form-spacing 0 0);
+
+    button.tiny:not(.ui-button){
+      @include form-button();
+    }
+  }
+}
+
+#ctools-export-ui-list-form{
+  .ctools-export-ui-row{
+    @include form-inset();
+    padding:rem-calc($form-spacing);
+    margin:rem-calc(0 0 $form-spacing);
+
+    > .form-item{
+      @include form-reset();
+      margin-right:rem-calc($form-spacing);
+
+      label{
+        color:$form-text-color;
+        font-size:rem-calc(12);
+        font-weight:300;
+      }
+    }
+
+    > .form-submit{
+      @include form-button();
+      margin:rem-calc($form-spacing $form-spacing 0 0);
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Ctools
+////////////////////////////////////////////////////////////////////////////////
+
+#ctools-export-ui-edit-item-form{
+  > div > fieldset{
+    // override for context. may conflict.
+    padding-top: rem-calc($form-spacing);
+  }
+}
+
+table tbody tr.ctools-export-ui-disabled,
+table tbody tr.ctools-export-ui-disabled:hover{
+  // opacity:.2;
+  background:darken($form-primary-bg, 10%);
+
+  &.even{
+    background:darken($form-primary-bg, 12%);
+  }
+
+  td{
+    color: darken($form-text-color, 40%);
+  }
+}
+
+.ctools-dropbutton,
+.ctools-button{
+  @include form-button();
+  font-size:rem-calc(12);
+  padding:rem-calc(5 6);
+  font-weight:300;
+
+  a{
+    color:$form-text-color;
+  }
+
+  li a,
+  li input{
+    display:block;
+    font-size:rem-calc(13);
+    padding:rem-calc(0 10);
+  }
+}
+
+.ctools-dropbutton{
+  padding:rem-calc(5 17 5 6);
+}
+
+.ctools-collapsible-container{
+
+  .ctools-toggle{
+    margin-top:10px;
+  }
+
+  .ctools-toggle-collapsed{
+    margin-top:8px;
+  }
+
+  .ctools-collapsible-handle{
+    border:none;
+    padding:rem-calc(0 0 $form-spacing/2);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Context
+////////////////////////////////////////////////////////////////////////////////
+
+.context-plugins{
+  @include form-inset();
+  padding:rem-calc($form-spacing);
+  margin: rem-calc($form-spacing 0);
+
+  .context-plugin-info{
+    padding:0;
+    border:none;
+
+    .form-item{
+      @include form-reset();
+    }
+  }
+
+  .context-plugin-list{
+    @include form-outset();
+    margin:rem-calc($form-spacing 0 0);
+
+    li{
+
+      a{
+        background:$form-primary-bg;
+        border:none;
+        color:$form-primary-color;
+
+        &.active-form{
+          color:lighten($form-primary-color, 15%);
+        }
+      }
+
+      &:nth-of-type(2n){
+        a{
+          background: red;
+        }
+      }
+    }
+  }
+
+  .context-plugin-selector{
+    background:none;
+    padding:rem-calc(0 $form-spacing 0 0);
+  }
+
+  .context-plugin-forms{
+    @include form-outset();
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Views
+////////////////////////////////////////////////////////////////////////////////
+
+h1.unit-title{
+  font-size:rem-calc(40);
+  font-weight:100;
+}
+
+.views-displays{
+  @include form-inset();
+  padding:rem-calc($form-spacing $form-spacing 1px);
+  border:none;
+
+  h3{
+    padding:0;
+  }
+}
+
+.views-display-top{
+  background:none;
+  border:none;
+  padding:0;
+  margin:rem-calc(0 0 $form-spacing);
+}
+
+.views-ui-display-tab-bucket .ctools-button-processed{
+  top:rem-calc($form-spacing);
+
+  input{
+    padding:rem-calc(0 10);
+    display:block;
+
+    &:hover{
+      color:lighten($form-primary-color, 20%);
+    }
+  }
+}
+
+#edit-display-settings{
+  margin:0;
+}
+
+#edit-display-settings-content{
+  margin:0;
+}
+
+#edit-display-settings-top{
+  @include form-reset();
+  margin:0;
+
+  .ctools-button{
+    top:-10px;
+    right:0;
+    margin:0;
+  }
+}
+
+#edit-display-settings-main{
+  @include display(flex);
+  @include flex-direction(row);
+  @include align-items(top);
+  margin:0;
+}
+
+#views-tab-block{
+  margin:0;
+}
+
+.views-display-columns > div.form-wrapper{
+  @include flex(auto);
+  @include form-outset();
+  padding:rem-calc($form-spacing $form-spacing 0);
+  float:none;
+  width:auto;
+  margin:rem-calc(0 $form-spacing/2);
+
+  &:first-child{
+    margin-left:0;
+  }
+
+  &:last-child{
+    margin-right:0;
+  }
+}
+
+.views-ui-display-tab-bucket{
+  border:none;
+  @include form-inset();
+  padding:rem-calc($form-spacing);
+  margin:rem-calc(0 0 $form-spacing);
+
+  .views-display-setting{
+    margin:rem-calc(0 $form-spacing*-1);
+    padding:rem-calc($form-spacing*.25 $form-spacing);
+  }
+
+  .odd{
+    background:darken($form-secondary-bg, 2%);
+  }
+
+  .even{
+    background:darken($form-secondary-bg, 1%);
+  }
+
+  .views-ui-display-tab-setting{
+    background:none;
+  }
+}
+
+#views-preview-wrapper{
+  margin:rem-calc($form-spacing 0 0);
+  padding:0;
+  border:none;
+}
+
+#views-ui-preview-form{
+  margin:0;
+
+  .form-item{
+    @include form-reset();
+    margin:rem-calc(0 0 $form-spacing);
+  }
+}
+
+.views-display-top .add{
+  > a{
+    @include form-button();
+    font-size:rem-calc(12);
+    padding:rem-calc(5 12 5 6);
+    font-weight:300;
+
+    &:hover{
+      color:lighten($form-primary-color, 20%);
+    }
+
+    .icon.add{
+      background-position: center -25px;
+    }
+  }
+}
+
+.views-displays .secondary .action-list{
+  top:rem-calc($form-spacing*1.4);
+
+  li{
+    background:$form-primary-color;
+    border:none;
+    font-size:rem-calc(12);
+
+    input{
+      &:hover{
+        color:lighten($form-primary-color, 20%);
+      }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Container Inline
+////////////////////////////////////////////////////////////////////////////////
+
+.container-inline{
+  .fieldset-wrapper > .form-item{
+    display:inline-block;
+    @include form-reset();
+    margin:rem-calc(0 $form-spacing 0 0);
+  }
+
+  button.tiny:not(.ui-button){
+    @include form-button();
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Form Item
+////////////////////////////////////////////////////////////////////////////////
+
+.form-item{
+  @include form-inset();
+  padding:rem-calc($form-spacing);
+  margin:rem-calc(0 0 $form-spacing);
+  display:block;
+
+  &.form-type-checkbox{
+    @include form-reset();
+    padding:rem-calc(2 0);
+  }
+
+  &.form-type-radio{
+    @include form-reset();
+    padding:rem-calc(2 0);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Inline Entity Table
+////////////////////////////////////////////////////////////////////////////////
+
+table.ief-entity-table{
+
+  tr.ief-row-entity:not(.draggable){
+    display:none;
+  }
+
+  .ief-form.ief-form-row{
+    border:none;
+    padding:rem-calc($form-spacing $form-spacing 0);
+
+    // > .form-item,
+    // .form-wrapper{
+    //   margin:rem-calc(0 0 $form-spacing);
+    // }
+
+    .form-item .form-item{
+      @include form-reset();
+      padding:rem-calc($form-spacing 0 0);
+    }
+  }
+
+  tr.ief-row-form{
+
+    &:hover{
+      @include box-shadow(none);
+    }
+
+    > td{
+      padding:0;
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Vertical Tabs
+////////////////////////////////////////////////////////////////////////////////
+
+div.vertical-tabs{
+  border:none;
+  margin:rem-calc($form-spacing 0);
+  padding:rem-calc(0 0 0 290);
+  @include form-inset();
+
+  ul.vertical-tabs-list{
+    border:none;
+    position: relative;
+    z-index:1;
+    margin:rem-calc(0 0 0 -290);
+    width: rem-calc(300);
+
+    > li{
+      border:none;
+      background:none;
+      @include box-shadow(none);
+
+      &:hover{
+        @include background(linear-gradient(to right, darken($form-secondary-bg, 6%), rgba($form-secondary-bg, 0)));
+        @include box-shadow(none);
+      }
+
+      a{
+        text-shadow: 0 1px 0 $form-shadow;
+        text-decoration: none;
+        color:$form-text-color;
+        padding:rem-calc($form-spacing);
+      }
+
+      &.selected{
+        @include background(linear-gradient(to right, $form-primary-bg, rgba($form-secondary-bg, 0)));
+        @include box-shadow(0 1px 0 rgba(#000, .1));
+
+        a{
+          strong{
+            color:$form-primary-color;
+            text-decoration: none;
+          }
+
+          .summary{
+            color:$form-text-color;
+          }
+        }
+
+        &:hover{
+          @include background(linear-gradient(to right, $form-primary-bg, rgba($form-secondary-bg, 0)));
+        }
+      }
+    }
+  }
+
+  div.vertical-tabs-panes{
+    padding:rem-calc($form-spacing $form-spacing 0);
+    margin:rem-calc($form-spacing);
+    @include form-outset();
+
+    fieldset.vertical-tabs-pane{
+      background:none;
+      @include box-shadow(none);
+      padding:0;
+
+      > .fieldset-wrapper{
+        padding:0;
+      }
+
+      // .form-wrapper:last-child,
+      // .form-wrapper:last-child .form-item{
+      //   margin-bottom:0;
+      // }
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Elements
+////////////////////////////////////////////////////////////////////////////////
+
+.form-item{
+}
+
+.resizable-textarea .grippie{
+  background-color:darken($form-secondary-bg, 5%);
+  border-color:darken($form-secondary-bg, 8%);
+}
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea{
+  background:darken($form-secondary-bg, 5%);
+  color:$form-text-color;
+  border-color:$form-primary-bg;
+  height:rem-calc($form-spacing*3);
+  padding:rem-calc(0 $form-spacing);
+  margin:0;
+
+  &:focus{
+    background:darken($form-secondary-bg, 5%);
+    border-color:$form-primary-color;
+    @include box-shadow(0 0 5px $form-primary-color);
+  }
+}
+
+.form-type-password-confirm{
+  @include clearfix();
+
+  .form-item-pass-pass1,
+  .form-item-pass-pass2{
+    @include form-reset();
+    display:inline-block;
+    width:30%;
+    margin:rem-calc(0 $form-spacing 0 0);
+    position: relative;
+  }
+
+  div.password-suggestions{
+    @include form-outset();
+    border:none;
+    padding:rem-calc($form-spacing);
+
+    ul{
+      margin-top:rem-calc(5);
+    }
+
+    li{
+      font-size:rem-calc(14);
+      color:$form-description-color;
+    }
+  }
+
+  div.password-strength,
+  div.password-confirm{
+    position:absolute;
+    top:rem-calc(-10);
+    right:0;
+    margin:0;
+    text-align:right;
+
+    .password-strength-text{
+      padding-left:rem-calc(4);
+    }
+
+    span{
+      display:inline-block;
+      color:$form-text-color;
+      padding:rem-calc(4 12);
+      font-size:rem-calc(13);
+      margin:0;
+      width:rem-calc(50);
+      text-align: center;
+      text-transform: uppercase;
+
+      &.error{
+        background:#F04124;
+      }
+
+      &.ok{
+        background:#43AC6A;
+      }
+    }
+  }
+}
+
+span.prefix, label.prefix,
+span.postfix, label.postfix{
+  background:darken($form-secondary-bg, 5%);
+  border-color:$form-primary-bg;
+  height:rem-calc($form-spacing*3);
+  line-height:rem-calc($form-spacing*3);
+  color:#bfbfbf;
+  margin:0;
+  display:inline-block;
+}
+
+textarea{
+  padding:rem-calc($form-spacing);
+}
+
+.text-format-wrapper{
+
+  &:hover{
+    fieldset.filter-wrapper{
+      max-height:rem-calc(300);
+      @include transition(max-height 300ms 1000ms);
+    }
+  }
+
+  fieldset.filter-wrapper{
+    border:none;
+    margin:rem-calc(2 0 0);
+    // padding-top: rem-calc($form-spacing);
+    padding:0;
+    max-height:0;
+    overflow:hidden;
+    @include transition(max-height 300ms 300ms);
+
+    label{
+      font-size:rem-calc(12);
+      font-weight:300;
+    }
+
+    .filter-help{
+      padding:rem-calc($form-spacing 0);
+
+      a{
+        background:none;
+        padding:0;
+
+        &:after{
+          color:rgba($form-text-color, .3);
+          font-family: "FontAwesome";
+          content: " \f059";
+        }
+      }
+    }
+
+    .boushh-select-wrapper,
+    .boushh-select{
+      height:rem-calc($form-spacing*2);
+
+      &:before,
+      &:after{
+        top: rem-calc($form-spacing/1.5);
+      }
+    }
+
+    .filter-guidelines{
+      padding:rem-calc($form-spacing*1.5 0 0 10);
+    }
+
+    .fieldset-wrapper{
+      @include form-reset();
+      padding:rem-calc($form-spacing $form-spacing 0);
+    }
+
+    .form-item{
+      @include form-reset();
+    }
+  }
+}
+
+.boushh-select-wrapper {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height:rem-calc($form-spacing*3);
+  width:100%;
+  background: darken($form-secondary-bg, 5%);
+  border: 1px solid;
+  border-color: $form-primary-bg;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    z-index: 8;
+    top: rem-calc($form-spacing);
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 4px dashed;
+    border-color: #aaa transparent;
+    pointer-events: none;
+  }
+
+  &:before {
+    border-bottom-style: solid;
+    border-top: none;
+  }
+
+  &:after {
+    margin-top: 7px;
+    border-top-style: solid;
+    border-bottom: none;
+  }
+}
+
+.boushh-select {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: rem-calc(6 8 6 10);
+  height:rem-calc($form-spacing*3);
+  line-height: 14px;
+  font-size: 12px;
+  color: $form-text-color;
+  text-shadow: 0 1px black;
+  background:darken($form-secondary-bg, 5%) !important;
+  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border:none !important;
+
+  &:-moz-focusring {
+    color: transparent !important;
+    text-shadow: 0 0 0 $form-text-color !important;
+    background-image: none !important;
+    border:0;
+  }
+
+  &:focus {
+    z-index: 3;
+    width: 100%;
+    color: $form-text-color;
+    outline:none;
+    // outline: 2px solid #49aff2;
+    // outline: 2px solid -webkit-focus-ring-color;
+    // outline-offset: -2px;
+  }
+
+  > option {
+    padding: 6px 8px;
+    text-shadow: 0 1px rgba(white, .4);
+    color:darken($form-secondary-bg, 5%) !important;
+    background: #b3b3b3;
+    cursor: pointer;
+  }
+}
+
+.boushh-select-multiple{
+  height:auto;
+
+  &:before,
+  &:after{
+    display:none;
+  }
+
+  .boushh-select{
+    height:auto;
+
+    > option{
+      padding: 2px 8px;
+      background: darken($form-secondary-bg, 5%);
+      color:$form-text-color !important;
+      text-shadow: 0 1px rgba(black, .4);
+    }
+  }
+}
+
+/* Fix for IE 8 putting the arrows behind the select element. */
+.lt-ie9 {
+  .dropdown { z-index: 1; }
+  .boushh-select { z-index: -1; }
+  .boushh-select:focus { z-index: 3; }
+}
+
+/* Dirty fix for Firefox adding padding where it shouldn't. */
+@-moz-document url-prefix() {
+  select.boushh-select, select.boushh-select:-moz-focusring, select.boushh-select::-moz-focus-inner {
+    color: transparent !important;
+    text-shadow: 0 0 0 $form-text-color !important;
+    background-image: none !important;
+    border:0;
+    padding-left: 6px;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Buttons
+////////////////////////////////////////////////////////////////////////////////
+
+button:not(.ui-button), button.button, a.button,
+#linkit-cancel, .arguments-preview{
+  @include form-button();
+
+  em,
+  span{
+    color:$form-text-color;
+    font-style: normal;
+    font-weight:300;
+  }
+
+  &:hover,
+  &:active,
+  &:focus{
+    background:#28b7e5;
+  }
+
+  &.expand{
+    border-radius:0;
+    padding:rem-calc($form-spacing $form-spacing*2);
+    font-size:rem-calc(14);
+    font-weight:400;
+  }
+
+  &.tiny{
+    font-size:rem-calc(12);
+    padding:rem-calc(5 6);
+    font-weight:300;
+  }
+
+  &.secondary{
+    background:#8b99a4;
+    border-top:1px solid #abbccc;
+    font-weight:400;
+    @include box-shadow(none);
+
+    &:hover{
+      color:$form-text-color;
+      background:#75818c;
+    }
+  }
+
+  &.muted{
+    background:none;
+    border:none;
+    padding:rem-calc(15 0 0);
+    color:$form-text-color;
+    line-height:rem-calc(12);
+    font-weight:300;
+    @include box-shadow(none);
+
+    &:hover,
+    &:active,
+    &:focus{
+      background:none;
+      color:$form-primary-color;
+    }
+  }
+}
+
+
+} // End .boushh-dark
