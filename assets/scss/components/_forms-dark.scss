@@ -1127,13 +1127,16 @@ div.vertical-tabs{
     border:none;
     position: relative;
     z-index:1;
-    margin:rem-calc($bdf-spacing 0 0 -290);
+    padding: rem-calc($bdf-spacing 0 0 0);
+    margin:rem-calc(0 0 0 -290);
     width: rem-calc(300);
 
     > li{
       border:none;
       background:none;
       @include box-shadow(none);
+      border-bottom: 1px solid $bdf-secondary-bg;
+      @include background(linear-gradient(to left, rgba($bdf-primary-bg, 0), rgba($bdf-secondary-bg, 0)));
 
       &:hover{
         @include background(linear-gradient(to top, darken($bdf-secondary-bg, 6%), rgba($bdf-secondary-bg, 0)));
@@ -1145,13 +1148,19 @@ div.vertical-tabs{
         text-decoration: none;
         color:$bdf-text-color;
         text-align: right;
+        font-weight: 300;
         padding:rem-calc($bdf-spacing);
         @include background(linear-gradient(to left, rgba($bdf-primary-bg, 0), rgba($bdf-secondary-bg, 0)));
+
+        strong {
+          font-weight: 300;
+        }
       }
 
       &.selected{
         @include background(linear-gradient(to left, $bdf-primary-bg, rgba($bdf-secondary-bg, 0)));
         @include box-shadow(0 1px 0 rgba(#000, .1));
+        border-bottom: 1px solid darken($bdf-primary-bg, 10%);
 
         a{
           strong{
