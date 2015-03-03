@@ -53,22 +53,31 @@
     }
   }
 
+  .main-inner{
+    background: none;
+    border: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: none;
+    margin: rem-calc($bdf-spacing);
+  }
+
   #page-title{
     color:#fafafa;
     background:#333333;
     padding-left: rem-calc(75);
-    display: block;
+    display: block; 
     position: relative;
     overflow: hidden;
 
     i {
       color: #282828;
-      font-size: rem-calc(55);
+      font-size: rem-calc(45);
       font-weight: normal;
-      line-height: rem-calc(55);
+      line-height: rem-calc(45);
       position: absolute;
-      top: rem-calc(1);
-      left: rem-calc(10);
+      top: rem-calc(8);
+      left: rem-calc(20);
       text-shadow: 0 2px 2px rgba(0,0,0,0.1);
     }
   }
@@ -228,6 +237,9 @@ form{
 
   > div div {
     margin:rem-calc(0 0 $bdf-spacing);
+  }
+  > div div:last-child {
+    margin:rem-calc(0);
   }
 
   > div > .form-item.form-type-checkbox{
@@ -480,6 +492,9 @@ a.tabledrag-toggle-weight{
 
 div.form-wrapper{
   margin:rem-calc(0 0 $bdf-spacing);
+}
+div.form-wrapper:last-child{
+  margin:rem-calc(0);
 }
 
 fieldset{
@@ -1157,17 +1172,21 @@ div.vertical-tabs{
   }
 
   div.vertical-tabs-panes{
-    padding:rem-calc($bdf-spacing $bdf-spacing 0);
-    margin:rem-calc($bdf-spacing $bdf-spacing $bdf-spacing $bdf-spacing*0.5);
+    padding:rem-calc(0 0 0 $bdf-spacing);
+    margin:rem-calc(0 0 0 $bdf-spacing*0.5);
     @include form-outset();
+    box-shadow: none;
 
     fieldset.vertical-tabs-pane{
       background:none;
-      @include box-shadow(none);
+      box-shadow: none;
       padding:0;
 
       > .fieldset-wrapper{
         padding:0;
+      }
+      > .fieldset-wrapper:last-child {
+        margin:0;
       }
 
       > .fieldset-wrapper > .form-item{
