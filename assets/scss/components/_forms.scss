@@ -7,13 +7,14 @@ form{
   .fieldset-legend,
   label:not(.option){
     color:#575757;
-    font-weight:600;
+    font-weight:400;
     text-transform: uppercase;
   }
 
-  .filter-wrapper label{
+  .filter-wrapper label {
     font-weight:300;
     text-transform: none;
+    letter-spacing: 0.04rem;
   }
 
   textarea{

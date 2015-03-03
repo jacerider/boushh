@@ -1,8 +1,9 @@
 (function ($, Drupal) {
 
-  Drupal.behaviors.boushh = {
+  Drupal.behaviors.verticalTabsHeight = {
     attach: function(context, settings) {
-      // Get your JS started.
+      var highestCol = Math.max($('.vertical-tabs-list').height(),$('.vertical-tabs-list').height());
+	  jQuery('.vertical-tabs-panes').css("min-height",highestCol);
     }
   };
 
