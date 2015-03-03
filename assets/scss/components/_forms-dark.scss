@@ -1130,7 +1130,8 @@ div.vertical-tabs{
         text-shadow: 0 1px 0 $bdf-shadow;
         text-decoration: none;
         color:$bdf-text-color;
-        padding:rem-calc($bdf-spacing $bdf-spacing $bdf-spacing $bdf-spacing*2);
+        text-align: right;
+        padding:rem-calc($bdf-spacing);
         @include background(linear-gradient(to left, rgba($bdf-primary-bg, 0), rgba($bdf-secondary-bg, 0)));
       }
 
