@@ -53,6 +53,27 @@
     }
   }
 
+  #page-title{
+    color:#fafafa;
+    background:#333333;
+    border-bottom:1px solid #262626;
+    padding-left: rem-calc(75);
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    i {
+      color: #282828;
+      font-size: rem-calc(55);
+      font-weight: normal;
+      line-height: rem-calc(55);
+      position: absolute;
+      top: rem-calc(1);
+      left: rem-calc(10);
+      text-shadow: 0 2px 2px rgba(0,0,0,0.1);
+    }
+  }
+
   .tooltip{
     @include box-shadow(0 0 6px rgba(0,0,0,0.15));
   }
@@ -184,8 +205,7 @@ table{
 
 form{
   background:$bdf-primary-bg;
-  padding:rem-calc($bdf-spacing $bdf-spacing 0);
-  border:2px solid #DDDDDD;
+  padding:rem-calc($bdf-spacing);
   color:#f5f5f5;
   position: relative;
 
@@ -207,7 +227,7 @@ form{
     color:$bdf-description-color;
   }
 
-  > div{
+  > div div {
     margin:rem-calc(0 0 $bdf-spacing);
   }
 
@@ -334,7 +354,7 @@ table{
       td{
         color:$bdf-text-color;
         border:none;
-        padding:rem-calc($bdf-spacing);
+        padding:rem-calc($bdf-spacing*.85);
 
         > .form-item{
           @include form-reset();
@@ -585,8 +605,9 @@ fieldset{
 
     .fieldset-legend,
     a{
-      font-weight:700;
+      font-weight:500;
       font-size:rem-calc(15);
+      letter-spacing:0.04rem;
       color:$bdf-text-color;
       text-transform: uppercase;
     }
@@ -910,6 +931,7 @@ ul#views-display-menu-tabs{
   float:none;
   width:auto;
   margin:rem-calc(0 $bdf-spacing/2);
+  min-width: 32%;
 
   &:first-child{
     margin-left:0;
@@ -1083,7 +1105,7 @@ table.ief-entity-table{
 
 div.vertical-tabs{
   border:none;
-  margin:rem-calc($bdf-spacing 0);
+  margin:rem-calc(0 0 $bdf-spacing);
   padding:rem-calc(0 0 0 290);
   @include form-inset();
 
@@ -1091,7 +1113,7 @@ div.vertical-tabs{
     border:none;
     position: relative;
     z-index:1;
-    margin:rem-calc(0 0 0 -290);
+    margin:rem-calc($bdf-spacing 0 0 -290);
     width: rem-calc(300);
 
     > li{
@@ -1100,7 +1122,7 @@ div.vertical-tabs{
       @include box-shadow(none);
 
       &:hover{
-        @include background(linear-gradient(to right, darken($bdf-secondary-bg, 6%), rgba($bdf-secondary-bg, 0)));
+        @include background(linear-gradient(to top, darken($bdf-secondary-bg, 6%), rgba($bdf-secondary-bg, 0)));
         @include box-shadow(none);
       }
 
@@ -1108,11 +1130,12 @@ div.vertical-tabs{
         text-shadow: 0 1px 0 $bdf-shadow;
         text-decoration: none;
         color:$bdf-text-color;
-        padding:rem-calc($bdf-spacing);
+        padding:rem-calc($bdf-spacing $bdf-spacing $bdf-spacing $bdf-spacing*2);
+        @include background(linear-gradient(to left, rgba($bdf-primary-bg, 0), rgba($bdf-secondary-bg, 0)));
       }
 
       &.selected{
-        @include background(linear-gradient(to right, $bdf-primary-bg, rgba($bdf-secondary-bg, 0)));
+        @include background(linear-gradient(to left, $bdf-primary-bg, rgba($bdf-secondary-bg, 0)));
         @include box-shadow(0 1px 0 rgba(#000, .1));
 
         a{
@@ -1127,7 +1150,7 @@ div.vertical-tabs{
         }
 
         &:hover{
-          @include background(linear-gradient(to right, $bdf-primary-bg, rgba($bdf-secondary-bg, 0)));
+          @include background(linear-gradient(to left, $bdf-primary-bg, rgba($bdf-secondary-bg, 0)));
         }
       }
     }
@@ -1135,7 +1158,7 @@ div.vertical-tabs{
 
   div.vertical-tabs-panes{
     padding:rem-calc($bdf-spacing $bdf-spacing 0);
-    margin:rem-calc($bdf-spacing);
+    margin:rem-calc($bdf-spacing $bdf-spacing $bdf-spacing $bdf-spacing*0.5);
     @include form-outset();
 
     fieldset.vertical-tabs-pane{
@@ -1180,7 +1203,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   background:darken($bdf-secondary-bg, 5%);
   color:$bdf-text-color;
   border-color:$bdf-primary-bg;
-  height:rem-calc($bdf-spacing*3);
+  height:rem-calc($bdf-spacing*2);
   padding:rem-calc(0 $bdf-spacing);
   margin:0;
 
@@ -1259,8 +1282,8 @@ span.prefix, label.prefix,
 span.postfix, label.postfix{
   background:darken($bdf-secondary-bg, 5%);
   border-color:$bdf-primary-bg;
-  height:rem-calc($bdf-spacing*3);
-  line-height:rem-calc($bdf-spacing*3);
+  height:rem-calc($bdf-spacing*2);
+  line-height:rem-calc($bdf-spacing*2);
   color:#bfbfbf;
   margin:0;
   display:inline-block;
@@ -1337,7 +1360,7 @@ span.postfix, label.postfix{
   display: inline-block;
   position: relative;
   overflow: hidden;
-  height:rem-calc($bdf-spacing*3);
+  height:rem-calc($bdf-spacing*2);
   width:100%;
   background: darken($bdf-secondary-bg, 5%);
   border: 1px solid;
@@ -1373,7 +1396,7 @@ span.postfix, label.postfix{
   width: 100%;
   margin: 0;
   padding: rem-calc(6 8 6 10);
-  height:rem-calc($bdf-spacing*3);
+  height:rem-calc($bdf-spacing*2);
   line-height: 14px;
   font-size: 12px;
   color: $bdf-text-color;
@@ -1506,7 +1529,7 @@ button:not(.ui-button), button.button, a.button,
   @include form-button();
 
   &.file-upload-button{
-    height:rem-calc($bdf-spacing*3);
+    height:rem-calc($bdf-spacing*2);
   }
 
   em,
@@ -1524,7 +1547,7 @@ button:not(.ui-button), button.button, a.button,
 
   &.expand{
     border-radius:0;
-    padding:rem-calc($bdf-spacing $bdf-spacing*2);
+    padding:rem-calc($bdf-spacing 22);
     font-size:rem-calc(14);
     font-weight:400;
   }
@@ -1566,5 +1589,8 @@ button:not(.ui-button), button.button, a.button,
   }
 }
 
+#edit-actions {
+  margin: 0;
+}
 
 } // End .boushh-dark

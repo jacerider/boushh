@@ -2,7 +2,7 @@ name = Boushh
 description = An admin theme of awesomeness based on Fett.
 screenshot = assets/images/screenshot.png
 core = 7.x
-version = "7.x-1.1"
+version = "7.x-1.2"
 engine = phptemplate
 base theme = fett
 
@@ -50,7 +50,7 @@ stylesheets[all][] = assets/scss/sections/_global.scss
 
 ;-------------- S C R I P T -------------
 ; This file is empty, just uncomment this line and start editing!
-; scripts[] = assets/js/boushh.js
+scripts[] = assets/js/boushh.js
 
 
 ;-------------- S E T T I N G S -------------
