@@ -106,40 +106,41 @@ table{
 // Outset and Insets
 ////////////////////////////////////////////////////////////////////////////////
 
-fieldset{
+fieldset:not(.vertical-tabs-pane){
   > .fieldset-wrapper > .form-item,
   > .fieldset-wrapper > .form-wrapper > div > .form-item,
   > .fieldset-wrapper > .form-wrapper > .form-item,
-  > .fieldset-wrapper > fieldset > .fieldset-wrapper  > fieldset > .fieldset-wrapper > .form-item,
-  &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-wrapper > .fieldset-wrapper > div > fieldset{
+  > .fieldset-wrapper > fieldset > .fieldset-wrapper  > fieldset > .fieldset-wrapper > .form-item{
+  // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-wrapper > .fieldset-wrapper > div > fieldset{
     @include boushh-outset();
     padding:rem-calc($boushh-spacing);
     margin: rem-calc(0 0 $boushh-spacing);
   }
 
-  &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > .form-item,
-  &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-item,
+  // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > .form-item,
+  // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-item,
   > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item{
     @include boushh-inset();
     padding:rem-calc($boushh-spacing);
     margin: rem-calc(0 0 $boushh-spacing);
   }
 
-  &.vertical-tabs-pane > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item,
+  // &.vertical-tabs-pane > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item,
+  // > .fieldset-wrapper > .form-wrapper > div > div > .form-item,
   > .fieldset-wrapper > fieldset{
     @include boushh-outset();
   }
 
-  &.vertical-tabs-pane > .fieldset-wrapper > fieldset,
+  // &.vertical-tabs-pane > .fieldset-wrapper > fieldset,
   > .fieldset-wrapper > fieldset > .fieldset-wrapper > fieldset{
     @include boushh-inset();
   }
 
-  // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-item{
-  //   @include boushh-reset();
-  //   padding:0;
-  //   margin:0;
-  // }
+  &.filter-wrapper > .fieldset-wrapper > .form-item{
+    @include boushh-reset();
+    padding:0;
+    margin:0;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -152,30 +153,47 @@ fieldset{
     padding:rem-calc($boushh-spacing*2.5 $boushh-spacing 0);
 
     .fieldset-wrapper{
-      margin:rem-calc(0 0 $boushh-spacing);
+      margin:rem-calc(0);
       padding:0;
+      background:none;
+
+      .form-wrapper{
+        border:none;
+        margin:rem-calc($boushh-spacing 0 $boushh-spacing);
+        padding:0;
+      }
     }
   }
 }
 
 .asset-browser{
 
-  .views-exposed-form .views-exposed-widgets{
-    border:none;
-    padding:0;
+  .view-content{
+    @include boushh-outset();
+    padding:rem-calc($boushh-spacing);
+    margin:0;
+  }
 
-    .views-exposed-widget{
-      margin:rem-calc(0 $boushh-spacing 0 0);
+  .views-exposed-form{
+    @include boushh-outset();
 
-      label{
-        font-size:rem-calc(12);
-        font-weight:300;
-        line-height:normal;
-        padding:rem-calc(0 0 2);
-      }
+    .views-exposed-widgets{
+      border:none;
+      padding:0;
 
-      button{
-        margin:rem-calc($boushh-spacing 0 0);
+      .views-exposed-widget{
+        margin:rem-calc(0 $boushh-spacing 0 0);
+
+        label{
+          font-size:rem-calc(12);
+          font-weight:300;
+          line-height:normal;
+          padding:rem-calc(0 0 2);
+        }
+
+        button{
+          margin:rem-calc($boushh-spacing 0 0);
+        }
       }
     }
   }

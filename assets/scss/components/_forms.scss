@@ -129,7 +129,7 @@ fieldset{
   position:relative;
   border:none;
   padding:rem-calc($boushh-spacing*2.5 $boushh-spacing 0);
-  margin:rem-calc($boushh-spacing 0);
+  margin:rem-calc(0 0 $boushh-spacing);
 
   &.form-wrapper-nolegend{
     padding:rem-calc($boushh-spacing $boushh-spacing 0);
@@ -141,11 +141,6 @@ fieldset{
 
   &:last-child{
     margin-bottom:0;
-  }
-
-  // Handle nested fieldsets
-  fieldset:first-child{
-    margin-top:0;
   }
 
   .fieldset-description,
@@ -234,25 +229,34 @@ fieldset{
 ////////////////////////////////////////////////////////////////////////////////
 
 div.vertical-tabs{
+  @include display(flex);
+  @include flex-direction(row);
+  @include align-items(top);
   @include boushh-inset();
   border:none;
   margin:rem-calc($boushh-spacing 0);
-  padding:rem-calc(0 0 0 290);
+  padding:rem-calc(0);
 
   ul.vertical-tabs-list{
+    @include flex(0 0 rem-calc(300));
     border:none;
     position: relative;
     z-index:1;
-    margin:rem-calc(0 0 0 -290);
-    width: rem-calc(300);
+    // margin:rem-calc(0 0 0 -290);
+    margin:0;
+    // width: rem-calc(300);
+    float:none;
+    @include background(linear-gradient(to right, darken($boushh-bg-alt, 6%), rgba($boushh-bg-alt, 0)));
 
     > li{
       border:none;
       background:none;
       @include box-shadow(none);
+      @include transition(background 500ms);
 
       &:hover{
-        @include background(linear-gradient(to right, darken($boushh-bg-alt, 6%), rgba($boushh-bg-alt, 0)));
+        // @include background(linear-gradient(to right, darken($boushh-bg-alt, 6%), rgba($boushh-bg-alt, 0)));
+        background: $boushh-bg-alt;
         @include box-shadow(none);
       }
 
@@ -297,6 +301,8 @@ div.vertical-tabs{
   }
 
   div.vertical-tabs-panes{
+    @include flex(auto);
+    // width:100%;
     @include boushh-outset();
     padding:rem-calc($boushh-spacing $boushh-spacing 0);
     margin:rem-calc($boushh-spacing);
@@ -306,15 +312,15 @@ div.vertical-tabs{
       padding:0;
       margin:0;
 
-      > .fieldset-wrapper{
-        padding:0;
-      }
+      // > .fieldset-wrapper{
+      //   padding:0;
+      // }
 
-      > .fieldset-wrapper > .form-item{
-        @include boushh-inset();
-        padding:rem-calc($boushh-spacing);
-        margin: rem-calc(0 0 $boushh-spacing);
-      }
+      // > .fieldset-wrapper > .form-item{
+      //   @include boushh-inset();
+      //   padding:rem-calc($boushh-spacing);
+      //   margin: rem-calc(0 0 $boushh-spacing);
+      // }
     }
   }
 }
