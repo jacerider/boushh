@@ -30,6 +30,12 @@
   font-weight:500;
   border:none;
   margin:rem-calc(0 $boushh-spacing/2 0 0);
+
+  &:hover,
+  &:active,
+  &:focus{
+    background:lighten($boushh-primary, 15%);
+  }
 }
 
 

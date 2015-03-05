@@ -12,6 +12,13 @@ form{
   color: color(80%);
   position: relative;
 
+  form{
+    @include boushh-reset();
+    border:none;
+    padding:0;
+    margin:0;
+  }
+
   .form-required{
     color:$boushh-secondary;
   }
