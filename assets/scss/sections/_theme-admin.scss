@@ -4,6 +4,10 @@
 
 body{
 
+  h1 small{
+    color:$boushh-primary;
+  }
+
   #page{
     background-image: url("/sites/all/themes/boushh/assets/images/themeSettings-bg.jpg") !important;
   }
@@ -25,6 +29,12 @@ body{
   #edit-fett-icons{
 
     .fieldset-wrapper{
+      padding:0;
+
+      table.system-status-report tr td{
+        color:#fff;
+        text-shadow:none;
+      }
 
       table.system-status-report tr.ok{
         background-color: #c7b79d;
@@ -39,6 +49,38 @@ body{
       table.system-status-report tr.warning{
         background-color: #f6ecb0;
         text-shadow: 0 1px 0 #fffdd3;
+      }
+    }
+  }
+
+  #boushh-theme-select{
+    list-style: none;
+
+    li{
+      display:inline-block;
+      margin:rem-calc(0 $boushh-spacing/2 $boushh-spacing/2 0);
+      padding:0;
+
+      a{
+        color:#434343;
+        display:block;
+        padding:rem-calc(2 4);
+        background: #fff;
+        border:2px solid #fff;
+        border-radius:3px;
+        text-transform: uppercase;
+        line-height:rem-calc(16);
+        font-size:rem-calc(12);
+        vertical-align: middle;
+
+        &:hover,
+        &.active{
+          border:2px solid $boushh-primary;
+        }
+      }
+
+      i{
+        font-size:rem-calc(16);
       }
     }
   }

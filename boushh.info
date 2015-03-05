@@ -2,7 +2,7 @@ name = Boushh
 description = An admin theme of awesomeness based on Fett.
 screenshot = assets/images/screenshot.png
 core = 7.x
-version = "7.x-1.1"
+version = "7.x-1.3"
 engine = phptemplate
 base theme = fett
 
@@ -32,12 +32,13 @@ regions[boushh_sidebar_second] = Right Sidebar
 ; These files are empty, just uncomment this line and start editing!
 
 ; Libraries
-stylesheets[all][] = assets/scss/libraries/_variables.scss
+; stylesheets[all][] = assets/scss/libraries/_variables.scss
 stylesheets[all][] = assets/scss/libraries/_mixins.scss
 
 ; Components
 stylesheets[all][] = assets/scss/components/_jquery-ui.scss
 stylesheets[all][] = assets/scss/components/_forms.scss
+stylesheets[all][] = assets/scss/components/_table.scss
 stylesheets[all][] = assets/scss/components/_views.scss
 stylesheets[all][] = assets/scss/components/_context.scss
 stylesheets[all][] = assets/scss/components/_ctools.scss
@@ -46,6 +47,7 @@ stylesheets[all][] = assets/scss/components/_module-filter.scss
 
 ; Sections
 stylesheets[all][] = assets/scss/sections/_global.scss
+stylesheets[all][] = assets/scss/sections/_content.scss
 
 
 ;-------------- S C R I P T -------------

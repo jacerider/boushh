@@ -6,6 +6,21 @@ if(strpos($_GET['q'], 'admin/structure/views/') !== FALSE || strpos($_GET['q'], 
   $conf['jquery_update_jquery_admin_version'] = '1.7';
 }
 
+// Load variables on each request to this theme.
+drupal_add_css(drupal_get_path('theme', 'boushh') . '/assets/scss/libraries/_variables.scss', array('every_page' => TRUE, 'weight' => -1100));
+
+/**
+ * Implements hook_sonar_var_alter().
+ */
+function boushh_sonar_var_alter(&$vars){
+  if(theme_get_setting('boushh_bg')){
+    $vars['boushh-bg'] = theme_get_setting('boushh_bg');
+  }
+  if(theme_get_setting('boushh_primary')){
+    $vars['boushh-primary'] = theme_get_setting('boushh_primary');
+  }
+}
+
 /**
  * Implements hook_fett_icons_alter().
  */
@@ -45,6 +60,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['date and time'] = 'calendar';
   $icons['regional settings'] = 'globe';
   $icons['module filter'] = 'filter';
+  $icons['filter'] = 'filter';
   $icons['url aliases'] = 'link';
   $icons['rss publishing'] = 'rss';
   $icons['logging and errors'] = 'bug';
@@ -143,13 +159,6 @@ function boushh_form_process_actions($element, &$form_state) {
 function boushh_preprocess_html(&$vars) {
   // Add theme class to body
   $vars['classes_array'][] = 'boushh';
-
-  if(theme_get_setting('boushh_dark_form')){
-    // Load before Foundation includes
-    drupal_add_css(drupal_get_path('theme', 'boushh') . '/assets/scss/libraries/_settings-forms-dark.scss', array('every_page' => TRUE, 'weight' => -1001));
-    drupal_add_css(drupal_get_path('theme', 'boushh') . '/assets/scss/components/_forms-dark.scss', array('every_page' => TRUE));
-    $vars['classes_array'][] = 'boushh-dark';
-  }
 
   // Add Open Sans
   drupal_add_css('@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,300italic,400italic,600italic,700italic,800italic);',$option['type'] = 'inline');
@@ -689,8 +698,8 @@ function boushh_select($vars) {
   element_set_attributes($element, array('id', 'name', 'size'));
   $element['#attributes']['class'][] = 'boushh-select';
   if(!empty($element['#multiple'])) $wrapper_attributes['class'][] = 'boushh-select-multiple';
+  if(!empty($element['#attributes']['class']) && in_array('tabledrag-hide', $element['#attributes']['class'])) $wrapper_attributes['class'][] = 'tabledrag-hide';
   _form_set_class($element, array('form-select'));
-
   return '<div' . drupal_attributes($wrapper_attributes) . '><select' . drupal_attributes($element ['#attributes']) . '>' . form_select_options($element) . '</select></div>';
 }
 

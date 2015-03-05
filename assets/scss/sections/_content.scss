@@ -1,0 +1,285 @@
+.page{
+
+////////////////////////////////////////////////////////////////////////////////
+// Globals
+////////////////////////////////////////////////////////////////////////////////
+
+form,
+table{
+
+  a{
+    color:$boushh-primary;
+
+    &:hover{
+      color:lighten($boushh-primary, 20%);
+    }
+  }
+
+  h1,h2,h3{
+    color:color(80%);
+  }
+
+  h2{
+    margin:0;
+    padding:0;
+  }
+
+  label{
+    display:block;
+    font-weight:700;
+    font-size:rem-calc(15);
+    line-height:rem-calc(15);
+    padding-bottom:rem-calc(5);
+    color:color(70%);
+    text-transform: uppercase;
+
+    strong{
+      color:color(80%);
+    }
+  }
+
+  label.option{
+    display:inline;
+    font-weight:300;
+    font-size:rem-calc(14);
+    line-height:rem-calc(14);
+    padding-bottom:0;
+    color:color(70%);
+    text-transform: none;
+  }
+
+  .description{
+    color:$boushh-primary;
+    font-size:rem-calc(11.5);
+    font-weight:200;
+    padding:rem-calc($boushh-spacing*.5 0 0);
+    text-shadow: 0 1px 0 color-alt(5%);
+
+    a{
+      font-weight:600;
+    }
+  }
+
+  .alert-box{
+    margin:rem-calc(0 0 $boushh-spacing);
+
+    &.warning{
+      background: $boushh-warning;
+      border-color: darken($boushh-warning, 5%);
+      text-shadow:0 1px 0 darken($boushh-warning, 5%);
+    }
+  }
+
+  .warning{
+    color:lighten($boushh-warning, 40%);
+  }
+
+  .ajax-progress-throbber{
+    border-radius:0;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Container Inline
+////////////////////////////////////////////////////////////////////////////////
+
+.container-inline{
+  .fieldset-wrapper > .form-item{
+    display:inline-block;
+    @include boushh-reset();
+    padding:0;
+    margin:rem-calc(0 $boushh-spacing 0 0);
+  }
+
+  button.tiny:not(.ui-button){
+    @include boushh-button();
+
+    // &.tiny{
+    //   font-size:rem-calc(12);
+    //   padding:rem-calc(5 6);
+    //   font-weight:300;
+    // }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Outset and Insets
+////////////////////////////////////////////////////////////////////////////////
+
+fieldset{
+  > .fieldset-wrapper > .form-item,
+  > .fieldset-wrapper > .form-wrapper > div > .form-item,
+  > .fieldset-wrapper > .form-wrapper > .form-item,
+  > .fieldset-wrapper > fieldset > .fieldset-wrapper  > fieldset > .fieldset-wrapper > .form-item{
+    @include boushh-outset();
+    padding:rem-calc($boushh-spacing);
+    margin: rem-calc(0 0 $boushh-spacing);
+  }
+
+  &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > .form-item,
+  > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item{
+    @include boushh-inset();
+    padding:rem-calc($boushh-spacing);
+    margin: rem-calc(0 0 $boushh-spacing);
+  }
+
+  &.vertical-tabs-pane > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item,
+  > .fieldset-wrapper > fieldset{
+    @include boushh-outset();
+  }
+
+  &.vertical-tabs-pane > .fieldset-wrapper > fieldset,
+  > .fieldset-wrapper > fieldset > .fieldset-wrapper > fieldset{
+    @include boushh-inset();
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Filters
+////////////////////////////////////////////////////////////////////////////////
+
+.exposed-filters{
+  div.filters{
+    @include boushh-reset();
+    padding:0;
+    margin:0;
+
+    > .form-item{
+      display:block;
+      float:left;
+      @include boushh-reset();
+      padding:0;
+      margin:rem-calc(0 $boushh-spacing 0 0);
+
+      label{
+        font-size:rem-calc(12);
+        font-weight:300;
+        line-height:normal;
+        padding:0;
+      }
+    }
+  }
+
+  .form-actions{
+    @include boushh-reset();
+    padding:rem-calc($boushh-spacing 0 0);
+    margin:0;
+  }
+}
+
+.view-filters{
+  margin-bottom:rem-calc($boushh-spacing);
+}
+
+.views-exposed-form{
+  border:none;
+  @include boushh-inset();
+  padding:rem-calc($boushh-spacing);
+
+  .views-exposed-widgets{
+    margin:0;
+
+    &:before{
+      color:rgba(color(70%), .3);
+      font-family: "FontAwesome";
+      font-size:rem-calc(70);
+      content: "\f002";
+      float:left;
+      padding-right:rem-calc($boushh-spacing);
+    }
+  }
+
+  .views-exposed-widget{
+    margin:rem-calc(0 $boushh-spacing 0 0);
+    padding:0;
+  }
+
+  label{
+    color:color(70%);
+    font-size:rem-calc(12);
+    font-weight:300;
+  }
+
+  .views-widget .form-item{
+    @include boushh-reset();
+    padding:0;
+    margin:0;
+  }
+
+  .views-submit-button,
+  .views-reset-button{
+    padding:rem-calc($boushh-spacing 0 0);
+
+    button.tiny:not(.ui-button){
+      @include boushh-button();
+    }
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Buttons
+////////////////////////////////////////////////////////////////////////////////
+
+button:not(.ui-button), button.button, a.button,
+#linkit-cancel, .arguments-preview{
+  @include boushh-button();
+
+  em,
+  span{
+    color:color(70%);
+    font-style: normal;
+    font-weight:300;
+  }
+
+  &:hover,
+  &:active,
+  &:focus{
+    background:lighten($boushh-primary, 15%);
+  }
+
+  &.expand{
+    border-radius:0;
+    padding:rem-calc($boushh-spacing $boushh-spacing*2);
+    font-size:rem-calc(14);
+    font-weight:400;
+  }
+
+  &.tiny{
+    font-size:rem-calc(11);
+    padding:rem-calc(5 6);
+    font-weight:300;
+    text-transform: uppercase;
+  }
+
+  &.secondary{
+    background:#8b99a4;
+    text-shadow:0 1px 0 darken(#8b99a4, 10%);
+    border-top:1px solid #abbccc;
+    font-weight:400;
+    @include box-shadow(none);
+
+    &:hover{
+      color:color(70%);
+      background:#75818c;
+    }
+  }
+
+  &.muted{
+    background:none;
+    border:none;
+    padding:rem-calc(15 0 0);
+    color:color(70%);
+    line-height:rem-calc(12);
+    font-weight:300;
+    @include box-shadow(none);
+
+    &:hover,
+    &:active,
+    &:focus{
+      background:none;
+      color:$boushh-primary;
+    }
+  }
+}
+
+} // End .page

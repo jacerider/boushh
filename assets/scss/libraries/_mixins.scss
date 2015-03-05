@@ -1,3 +1,38 @@
+
+
+@mixin boushh-outset() {
+  background:$boushh-bg;
+  @include box-shadow(1px 1px 4px darken($boushh-bg, 10%));
+}
+
+@mixin boushh-inset() {
+  background: $boushh-bg-alt;
+  @include box-shadow(inset 1px 1px 4px 0px darken($boushh-bg, 10%));
+}
+
+@mixin boushh-reset() {
+  background:none;
+  @include box-shadow(none);
+}
+
+@mixin boushh-button() {
+  @include box-shadow(0px 0px 4px color-alt(5%));
+  @include transition(all 0.75s);
+  margin:0;
+  border-radius:rem-calc(3);
+  background:$boushh-primary;
+  color:#fff;
+  text-shadow:0 1px 0 darken($boushh-primary, 10%);
+  border-top:1px solid lighten($boushh-primary, 10%);
+  padding:rem-calc($boushh-spacing $boushh-spacing*2);
+  font-size:rem-calc(16);
+  line-height:rem-calc(16);
+  font-weight:500;
+  border:none;
+  margin:rem-calc(0 $boushh-spacing/2 0 0);
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // Flexbox from Bourbon
 ////////////////////////////////////////////////////////////////////////////////

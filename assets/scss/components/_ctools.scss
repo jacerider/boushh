@@ -1,19 +1,87 @@
-.ctools-dropbutton{
+.page{
 
-  a{
-    font-size:rem-calc(13);
-  }
+////////////////////////////////////////////////////////////////////////////////
+// Ctools
+////////////////////////////////////////////////////////////////////////////////
 
-  &.open{
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+#ctools-export-ui-list-form{
+  .ctools-export-ui-row{
+    @include boushh-inset();
+    padding:rem-calc($boushh-spacing);
+    margin:rem-calc(0 0 $boushh-spacing);
 
-    li + li{
-      border:none;
+    > .form-item{
+      @include boushh-reset();
+      padding:0;
+      margin:rem-calc(0 $boushh-spacing 0 0);
+
+      label{
+        color:color(70%);
+        font-size:rem-calc(12);
+        font-weight:300;
+      }
+    }
+
+    > .form-submit{
+      @include boushh-button();
+      margin:rem-calc($boushh-spacing $boushh-spacing 0 0);
     }
   }
+}
+
+#ctools-export-ui-edit-item-form{
+  > div > fieldset{
+    // override for context. may conflict.
+    padding-top: rem-calc($boushh-spacing);
+  }
+}
+
+table tbody tr.ctools-export-ui-disabled,
+table tbody tr.ctools-export-ui-disabled:hover{
+  // opacity:.2;
+  background:darken($boushh-bg, 10%);
+
+  &.odd{
+    background:darken($boushh-bg, 10%);
+  }
+
+  &.even{
+    background:darken($boushh-bg, 12%);
+  }
+
+  td{
+    color: darken(color(70), 40%);
+  }
+}
+
+.ctools-dropbutton,
+.ctools-button{
+  @include boushh-button();
+  font-size:rem-calc(12);
+  padding:rem-calc(5 6);
+  font-weight:300;
+
+  a{
+    color:#fff;
+  }
+
+  li a,
+  li input{
+    display:block;
+    font-size:rem-calc(13);
+    padding:rem-calc(0 10);
+  }
+}
+
+.ctools-dropbutton{
+  padding:rem-calc(5 17 5 6);
 
   .ctools-content{
     border:none;
+
+    a{
+      border:none;
+    }
   }
 
   .ctools-link{
@@ -21,25 +89,48 @@
   }
 }
 
-.ctools-button{
-  background-color:$secondary-color;
-  border:none;
+.ctools-dropbutton-processed{
+  &.open{
+    box-shadow: 0px 4px 4px rgba(color-alt(5%), 0.5);
 
-  a{
-    color:#3f3f3f;
+    li + li{
+      border:none;
+    }
   }
+}
+
+.ctools-collapsible-container{
+
+  .ctools-toggle{
+    margin-top:10px;
+  }
+
+  .ctools-toggle-collapsed{
+    margin-top:8px;
+  }
+
+  .ctools-collapsible-handle{
+    border:none;
+    padding:rem-calc(0 0 $boushh-spacing/2);
+  }
+}
+
+.ctools-button{
+  border:none;
 
   ul{
     margin:0;
   }
 }
 
-.ctools-content{
-  ul.actions{
-    margin:0;
-  }
-}
+// .ctools-content{
+//   ul.actions{
+//     margin:0;
+//   }
+// }
 
-td.ctools-export-ui-operations .ctools-dropbutton{
-  right: rem-calc(35);
-}
+// td.ctools-export-ui-operations .ctools-dropbutton{
+//   right: rem-calc(35);
+// }
+
+} // End .page

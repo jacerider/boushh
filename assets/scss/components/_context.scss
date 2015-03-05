@@ -1,21 +1,133 @@
+.page{
+
 ////////////////////////////////////////////////////////////////////////////////
 // Context
 ////////////////////////////////////////////////////////////////////////////////
 
+.context-plugins{
+  @include boushh-inset();
+  padding:rem-calc($boushh-spacing);
+  margin: rem-calc($boushh-spacing 0);
+
+  .context-plugin-info{
+    padding:0;
+    border:none;
+
+    .form-item{
+      @include boushh-reset();
+      padding:0;
+      margin:0;
+    }
+  }
+
+  .context-plugin-list{
+    @include boushh-outset();
+    margin:rem-calc($boushh-spacing 0 0);
+
+    li{
+
+      a{
+        background:$boushh-bg;
+        border:none;
+        color:$boushh-primary;
+        padding:rem-calc($boushh-spacing*.5 $boushh-spacing);
+
+        &.active-form{
+          background:$boushh-primary;
+          color:#fff;
+        }
+      }
+
+      &:nth-of-type(2n){
+        a{
+          background: red;
+        }
+      }
+    }
+  }
+
+  .context-plugin-selector{
+    background:none;
+    padding:rem-calc(0 $boushh-spacing 0 0);
+  }
+
+  .context-plugin-forms{
+    @include boushh-outset();
+  }
+}
+
 #context-blockform{
-  .odd:hover{
-    background: $table-bg;
+
+  tr{
+    &:hover{
+      @include box-shadow(none);
+    }
+  }
+
+  td.blocks,
+  td.selector{
+    border:none;
+    padding:rem-calc($boushh-spacing);
+
+    fieldset{
+      @include boushh-outset();
+    }
   }
 
   td.blocks .label{
     width:100%;
     text-align: left;
-    color:#3f3f3f;
-    font-size:rem-calc(14);
+    color:color(70%);
+    font-size:rem-calc(16);
+    font-weight:200;
+    text-transform: uppercase;
     padding:rem-calc(10);
 
     a{
       background:none;
     }
   }
+
+  td.blocks .label,
+  td.blocks td,
+  td.blocks th{
+    border:none;
+    background:none;
+  }
+
+  td.blocks{
+    @include boushh-inset();
+
+    table{
+      @include boushh-outset();
+    }
+
+    .remove{
+      display:block;
+      width:rem-calc(18);
+      height:rem-calc(18);
+      overflow:hidden;
+      float:right;
+
+      &:hover{
+        &:before{
+          color:lighten($boushh-error, 10%);
+        }
+      }
+
+      &:before{
+        color:$boushh-error;
+        font-family: "FontAwesome";
+        font-size:rem-calc(20);
+        content: "\f00d";
+        padding-right:rem-calc(18);
+      }
+    }
+  }
+
+  td.blocks td{
+    padding:rem-calc($boushh-spacing/1.5);
+  }
 }
+
+} // End .page
