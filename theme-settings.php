@@ -27,9 +27,11 @@ function boushh_form_system_theme_settings_alter(&$form, $form_state, $form_id =
   $themes[] = array('Sandstorm', array('#322721','#C5A57F','#cfc1ad'));
   $themes[] = array('Solarized', array('#586E75','#d8a300','#CB4B16'));
   $themes[] = array('Thoughts', array('#8b1c2e','#f8664a','#ECD078'));
-  $themes[] = array('Sugar', array('#490A3D','#8A9B0F','#F8CA00'));
+  $themes[] = array('Sugar', array('#4d2748','#8A9B0F','#F8CA00'));
   $themes[] = array('Pancackes', array('#594F4F','#45ADA8','#E5FCC2'));
   $themes[] = array('Terra', array('#f3f1ec','#036564','#033649'));
+  $themes[] = array('Albino', array('#FAFAFA','#125377','#6d6e49'));
+
   foreach($themes as $theme){
     $item_class = $theme[1][0] == $bg && $theme[1][1] == $primary && $theme[1][2] == $secondary ? 'active' : '';
     $item = '<a data-bg="' . $theme[1][0] . '" data-primary="' . $theme[1][1] . '" data-secondary="' . $theme[1][2] . '" class="' . $item_class . '">';
