@@ -24,8 +24,8 @@ table{
     padding:0;
   }
 
-  label{
-    display:block;
+  label,
+  caption{
     font-weight:700;
     font-size:rem-calc(15);
     line-height:rem-calc(15);
@@ -36,6 +36,10 @@ table{
     strong{
       color:color(80%);
     }
+  }
+
+  label{
+    display:block;
   }
 
   label.option{
@@ -83,7 +87,7 @@ table{
 // Container Inline
 ////////////////////////////////////////////////////////////////////////////////
 
-.container-inline{
+.container-inline:not(.vertical-tabs-pane){
   .fieldset-wrapper > .form-item{
     display:inline-block;
     @include boushh-reset();
@@ -108,7 +112,8 @@ table{
 
 fieldset:not(.vertical-tabs-pane){
   > .fieldset-wrapper > .form-item,
-  > .fieldset-wrapper > .form-wrapper > div > .form-item,
+  > .fieldset-wrapper > .form-item > div > .form-item,
+  > .fieldset-wrapper > div > .form-item,
   > .fieldset-wrapper > .form-wrapper > .form-item,
   > .fieldset-wrapper > fieldset > .fieldset-wrapper  > fieldset > .fieldset-wrapper > .form-item{
   // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-wrapper > .fieldset-wrapper > div > fieldset{

@@ -38,6 +38,16 @@ form{
     margin-bottom:rem-calc($boushh-spacing);
   }
 
+  > div > button{
+    margin-bottom:rem-calc($boushh-spacing);
+  }
+
+  > div > button:not(.ui-button),
+  > div > button.tiny:not(.ui-button){
+    @include boushh-button();
+    margin-bottom:rem-calc($boushh-spacing);
+  }
+
   .machine-name-label,
   .machine-name-value{
     font-size:rem-calc(13);
@@ -51,6 +61,18 @@ form{
 
   .machine-name-value{
     color: $boushh-secondary;
+  }
+
+  .form-item-data-icon{
+    .form-item.form-type-radio{
+      width:rem-calc(60);
+
+      .fa{
+        font-size:rem-calc(16);
+        text-shadow:none;
+        color:color(100);
+      }
+    }
   }
 
   .admin-link{
@@ -187,6 +209,30 @@ fieldset{
       font-size:rem-calc(11);
       line-height:rem-calc(13);
       font-weight:300;
+    }
+  }
+
+  &.collapsible{
+    > legend{
+      .fieldset-legend{
+        background:none;
+        padding:0;
+
+        a:before{
+          display:inline-block;
+          width:rem-calc(14);
+          text-align: center;
+          font-family: "FontAwesome";
+          content: "\f0d7";
+          padding:rem-calc(0 4 0 0);
+          font-weight:normal;
+          color:color(70);
+        }
+      }
+    }
+
+    &.collapsed > legend .fieldset-legend a:before{
+      content: "\f0da";
     }
   }
 
@@ -410,6 +456,19 @@ textarea.form-textarea{
   }
 }
 
+fieldset:not(.vertical-tabs-pane) .fieldset-wrapper .addressfield-container-inline{
+  @include display(flex);
+
+  > .form-item{
+    @include flex(auto);
+    margin:rem-calc(0 $boushh-spacing 0 0);
+
+    &:last-child{
+      margin:0;
+    }
+  }
+}
+
 .form-type-password-confirm{
   @include clearfix();
 
@@ -618,12 +677,21 @@ span.postfix, label.postfix{
   }
 }
 
+.fieldset-wrapper > .form-item.form-type-checkbox,
+.fieldset-wrapper > .form-item.form-type-radio,
+.form-wrapper > .form-item.form-type-checkbox,
+.form-wrapper > .form-item.form-type-radio{
+  @include boushh-inset();
+  padding:rem-calc($boushh-spacing);
+  margin: rem-calc(0 0 $boushh-spacing);
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Select
 ////////////////////////////////////////////////////////////////////////////////
 
 .boushh-select-wrapper {
-  display: inline-block;
+  display: block;
   position: relative;
   overflow: hidden;
   height:rem-calc($boushh-spacing*3);
@@ -692,9 +760,30 @@ span.postfix, label.postfix{
   > option {
     padding: 6px 8px;
     text-shadow: 0 1px rgba(white, .4);
-    color:color(70%) !important;
+    color:#404040 !important;
     background: #b3b3b3;
     cursor: pointer;
+  }
+}
+
+.boushh-select-multiple{
+  height:auto;
+
+  &:before,
+  &:after{
+    display:none;
+  }
+
+  .boushh-select{
+    height:auto;
+    min-height:rem-calc(160);
+
+    > option{
+      padding: 2px 8px;
+      background: darken($boushh-bg-alt, 5%);
+      color:color(70) !important;
+      text-shadow: 0 1px rgba(black, .4);
+    }
   }
 }
 

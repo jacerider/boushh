@@ -72,6 +72,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['appearance'] = 'magic';
   $icons['help'] = 'question-circle';
   $icons['permissions'] = 'lock';
+  $icons['security'] = 'lock';
   $icons['roles'] = 'users';
   $icons['structure'] = 'institution';
   $icons['text formats'] = 'text-height';

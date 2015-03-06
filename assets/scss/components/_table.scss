@@ -148,6 +148,14 @@ table{
         > div > input[type="file"], input[type="checkbox"], input[type="radio"], select{
           margin:0;
         }
+
+        .ajax-new-content{
+          > .form-item{
+            @include boushh-reset();
+            padding:0;
+            margin:0;
+          }
+        }
       }
     }
 
@@ -241,6 +249,38 @@ a.tabledrag-toggle-weight{
     font-size:rem-calc(20);
     content: "\f0dc";
     padding-right:rem-calc($boushh-spacing);
+  }
+}
+
+#field-display-overview tr.field-formatter-settings-editing{
+
+  .ajax-new-content{
+    @include boushh-outset();
+    padding:rem-calc($boushh-spacing);
+
+    > .form-item{
+      @include boushh-reset();
+      padding:0;
+      margin:0;
+    }
+
+    .form-type-select:first-child{
+      display:none;
+    }
+
+    > .form-wrapper{
+      margin:0;
+
+      .form-item{
+        margin:rem-calc($boushh-spacing 0);
+      }
+
+      .form-wrapper:last-child{
+        margin-bottom:0;
+      }
+
+    }
+
   }
 }
 
