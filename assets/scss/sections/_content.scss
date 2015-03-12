@@ -115,6 +115,7 @@ fieldset:not(.vertical-tabs-pane){
   > .fieldset-wrapper > .form-item > div > .form-item,
   > .fieldset-wrapper > div > .form-item,
   > .fieldset-wrapper > .form-wrapper > .form-item,
+  > .fieldset-wrapper > .form-wrapper > div > .form-item,
   > .fieldset-wrapper > fieldset > .fieldset-wrapper  > fieldset > .fieldset-wrapper > .form-item{
   // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-wrapper > .fieldset-wrapper > div > fieldset{
     @include boushh-outset();
@@ -128,6 +129,11 @@ fieldset:not(.vertical-tabs-pane){
     @include boushh-inset();
     padding:rem-calc($boushh-spacing);
     margin: rem-calc(0 0 $boushh-spacing);
+  }
+
+  > .fieldset-wrapper > .form-item > .form-wrapper > .form-item{
+    @include boushh-inset();
+    margin:0;
   }
 
   // &.vertical-tabs-pane > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item,
@@ -294,6 +300,11 @@ fieldset:not(.vertical-tabs-pane){
 button:not(.ui-button), button.button, a.button,
 #linkit-cancel, .arguments-preview{
   @include boushh-button();
+
+  &.postfix,
+  &.prefix{
+    height:rem-calc($boushh-spacing*3);
+  }
 
   em,
   span{

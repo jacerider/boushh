@@ -38,7 +38,7 @@ table{
   // If draggable table has only 1 row
   &.tabledrag-processed .draggable:only-child{
     .ief-tabledrag-handle{
-      visibility:hidden;
+      // visibility:hidden;
       overflow:hidden;
       padding:0;
 

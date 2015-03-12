@@ -63,6 +63,10 @@ form{
     color: $boushh-secondary;
   }
 
+  .image-widget-data{
+    float:none;
+  }
+
   .form-item-data-icon{
     .form-item.form-type-radio{
       width:rem-calc(60);
@@ -469,14 +473,25 @@ fieldset:not(.vertical-tabs-pane) .fieldset-wrapper .addressfield-container-inli
   }
 }
 
+.field-type-link-field{
+  @include boushh-inset();
+  padding:rem-calc($boushh-spacing);
+
+  .form-item{
+    @include boushh-reset();
+    padding:0;
+    margin:0;
+  }
+}
+
 .form-type-password-confirm{
   @include clearfix();
 
   .form-item-pass-pass1,
   .form-item-pass-pass2{
     @include boushh-reset();
-    margin:rem-calc(0 $boushh-spacing 0 0);
     padding:0;
+    margin:rem-calc(0 $boushh-spacing 0 0);
     display:inline-block;
     width:30%;
     position: relative;
