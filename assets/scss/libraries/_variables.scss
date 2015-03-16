@@ -4,11 +4,10 @@ $font_custom: "Open Sans","Helvetica Neue",Arial,sans-serif;
 
 // Background
 $boushh-bg: #2e383e !default;
-// $boushh-bg: #E7E7E7;
-$boushh-bg-alt: darken($boushh-bg, 5%);
+$boushh-bg-alt: darken($boushh-bg, 5%) !default;
 
-$boushh-spacing: 20;
-$boushh-lightness: lightness($boushh-bg);
+$boushh-spacing: 20 !default;
+$boushh-lightness: lightness($boushh-bg) !default;
 
 $boushh-primary: #0997c3 !default;
 $boushh-secondary: #f0c495 !default;

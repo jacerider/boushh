@@ -151,7 +151,7 @@ ul#views-display-menu-tabs{
   margin:0;
 }
 
-.views-display-columns > div.form-wrapper{
+.views-display-columns > div{
   @include flex(auto);
   @include boushh-outset();
   padding:rem-calc($boushh-spacing $boushh-spacing 0);
@@ -234,6 +234,14 @@ ul#views-display-menu-tabs{
     }
   }
 }
+
+#views-ui-edit-form{
+  .form-actions{
+    margin:0;
+  }
+}
+
+} // End .page
 
 #views-ajax-popup{
   background:#f6f6f6;
@@ -319,15 +327,10 @@ ul#views-display-menu-tabs{
   }
 }
 
-#views-ui-edit-form{
-  .form-actions{
-    margin:0;
-  }
-}
-
 body #views-ui-list-page,
 body .views-admin,
-body #views-ajax-popup {
+body #views-ajax-popup,
+body #views-ui-edit-form {
   .ajax-progress-throbber{
     position:absolute;
     top:0;
@@ -362,5 +365,3 @@ body #views-ajax-popup {
     animation: spin 2s infinite linear;
   }
 }
-
-} // End .page

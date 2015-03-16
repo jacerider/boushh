@@ -55,6 +55,7 @@ table{
   .description{
     color:$boushh-primary;
     font-size:rem-calc(12);
+    line-height:rem-calc(16);
     font-weight:200;
     padding:rem-calc($boushh-spacing*.5 0 0);
     text-shadow: 0 1px 0 color-alt(5%);
@@ -75,12 +76,36 @@ table{
   }
 
   .warning{
-    color:lighten($boushh-warning, 40%);
+    color:darken($boushh-warning, 20%);
   }
 
   .ajax-progress-throbber{
     border-radius:0;
   }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Field Formatting
+////////////////////////////////////////////////////////////////////////////////
+
+.field{
+  margin:rem-calc(0 0 $boushh-spacing);
+
+  &.field-label-above{
+    div:first-child{
+      text-transform: uppercase;
+      color: color(20%);
+      font-weight: 600;
+      padding:rem-calc(0 0 5);
+      font-size:rem-calc(13);
+    }
+
+    div.field-items{
+      border-left:2px solid color(50%);
+      padding-left:rem-calc(5);
+    }
+  }
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -115,7 +140,9 @@ fieldset:not(.vertical-tabs-pane){
   > .fieldset-wrapper > .form-item > div > .form-item,
   > .fieldset-wrapper > div > .form-item,
   > .fieldset-wrapper > .form-wrapper > .form-item,
+  > .fieldset-wrapper > .form-wrapper > .form-wrapper,
   > .fieldset-wrapper > .form-wrapper > div > .form-item,
+  > .fieldset-wrapper > .form-wrapper > div > div > .form-item,
   > .fieldset-wrapper > fieldset > .fieldset-wrapper  > fieldset > .fieldset-wrapper > .form-item{
   // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-wrapper > .fieldset-wrapper > div > fieldset{
     @include boushh-outset();
@@ -125,7 +152,12 @@ fieldset:not(.vertical-tabs-pane){
 
   // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > .form-item,
   // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-item,
-  > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item{
+  > .fieldset-wrapper > .form-wrapper > .form-wrapper > .form-item,
+  > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item,
+  > .fieldset-wrapper > .form-wrapper > .form-wrapper > .fieldset-wrapper > .form-item,
+  > .fieldset-wrapper > .form-wrapper > .form-wrapper > .fieldset-wrapper > .form-wrapper,
+  > .fieldset-wrapper > .form-wrapper > .form-item > .form-checkboxes > .form-item,
+  > .fieldset-wrapper > .form-wrapper > .fieldset-wrapper > .form-wrapper > .form-item{
     @include boushh-inset();
     padding:rem-calc($boushh-spacing);
     margin: rem-calc(0 0 $boushh-spacing);
@@ -145,6 +177,10 @@ fieldset:not(.vertical-tabs-pane){
   // &.vertical-tabs-pane > .fieldset-wrapper > fieldset,
   > .fieldset-wrapper > fieldset > .fieldset-wrapper > fieldset{
     @include boushh-inset();
+  }
+
+  > .fieldset-wrapper > .form-wrapper > fieldset.form-wrapper{
+    padding:rem-calc($boushh-spacing*2.5 $boushh-spacing 0);
   }
 
   &.filter-wrapper > .fieldset-wrapper > .form-item{
@@ -179,14 +215,7 @@ fieldset:not(.vertical-tabs-pane){
 
 .asset-browser{
 
-  .view-content{
-    @include boushh-outset();
-    padding:rem-calc($boushh-spacing);
-    margin:0;
-  }
-
   .views-exposed-form{
-    @include boushh-outset();
 
     .views-exposed-widgets{
       border:none;
@@ -209,6 +238,22 @@ fieldset:not(.vertical-tabs-pane){
     }
   }
 
+}
+
+.fieldset-wrapper{
+
+  .asset-browser{
+
+    .view-content{
+      @include boushh-outset();
+      padding:rem-calc($boushh-spacing);
+      margin:0;
+    }
+
+    .views-exposed-form{
+      @include boushh-outset();
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -246,12 +291,17 @@ fieldset:not(.vertical-tabs-pane){
 
 .view-filters{
   margin-bottom:rem-calc($boushh-spacing);
+
+  > form{
+    margin:0;
+  }
 }
 
 .views-exposed-form{
   border:none;
   @include boushh-inset();
   padding:rem-calc($boushh-spacing);
+  margin:0;
 
   .views-exposed-widgets{
     margin:0;
@@ -323,6 +373,13 @@ button:not(.ui-button), button.button, a.button,
   &.tiny{
     font-size:rem-calc(11);
     padding:rem-calc(5 6);
+    font-weight:300;
+    text-transform: uppercase;
+  }
+
+  &.small{
+    font-size:rem-calc(12);
+    padding:rem-calc(9 10);
     font-weight:300;
     text-transform: uppercase;
   }

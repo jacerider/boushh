@@ -7,8 +7,9 @@
 form{
   @include boushh-outset();
   @include box-shadow(none);
-  padding: rem-calc($boushh-spacing $boushh-spacing 0);
-  border:2px solid #DDDDDD;
+  padding: rem-calc($boushh-spacing $boushh-spacing .1);
+  margin: rem-calc(0 0 $boushh-spacing);
+  // border:2px solid #DDDDDD;
   color: color(80%);
   position: relative;
 
@@ -63,8 +64,30 @@ form{
     color: $boushh-secondary;
   }
 
-  .image-widget-data{
-    float:none;
+  .image-widget{
+
+    .image-preview{
+
+      img{
+        border:4px solid darken($boushh-bg-alt, 5%);
+      }
+    }
+
+    .image-widget-data{
+      float:none;
+      // display:inline-block;
+      // width:100%;
+
+      > .form-item{
+        @include boushh-reset();
+        padding:rem-calc($boushh-spacing 0 0);
+        margin:0;
+      }
+    }
+  }
+
+  .fieldset-wrapper > .form-wrapper > div > div > .form-item .image-widget-data{
+    float:left;
   }
 
   .form-item-data-icon{
@@ -438,6 +461,10 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   }
 }
 
+.exo-placeholder{
+  @include boushh-outset();
+}
+
 textarea.form-textarea{
   padding:rem-calc(5 $boushh-spacing);
   line-height:rem-calc(22);
@@ -654,6 +681,7 @@ span.postfix, label.postfix{
 
   .description{
     display:block;
+    white-space: normal;
   }
 
   label.option{
@@ -699,6 +727,43 @@ span.postfix, label.postfix{
   @include boushh-inset();
   padding:rem-calc($boushh-spacing);
   margin: rem-calc(0 0 $boushh-spacing);
+}
+
+div.explode > div.form-item.form-type-checkbox,
+div.explode > div.form-item.form-type-radio{
+  display:inline-block;
+  padding:0 !important;
+
+  label.option{
+    // @include boushh-inset();
+    background:darken($boushh-bg-alt, 5%);
+    font-weight:500;
+    display:block;
+    padding:rem-calc(10);
+    line-height:rem-calc(22);
+    height:rem-calc(20);
+    @include box-sizing(content-box);
+
+    i{
+      font-size:rem-calc(20);
+    }
+
+    &:before {
+      display:none;
+    }
+  }
+
+  input[type=checkbox],
+  input[type=radio] {
+    // visibility:hidden;
+    // display:none;
+
+    &:checked + label {
+      @include boushh-reset();
+      background: $boushh-primary;
+      color: #fff;
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
