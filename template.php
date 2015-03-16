@@ -181,6 +181,10 @@ function boushh_preprocess_page(&$vars) {
 
   $vars['ops'] = array();
   $bar = NULL;
+
+  // Other modules can add action links on any request.
+  $vars['action_links'] = array_merge($vars['action_links'], boushh_action_links_add());
+
   if(!empty($vars['action_links'])){
     $items = $vars['action_links'];
     foreach($items as &$item){
@@ -226,21 +230,29 @@ function boushh_preprocess_page(&$vars) {
 
     $vars['ops']['#prefix'] = '<nav class="ops-bar" data-topbar>';
     $vars['ops']['#suffix'] = '</nav>';
-    // $items = array();
-    // $items[] = array('data' => '<a href="#"><span>Menu</span></a>', 'class' => array('toggle-topbar','menu-icon'));
-    // // dsm($items);
-    // // $items = array();
-    // $vars['ops']['title'] = array(
-    //   '#theme' => 'item_list',
-    //   '#items' => $items,
-    //   '#attributes' => array('class' => array('title-area')),
-    // );
 
     $vars['ops']['title']['#markup'] = '<ul class="title-area"><li class="name"><h1></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span>Actions</span></a></li></ul>';
 
     $vars['ops']['bar']['#prefix'] = '<section class="ops-bar-section">';
     $vars['ops']['bar']['#suffix'] = '</section>';
     $vars['ops']['bar'] += $bar;
+  }
+}
+
+/**
+ * Add an action link to a request.
+ */
+function boushh_action_links_add($link = NULL){
+  $links = &drupal_static(__FUNCTION__);
+  if($link){
+    $return = array(
+      '#theme' => 'menu_local_action',
+      '#link' => $link
+    );
+    $links[] = $return;
+  }
+  else{
+    return $links ? $links : array();
   }
 }
 
