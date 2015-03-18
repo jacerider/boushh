@@ -26,7 +26,7 @@ function boushh_sonar_var_alter(&$vars){
  */
 function boushh_fett_icons_alter(&$icons){
   $icons['add'] = 'plus';
-  $icons['apply'] = 'save';
+  $icons['apply'] = 'check';
   $icons['preview'] = 'eye';
   $icons['save'] = 'save';
   $icons['cancel'] = 'undo';

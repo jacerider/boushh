@@ -8,7 +8,7 @@ form,
 table{
 
   a{
-    color:$boushh-primary;
+    color:lighten($boushh-primary, 5%);
 
     &:hover{
       color:lighten($boushh-primary, 20%);
@@ -17,11 +17,34 @@ table{
 
   h1,h2,h3{
     color:color(80%);
+
+    small{
+      color:color(50%);
+
+      em{
+        color:color(40%);
+      }
+    }
+
+    em{
+      font-weight:100;
+      font-style:normal;
+    }
+  }
+
+  h1{
+
   }
 
   h2{
     margin:0;
     padding:0;
+  }
+
+  small{
+    font-size:80%;
+    font-weight:100;
+    letter-spacing:rem-calc(1);
   }
 
   label,
@@ -54,7 +77,8 @@ table{
 
   .description{
     color:$boushh-primary;
-    font-size:rem-calc(12);
+    font-size:rem-calc(12.5);
+    letter-spacing:rem-calc(.5);
     line-height:rem-calc(16);
     font-weight:200;
     padding:rem-calc($boushh-spacing*.5 0 0);
@@ -67,12 +91,6 @@ table{
 
   .alert-box{
     margin:rem-calc(0 0 $boushh-spacing);
-
-    &.warning{
-      background: $boushh-warning;
-      border-color: darken($boushh-warning, 5%);
-      text-shadow:0 1px 0 darken($boushh-warning, 5%);
-    }
   }
 
   .warning{
@@ -122,12 +140,6 @@ table{
 
   button.tiny:not(.ui-button){
     @include boushh-button();
-
-    // &.tiny{
-    //   font-size:rem-calc(12);
-    //   padding:rem-calc(5 6);
-    //   font-weight:300;
-    // }
   }
 }
 
@@ -146,8 +158,8 @@ fieldset:not(.vertical-tabs-pane){
   > .fieldset-wrapper > fieldset > .fieldset-wrapper  > fieldset > .fieldset-wrapper > .form-item{
   // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > div > .form-wrapper > .fieldset-wrapper > div > fieldset{
     @include boushh-outset();
-    padding:rem-calc($boushh-spacing);
-    margin: rem-calc(0 0 $boushh-spacing);
+    // padding:rem-calc($boushh-spacing);
+    // margin: rem-calc(0 0 $boushh-spacing);
   }
 
   // &.vertical-tabs-pane > .fieldset-wrapper > .form-wrapper > .form-item,
@@ -156,11 +168,12 @@ fieldset:not(.vertical-tabs-pane){
   > .fieldset-wrapper > fieldset > .fieldset-wrapper > .form-item,
   > .fieldset-wrapper > .form-wrapper > .form-wrapper > .fieldset-wrapper > .form-item,
   > .fieldset-wrapper > .form-wrapper > .form-wrapper > .fieldset-wrapper > .form-wrapper,
-  > .fieldset-wrapper > .form-wrapper > .form-item > .form-checkboxes > .form-item,
+  > .fieldset-wrapper > .form-wrapper > .form-item > .form-checkboxes,
+  > .fieldset-wrapper > .form-item > .form-checkboxes,
   > .fieldset-wrapper > .form-wrapper > .fieldset-wrapper > .form-wrapper > .form-item{
     @include boushh-inset();
-    padding:rem-calc($boushh-spacing);
-    margin: rem-calc(0 0 $boushh-spacing);
+    // padding:rem-calc($boushh-spacing);
+    // margin: rem-calc(0 0 $boushh-spacing);
   }
 
   > .fieldset-wrapper > .form-item > .form-wrapper > .form-item{
@@ -183,10 +196,15 @@ fieldset:not(.vertical-tabs-pane){
     padding:rem-calc($boushh-spacing*2.5 $boushh-spacing 0);
   }
 
+  > .fieldset-wrapper > .form-item > div.form-checkboxes > .form-item,
   &.filter-wrapper > .fieldset-wrapper > .form-item{
     @include boushh-reset();
     padding:0;
     margin:0;
+  }
+
+  > .fieldset-wrapper *:last-child{
+    margin-bottom:0;
   }
 }
 
@@ -309,7 +327,8 @@ fieldset:not(.vertical-tabs-pane){
     &:before{
       color:rgba(color(70%), .3);
       font-family: "FontAwesome";
-      font-size:rem-calc(70);
+      font-size:rem-calc(78);
+      line-height:rem-calc(78);
       content: "\f002";
       float:left;
       padding-right:rem-calc($boushh-spacing);
@@ -336,6 +355,10 @@ fieldset:not(.vertical-tabs-pane){
   .views-submit-button,
   .views-reset-button{
     padding:rem-calc($boushh-spacing 0 0);
+
+    button{
+      margin:0;
+    }
 
     button.tiny{
       @include boushh-button();
@@ -389,7 +412,7 @@ button:not(.ui-button), button.button, a.button,
     text-shadow:0 1px 0 darken(#8b99a4, 10%);
     border-top:1px solid #abbccc;
     font-weight:400;
-    @include box-shadow(none);
+    box-shadow: none;
 
     &:hover,
     &:active,
@@ -399,7 +422,8 @@ button:not(.ui-button), button.button, a.button,
     }
   }
 
-  &.alert{
+  &.alert,
+  &.error{
     background:$boushh-error;
     text-shadow:0 1px 0 darken($boushh-error, 10%);
     border-top:1px solid lighten($boushh-error, 10%);
@@ -411,11 +435,24 @@ button:not(.ui-button), button.button, a.button,
     }
   }
 
+  &.warning{
+    background:$boushh-warning;
+    text-shadow:0 1px 0 darken($boushh-warning, 10%);
+    border-top:1px solid lighten($boushh-warning, 10%);
+    color:#fff;
+
+    &:hover,
+    &:active,
+    &:focus{
+      background:lighten($boushh-warning, 15%);
+    }
+  }
+
   &.text{
     background:none;
     border:none;
     text-shadow:none;
-    @include box-shadow(none);
+    box-shadow: none;
     color:color(50) !important;
     padding-left:rem-calc($boushh-spacing/2);
     padding-right:rem-calc($boushh-spacing/2);
@@ -434,7 +471,7 @@ button:not(.ui-button), button.button, a.button,
     color:color(70%);
     line-height:rem-calc(12);
     font-weight:300;
-    @include box-shadow(none);
+    box-shadow: none;
 
     &:hover,
     &:active,

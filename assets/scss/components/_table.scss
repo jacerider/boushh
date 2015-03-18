@@ -50,7 +50,7 @@ table{
 
   img{
     border:4px solid darken($boushh-bg-alt, 5%);
-    @include box-shadow(none);
+    box-shadow: none;
 
     &.file-icon{
       border:none;
@@ -68,7 +68,7 @@ table{
         font-size:rem-calc(11);
         color:color(60%);
         text-transform: uppercase;
-        padding:rem-calc($boushh-spacing*.5);
+        padding:rem-calc($boushh-spacing*.5 $boushh-spacing);
 
         a{
           img{
@@ -163,7 +163,7 @@ table{
 
       &:hover{
         background:$boushh-bg;
-        @include box-shadow(inset 0 0 4px 0px $boushh-primary);
+        box-shadow: inset 0 0 4px 0px $boushh-primary;
       }
     }
 
@@ -176,7 +176,7 @@ table{
 
       &:hover{
         background:darken($boushh-bg, 3%);
-        @include box-shadow(inset 0 0 4px 0px $boushh-primary);
+        box-shadow: inset 0 0 4px 0px $boushh-primary;
       }
     }
 

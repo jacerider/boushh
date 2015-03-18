@@ -29,7 +29,7 @@ body{
 ////////////////////////////////////////////////////////////////////////////////
 
 .tooltip{
-  @include box-shadow(0 0 6px rgba(#000,.15));
+  box-shadow: 0 0 6px rgba(#000,.15);
 }
 
 /**
@@ -57,6 +57,22 @@ body{
     &:hover{
       outline: none;
     }
+  }
+
+  .text-success{
+    color: $boushh-success;
+  }
+
+  .text-error{
+    color: $boushh-error;
+  }
+
+  .text-warning{
+    color: $boushh-warning;
+  }
+
+  .text-info{
+    color: $boushh-info;
   }
 }
 

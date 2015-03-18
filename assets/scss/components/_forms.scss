@@ -6,7 +6,7 @@
 
 form{
   @include boushh-outset();
-  @include box-shadow(none);
+  box-shadow: none;
   padding: rem-calc($boushh-spacing $boushh-spacing .1);
   margin: rem-calc(0 0 $boushh-spacing);
   // border:2px solid #DDDDDD;
@@ -240,6 +240,8 @@ fieldset{
   }
 
   &.collapsible{
+    min-height:rem-calc($boushh-spacing*3);
+
     > legend{
       .fieldset-legend{
         background:none;
@@ -291,7 +293,7 @@ fieldset{
 
   &.form-type-radio{
     background:none !important;
-    @include box-shadow(none !important);
+    box-shadow: none !important;
     padding:rem-calc(2 0) !important;
     margin:0 !important;
   }
@@ -324,13 +326,13 @@ div.vertical-tabs{
     > li{
       border:none;
       background:none;
-      @include box-shadow(none);
+      box-shadow: none;
       @include transition(background 500ms);
 
       &:hover{
         // @include background(linear-gradient(to right, darken($boushh-bg-alt, 6%), rgba($boushh-bg-alt, 0)));
         background: $boushh-bg-alt;
-        @include box-shadow(none);
+        box-shadow: none;
       }
 
       a{
@@ -422,7 +424,7 @@ table.ief-entity-table{
   tr.ief-row-form{
 
     &:hover{
-      @include box-shadow(none);
+      box-shadow: none;
     }
 
     > td{
@@ -457,7 +459,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   &:focus{
     background:darken($boushh-bg-alt, 5%);
     border-color:$boushh-primary;
-    @include box-shadow(0 0 5px $boushh-primary);
+    box-shadow: 0 0 5px $boushh-primary;
   }
 }
 
@@ -661,6 +663,20 @@ span.postfix, label.postfix{
 // Checkboxes & Radios
 ////////////////////////////////////////////////////////////////////////////////
 
+.form-checkboxes{
+  @include boushh-inset();
+  padding:rem-calc($boushh-spacing);
+  margin:rem-calc(0 0 $boushh-spacing);
+
+  .form-item.form-type-checkbox{
+    @include boushh-reset();
+  }
+}
+
+.fieldset-wrapper .form-checkboxes{
+  @include boushh-outset();
+}
+
 .form-item.form-type-checkbox,
 .form-item.form-type-radio {
   // text-indent: rem-calc(25);
@@ -682,6 +698,7 @@ span.postfix, label.postfix{
   .description{
     display:block;
     white-space: normal;
+    padding-top:0;
   }
 
   label.option{
