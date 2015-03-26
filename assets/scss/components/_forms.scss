@@ -8,7 +8,7 @@ form{
   @include boushh-outset();
   box-shadow: none;
   padding: rem-calc($boushh-spacing $boushh-spacing .1);
-  margin: rem-calc(0 0 $boushh-spacing);
+  margin: rem-calc(0);
   // border:2px solid #DDDDDD;
   color: color(80%);
   position: relative;
@@ -133,6 +133,8 @@ form{
 
   code{
     color:$secondary-color;
+    background:color(5%);
+    border:color(10%);
   }
 
   .admin-requirements{
@@ -666,7 +668,7 @@ span.postfix, label.postfix{
 .form-checkboxes{
   @include boushh-inset();
   padding:rem-calc($boushh-spacing);
-  margin:rem-calc(0 0 $boushh-spacing);
+  margin:0;
 
   .form-item.form-type-checkbox{
     @include boushh-reset();
@@ -688,10 +690,10 @@ span.postfix, label.postfix{
   @include box-sizing(content-box);
 
   // Hack to make sure checkbox is shown if it doesn't have a label.
-  *:first-child{
+  > *:first-child{
     display:none;
   }
-  *:last-child{
+  > *:last-child{
     display:inline;
   }
 

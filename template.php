@@ -101,6 +101,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['clean urls'] = 'random';
   $icons['^save'] = array('icon' => 'save', 'class' => array('primary'));
   $icons['^edit'] = array('icon' => 'edit', 'class' => array('primary'));
+  $icons['^view'] = array('icon' => 'eye', 'class' => array('primary'));
   $icons['^list'] = array('icon' => 'list', 'class' => array('primary'));
   $icons['^manage'] = array('icon' => 'list', 'class' => array('primary'));
   $icons['^add'] = array('icon' => 'plus', 'class' => array('primary'));
@@ -673,7 +674,7 @@ function boushh_node_add_list($vars) {
   $output = '';
 
   if ($content) {
-    $output = '<ul class="node-type-list small-block-grid-2 medium-block-grid-5 large-block-grid-8" data-equalizer data-options="equalize_on_stack: true">';
+    $output = '<ul class="node-type-list small-block-grid-2 medium-block-grid-5 large-block-grid-8" data-equalizer>';
     foreach ($content as $item) {
       $output .= '<li>';
       // $output .= '<div class="panel">';
@@ -732,7 +733,7 @@ function boushh_admin_block_content($vars) {
     if ($compact = system_admin_compact_mode()) {
       $class .= ' compact';
     }
-    $output .= '<ul class="'.$class.'" data-equalizer data-options="equalize_on_stack: true">';
+    $output .= '<ul class="'.$class.'" data-equalizer>';
     foreach ($content as $item) {
       $output .= '<li>';
       // $output .= '<div class="panel">';
@@ -794,6 +795,44 @@ function boushh_admin_page($vars) {
     $output .= '</div>';
   }
   $output .= '</div>';
+  return $output;
+}
+
+/**
+ * Returns HTML for an administrative block for display.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - block: An array containing information about the block:
+ *     - show: A Boolean whether to output the block. Defaults to FALSE.
+ *     - title: The block's title.
+ *     - content: (optional) Formatted content for the block.
+ *     - description: (optional) Description of the block. Only output if
+ *       'content' is not set.
+ *
+ * @ingroup themeable
+ */
+function boushh_admin_block($variables) {
+  $block = $variables['block'];
+  $output = '';
+
+  // Don't display the block if it has no content to display.
+  if (empty($block['show'])) {
+    return $output;
+  }
+
+  $output .= '<div class="admin-panel row">';
+  if (!empty($block['title'])) {
+    $output .= '<h3 class="columns large-12">' . $block['title'] . '</h3>';
+  }
+  if (!empty($block['content'])) {
+    $output .= '<div class="columns large-12">' . $block['content'] . '</div>';
+  }
+  else {
+    $output .= '<div class="columns large-12">' . $block['description'] . '</div>';
+  }
+  $output .= '</div>';
+
   return $output;
 }
 

@@ -30,6 +30,26 @@ h1.unit-title{
   font-weight:100;
 }
 
+.view-key{
+  font-size:rem-calc(12);
+  color: color-dark(30%);
+  text-transform: uppercase;
+
+  .view-key-label{
+    color: color-dark(45%);
+  }
+}
+
+ul.view-key{
+  text-align: right;
+  list-style-type: none;
+
+  li{
+    display:inline-block;
+    margin:rem-calc(0 0 0 10);
+  }
+}
+
 .views-displays{
   @include boushh-inset();
   padding:rem-calc($boushh-spacing $boushh-spacing 1px);

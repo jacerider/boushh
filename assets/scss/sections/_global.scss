@@ -100,12 +100,19 @@ body{
     }
 
     em{
-      font-weight:400;
+      font-weight:300;
       font-style: normal;
     }
 
     i{
       font-weight:normal;
+    }
+
+    i:not(.fa){
+      color:color(35%);
+      // font-style: normal;
+      font-weight:300;
+      text-transform: lowercase;
     }
   }
 }
@@ -121,7 +128,12 @@ body{
 
 .breadcrumbs{
   margin:rem-calc(10 0 0);
+  padding:rem-calc(7 12);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+
+  > *{
+    line-height:rem-calc(16);
+  }
 }
 
 .action-links{
@@ -135,7 +147,12 @@ body{
 }
 
 .row .admin-page{
-  margin:rem-calc(0 0 -20);
+  margin:rem-calc(0 -10 0);
+
+  .admin-panel{
+    padding:0;
+    // margin:rem-calc(0 -10);
+  }
 }
 
 .node-type-list,
@@ -159,6 +176,7 @@ body{
     display:block;
     @include transition(all 0.2s ease-in-out 0s);
     overflow:hidden;
+    min-height:rem-calc(100);
 
     &:hover{
       background:#fff;
