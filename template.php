@@ -162,7 +162,7 @@ function boushh_preprocess_html(&$vars) {
   $vars['classes_array'][] = 'boushh';
 
   // Add Open Sans
-  drupal_add_css('@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,300italic,400italic,600italic,700italic,800italic);',$option['type'] = 'inline');
+  drupal_add_css('@import url(//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,300italic,400italic,600italic,700italic,800italic);',$option['type'] = 'inline');
 }
 
 
