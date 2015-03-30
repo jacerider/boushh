@@ -84,9 +84,17 @@ table{
     padding:rem-calc($boushh-spacing*.25 0 0);
     text-shadow: 0 1px 0 color-alt(5%);
 
+    code{
+      border:none;
+    }
+
     a{
       font-weight:600;
     }
+  }
+
+  .inline-list{
+    margin:0;
   }
 
   .alert-box{
@@ -106,7 +114,7 @@ table{
   margin:rem-calc(0 0 $boushh-spacing);
 
   &.field-label-above{
-    div:first-child{
+    > div:first-child{
       text-transform: uppercase;
       color: color(20%);
       font-weight: 600;
@@ -114,12 +122,18 @@ table{
       font-size:rem-calc(13);
     }
 
-    div.field-items{
-      border-left:2px solid color(50%);
-      padding-left:rem-calc(5);
-    }
+    // div.field-items{
+    //   border-left:2px solid color(50%);
+    //   padding-left:rem-calc(5);
+    // }
   }
 
+}
+
+.content{
+  > .field:last-child{
+    margin-bottom:0;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -197,10 +211,6 @@ fieldset:not(.vertical-tabs-pane){
     @include boushh-reset();
     padding:0;
     margin:0;
-  }
-
-  > .fieldset-wrapper *:last-child{
-    margin-bottom:0;
   }
 }
 

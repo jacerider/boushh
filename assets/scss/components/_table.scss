@@ -4,6 +4,15 @@
 // Table
 ////////////////////////////////////////////////////////////////////////////////
 
+.table-wrapper{
+  border-color:$primary-color;
+
+  .pinned{
+    background:$primary-color;
+    border-color:$primary-color;
+  }
+}
+
 table{
   @include boushh-outset();
   width:100%;
@@ -15,6 +24,10 @@ table{
 
   &.sticky-header{
     z-index:10;
+  }
+
+  &.views-table{
+    margin-bottom:0;
   }
 
   div.indentation{
