@@ -8,11 +8,8 @@ form{
   @include boushh-outset();
   box-shadow: none;
   padding: rem-calc($boushh-spacing $boushh-spacing .1);
-<<<<<<< HEAD
   // margin: rem-calc(0 0 $boushh-spacing);
-=======
   margin: rem-calc(0);
->>>>>>> 2aab31b604c33374a607d19e62b6256414db8bb7
   // border:2px solid #DDDDDD;
   color: color(80%);
   position: relative;
