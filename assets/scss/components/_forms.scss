@@ -8,7 +8,7 @@ form{
   @include boushh-outset();
   box-shadow: none;
   padding: rem-calc($boushh-spacing $boushh-spacing .1);
-  margin: rem-calc(0 0 $boushh-spacing);
+  // margin: rem-calc(0 0 $boushh-spacing);
   // border:2px solid #DDDDDD;
   color: color(80%);
   position: relative;
@@ -133,6 +133,11 @@ form{
 
   code{
     color:$secondary-color;
+  }
+
+  p{
+    color:color(60%);
+    font-size:rem-calc(14);
   }
 
   .admin-requirements{
@@ -575,6 +580,12 @@ fieldset:not(.vertical-tabs-pane) .fieldset-wrapper .addressfield-container-inli
   }
 }
 
+.field-type-addressfield{
+  .street-block{
+    margin-bottom:rem-calc($boushh-spacing);
+  }
+}
+
 span.prefix, label.prefix,
 span.postfix, label.postfix{
   background:darken($boushh-bg-alt, 5%);
@@ -903,3 +914,10 @@ div.explode > div.form-item.form-type-radio{
 }
 
 } // End .page
+
+html.js form input.form-autocomplete{
+  background-image:none;
+  &:focus{
+    background-position: 100% 11px;
+  }
+}

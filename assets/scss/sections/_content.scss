@@ -76,12 +76,12 @@ table{
   }
 
   .description{
-    color:$boushh-primary;
+    color:color(40%);
     font-size:rem-calc(12.5);
     letter-spacing:rem-calc(.5);
     line-height:rem-calc(16);
     font-weight:200;
-    padding:rem-calc($boushh-spacing*.5 0 0);
+    padding:rem-calc($boushh-spacing*.25 0 0);
     text-shadow: 0 1px 0 color-alt(5%);
 
     a{
@@ -91,10 +91,6 @@ table{
 
   .alert-box{
     margin:rem-calc(0 0 $boushh-spacing);
-  }
-
-  .warning{
-    color:darken($boushh-warning, 20%);
   }
 
   .ajax-progress-throbber{

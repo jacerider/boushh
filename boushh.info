@@ -43,6 +43,7 @@ stylesheets[all][] = assets/scss/components/_views.scss
 stylesheets[all][] = assets/scss/components/_rules.scss
 stylesheets[all][] = assets/scss/components/_tfa.scss
 stylesheets[all][] = assets/scss/components/_context.scss
+stylesheets[all][] = assets/scss/components/_masquerade.scss
 stylesheets[all][] = assets/scss/components/_ctools.scss
 stylesheets[all][] = assets/scss/components/_ops-bar.scss
 stylesheets[all][] = assets/scss/components/_module-filter.scss
