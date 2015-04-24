@@ -521,6 +521,78 @@ fieldset:not(.vertical-tabs-pane) .fieldset-wrapper .addressfield-container-inli
   }
 }
 
+.form-type-phone-number{
+  position: relative;
+
+  .form-phone-number{
+
+    > * {
+    }
+
+    input[type=hidden]{
+      display:none;
+    }
+
+    .form-type-textfield{
+      @include boushh-reset();
+      padding:0;
+      margin:0;
+      width:50%;
+      display:inline-block;
+
+      &:last-child{
+        position:absolute;
+        top:rem-calc($boushh-spacing - 2);
+        right:rem-calc($boushh-spacing);
+        padding-left:rem-calc($boushh-spacing * 2);
+
+        label{
+          margin-left:0;
+        }
+      }
+    }
+  }
+}
+
+.field-type-link-field{
+  @include boushh-reset();
+  padding:0;
+  margin:0;
+
+  > div > .form-item{
+    padding:rem-calc($boushh-spacing);
+  }
+
+  .row{
+    @include boushh-inset();
+    padding:rem-calc($boushh-spacing);
+  }
+
+  .link-field-column{
+    width:50%;
+    padding-right:$column-gutter;
+
+    .form-item{
+      float:none;
+    }
+
+    .form-text{
+      width:100%;
+    }
+  }
+
+  .field-suffix{
+    margin-top:rem-calc($boushh-spacing);
+    border:none;
+    background:none;
+
+    a{
+      width:100%;
+      margin:0;
+    }
+  }
+}
+
 .form-type-password-confirm{
   @include clearfix();
 
