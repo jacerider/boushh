@@ -610,6 +610,11 @@ function boushh_form_element($vars) {
   // $prefix = isset($element['#field_prefix']) ? '<span class="field-prefix">' . $element['#field_prefix'] . '</span> ' : '';
   // $suffix = isset($element['#field_suffix']) ? ' <span class="field-suffix">' . $element['#field_suffix'] . '</span>' : '';
 
+
+  if($element['#type'] == 'select'){
+    $attributes['id'] = $element['#id'] . '-wrapper';
+  }
+
   $prefix = '';
   $suffix = '';
   if((!empty($element['#field_prefix']) && strip_tags($element['#field_prefix'])) || (!empty($element['#field_suffix']) && strip_tags($element['#field_suffix']))){
@@ -950,7 +955,6 @@ function boushh_class_exists(&$attributes, $class = array()){  // Check for attr
   if (!empty($attributes['class'])) {
     $attributes['class'] = is_array($attributes['class']) ? $attributes['class'] : array($attributes['class']);
     foreach($attributes['class'] as $key => $c) {
-      // dsm($class);
       $class = !is_array($class) ? array($class) : $class;
       foreach($class as $cc){
         if(preg_match('/'.preg_quote($cc).'/i', $c)){
