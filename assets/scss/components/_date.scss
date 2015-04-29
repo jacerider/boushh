@@ -1,0 +1,40 @@
+.page{
+
+////////////////////////////////////////////////////////////////////////////////
+// Date
+////////////////////////////////////////////////////////////////////////////////
+
+.field-widget-date-popup{
+
+  .date-float{
+    float:none;
+  }
+
+  .container-inline-date .date-padding{
+    float:none;
+    padding:0;
+  }
+
+  .container-inline-date .form-item .form-item{
+    float:none;
+    display:inline-block;
+    margin:0;
+  }
+
+  // .form-type-checkbox{
+  //   background:transparent !important;
+  //   box-shadow:none !important;
+  //   margin-bottom:rem-calc($boushh-spacing);
+  // }
+
+  .date-repeat-input{
+    float:none;
+
+    // > .form-item{
+    //   @include boushh-inset();
+    // }
+
+  }
+}
+
+}
