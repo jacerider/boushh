@@ -6,8 +6,50 @@
 
 .field-widget-date-popup{
 
-  .date-float{
+  .fieldset-description{
+    margin:0;
+  }
+
+  // Ugly resets.  :(
+  .date-float .form-item,
+  .date-clear .form-item,
+  .date-clear .form-checkboxes,
+  .date-repeat-input .form-item,
+  .form-type-checkbox,
+  .date-repeat .container-inline-date > .form-item {
+    background:none !important;
+    box-shadow:none !important;
+    padding:0;
+    margin:0;
+  }
+
+  .form-type-checkbox{
+    margin-bottom:rem-calc($boushh-spacing);
+  }
+
+  .date-clear .form-checkboxes .form-item,{
+    padding-right:rem-calc($boushh-spacing);
+  }
+
+  .date-float,
+  .date-clear{
     float:none;
+
+    .form-item{
+      margin-bottom:rem-calc(10);
+    }
+  }
+
+  .container-inline{
+    > * {
+      float:none;
+    }
+
+    input{
+      width:auto;
+      display:inline-block;
+      margin:0px 0.5em;
+    }
   }
 
   .container-inline-date .date-padding{
@@ -21,19 +63,127 @@
     margin:0;
   }
 
-  // .form-type-checkbox{
-  //   background:transparent !important;
-  //   box-shadow:none !important;
-  //   margin-bottom:rem-calc($boushh-spacing);
-  // }
-
   .date-repeat-input{
     float:none;
+  }
 
-    // > .form-item{
-    //   @include boushh-inset();
-    // }
+  .date-repeat-input{
+    margin-bottom:rem-calc($boushh-spacing);
+  }
 
+  .weekly,
+  .weekly .date-clear{
+    margin-bottom:rem-calc($boushh-spacing);
+  }
+
+  .daily,
+  .weekly,
+  .monthly,
+  .yearly{
+    > div{
+      @include boushh-inset();
+      padding:rem-calc($boushh-spacing);
+    }
+  }
+
+  .weekly{
+    .form-type-checkbox{
+      margin-bottom:0;
+      display:inline-block;
+    }
+  }
+
+  .monthly,
+  .yearly{
+
+    .date-repeat-radios-item{
+      margin:0;
+    }
+
+    .form-radios{
+      margin:0;
+    }
+
+    .bymonthday-bymonth,
+    .byday-bymonth{
+      position:relative;
+
+      .form-radio{
+        position:absolute;
+        top:0;
+        left:0;
+        margin:rem-calc(5 0 0);
+      }
+
+      .form-wrapper{
+        float:none;
+        margin-left:rem-calc(30);
+        margin-bottom:0;
+      }
+
+      .form-type-checkbox{
+        display:inline-block;
+        width:auto;
+      }
+
+      .byday-count{
+        vertical-align: bottom;
+        display:inline-block;
+        width:40%;
+        margin-bottom:0;
+      }
+
+      .byday-day{
+        display:inline-block;
+        width:40%;
+        vertical-align: bottom;
+        margin-bottom:0;
+
+        label{
+          vertical-align: middle;
+        }
+
+        .boushh-select-wrapper{
+          display:inline-block;
+          width:auto;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .range-of-repeat{
+    .container-inline{
+      vertical-align: middle;
+
+      > * {
+        float:none;
+      }
+    }
+
+    .form-text{
+      display:inline;
+      width:auto;
+      float:none;
+    }
+
+    .form-radio{
+      margin-right:rem-calc(10) !important;
+      vertical-align: middle;
+    }
+
+    label,
+    .description{
+      display:none;
+    }
+  }
+
+  .date-repeat .container-inline-date{
+
+    .form-item{
+      float:none;
+      display:block;
+    }
   }
 }
 
