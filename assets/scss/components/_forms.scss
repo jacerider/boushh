@@ -876,8 +876,9 @@ div.explode > div.form-item.form-type-radio{
 .boushh-select-wrapper {
   display: block;
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
   height:rem-calc($boushh-spacing*3);
+  min-width:rem-calc($boushh-spacing*15);
   width:100%;
   background: darken($boushh-bg-alt, 5%);
   border: 1px solid;
@@ -908,7 +909,7 @@ div.explode > div.form-item.form-type-radio{
   }
 }
 
-.boushh-select {
+select.boushh-select {
   position: relative;
   width: 100%;
   margin: 0;
@@ -951,13 +952,14 @@ div.explode > div.form-item.form-type-radio{
 
 .boushh-select-multiple{
   height:auto;
+  min-height:rem-calc($boushh-spacing*3);
 
   &:before,
   &:after{
     display:none;
   }
 
-  .boushh-select{
+  select.boushh-select{
     height:auto;
     min-height:rem-calc(160);
 

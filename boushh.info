@@ -48,6 +48,8 @@ stylesheets[all][] = assets/scss/components/_masquerade.scss
 stylesheets[all][] = assets/scss/components/_ctools.scss
 stylesheets[all][] = assets/scss/components/_office-hours.scss
 stylesheets[all][] = assets/scss/components/_ops-bar.scss
+stylesheets[all][] = assets/scss/components/_chosen.scss
+stylesheets[all][] = assets/scss/components/_features.scss
 stylesheets[all][] = assets/scss/components/_module-filter.scss
 
 ; Sections

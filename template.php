@@ -83,6 +83,7 @@ function boushh_fett_icons_alter(&$icons){
   $icons['entities'] = 'cubes';
   $icons['published'] = 'circle';
   $icons['unpublished'] = 'circle-o';
+  $icons['repeats'] = 'clock-o';
   // $icons['asset instances'] = 'rebel';
   $icons['asset types'] = 'cubes';
   $icons['ip address blocking'] = 'ban';
