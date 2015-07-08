@@ -59,7 +59,7 @@ stylesheets[all][] = assets/scss/sections/_content.scss
 
 ;-------------- S C R I P T -------------
 ; This file is empty, just uncomment this line and start editing!
-; scripts[] = assets/js/boushh.js
+scripts[] = assets/js/boushh.js
 
 
 ;-------------- S E T T I N G S -------------
