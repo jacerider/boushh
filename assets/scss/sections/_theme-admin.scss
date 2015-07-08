@@ -8,18 +8,8 @@ body{
     color:$boushh-primary;
   }
 
-  #page{
-    background-image: url("/sites/all/themes/boushh/assets/images/themeSettings-bg.jpg") !important;
-  }
-
   #block-system-main{
     margin-top: 98px;
-  }
-
-  &.boushh{
-    .main-content{
-      background-image: url("/sites/all/themes/boushh/assets/images/themeSettings-bg.jpg") !important;
-    }
   }
 }
 
