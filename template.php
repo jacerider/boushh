@@ -1,9 +1,19 @@
 <?php
 
-// jQuery Fix for Views which sets jQuery version to 1.7 for compatability.
-if(strpos($_GET['q'], 'admin/structure/views/') !== FALSE || strpos($_GET['q'], 'admin/config/content/ckeditor/edit') !== FALSE){
-  global $conf;
-  $conf['jquery_update_jquery_admin_version'] = '1.7';
+/**
+ * Implements hook_js_alter().
+ *
+ * Fixes views javascript issues when jquery_udpate is enabled.
+ */
+function boushh_js_alter(&$js){
+  if(module_exists('jquery_update') && strpos($_GET['q'], 'admin/structure/views/') !== FALSE || strpos($_GET['q'], 'admin/config/content/ckeditor/edit') !== FALSE){
+    $path = drupal_get_path('module', 'jquery_update');
+    if(isset($js[$path . '/replace/jquery/1.10/jquery.min.js'])){
+      $js[$path . '/replace/jquery/1.7/jquery.min.js'] = $js[$path . '/replace/jquery/1.10/jquery.min.js'];
+      $js[$path . '/replace/jquery/1.7/jquery.min.js']['data'] = $path . '/replace/jquery/1.7/jquery.min.js';
+      unset($js[$path . '/replace/jquery/1.10/jquery.min.js']);
+    }
+  }
 }
 
 // Load variables on each request to this theme.
@@ -611,8 +621,7 @@ function boushh_form_element($vars) {
   // $prefix = isset($element['#field_prefix']) ? '<span class="field-prefix">' . $element['#field_prefix'] . '</span> ' : '';
   // $suffix = isset($element['#field_suffix']) ? ' <span class="field-suffix">' . $element['#field_suffix'] . '</span>' : '';
 
-
-  if($element['#type'] == 'select'){
+  if(isset($element['#type']) && $element['#type'] == 'select'){
     $attributes['id'] = $element['#id'] . '-wrapper';
   }
 
