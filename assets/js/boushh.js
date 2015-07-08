@@ -1,11 +1,14 @@
 (function ($, Drupal) {
 
+//Change &amp;, &#039; and &quot; to &, ' and " in select list options
+$('select option').each(function() {
+  var text = $(this).text();
+  var replaced = text.replace(/&amp;/g , "&").replace(/&#039;/g , "'").replace(/&quot;/g , '"');
+  $(this).text(replaced);
+});
+
 Drupal.behaviors.boushh = {
   attach: function(context, settings) {
-    $('.form-item, .form-wrapper').addClass(function() {
-      var $parent = $(this.parentNode).closest('fieldset, .fieldset-wrapper, .form-item, .form-wrapper');
-      return $parent.hasClass('boushh-inset') ? 'boushh-outset' : 'boushh-inset';
-    });
   }
 };
 
