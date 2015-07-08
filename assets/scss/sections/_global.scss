@@ -22,6 +22,10 @@ body{
     background:color-dark(3%);
     color:color-dark(80%);
   }
+
+  .top-bar-section li a.active:not(.button){
+    background:$primary-color;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////

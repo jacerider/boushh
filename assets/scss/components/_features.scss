@@ -68,4 +68,8 @@ html.js .page{
       margin-top:rem-calc($boushh-spacing);
     }
   }
+
+  a.admin-update, a.features-storage, span.features-storage, span.features-component-list span{
+    background:$boushh-bg-alt;
+  }
 }
