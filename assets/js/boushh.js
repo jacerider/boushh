@@ -9,6 +9,23 @@ $('select option').each(function() {
 
 Drupal.behaviors.boushh = {
   attach: function(context, settings) {
+    $('.ief-form-wrapper', context).once(function(){
+      var self = this;
+
+      $('.ief-form-actions button', self).on('mousedown', function(){
+        $(self).removeClass('ief-animate');
+      });
+
+      $(self).click(function(e){
+        if($(e.target).hasClass('ief-form-wrapper')){
+          $('.ief-edit-cancel', self).first().trigger('mousedown');
+        }
+      });
+
+      setTimeout(function(){
+        $(self).addClass('ief-animate');
+      });
+    });
   }
 };
 
