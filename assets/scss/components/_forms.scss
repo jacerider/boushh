@@ -409,39 +409,6 @@ div.vertical-tabs{
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Inline Entity Table
-////////////////////////////////////////////////////////////////////////////////
-
-table.ief-entity-table{
-
-  tr.ief-row-entity:not(.draggable){
-    display:none;
-  }
-
-  .ief-form.ief-form-row{
-    border:none;
-    padding:rem-calc($boushh-spacing $boushh-spacing 0);
-
-    .form-item .form-item{
-      @include boushh-reset();
-      padding:rem-calc($boushh-spacing 0 0);
-      margin:0;
-    }
-  }
-
-  tr.ief-row-form{
-
-    &:hover{
-      box-shadow: none;
-    }
-
-    > td{
-      padding:0;
-    }
-  }
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Elements
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -510,17 +477,6 @@ fieldset:not(.vertical-tabs-pane) .fieldset-wrapper .addressfield-container-inli
   }
 }
 
-.field-type-link-field{
-  @include boushh-inset();
-  padding:rem-calc($boushh-spacing);
-
-  .form-item{
-    @include boushh-reset();
-    padding:0;
-    margin:0;
-  }
-}
-
 .form-type-phone-number{
   position: relative;
 
@@ -554,6 +510,17 @@ fieldset:not(.vertical-tabs-pane) .fieldset-wrapper .addressfield-container-inli
   }
 }
 
+// .field-type-link-field{
+//   @include boushh-inset();
+//   padding:rem-calc($boushh-spacing);
+
+//   .form-item{
+//     @include boushh-reset();
+//     padding:0;
+//     margin:0;
+//   }
+// }
+
 .field-type-link-field{
   @include boushh-reset();
   padding:0;
@@ -566,6 +533,12 @@ fieldset:not(.vertical-tabs-pane) .fieldset-wrapper .addressfield-container-inli
   .row{
     @include boushh-inset();
     padding:rem-calc($boushh-spacing);
+  }
+
+  .form-item .form-item{
+    @include boushh-reset();
+    padding:0;
+    margin:0;
   }
 
   .link-field-column{
