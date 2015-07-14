@@ -389,6 +389,10 @@ button:not(.ui-button), button.button, a.button,
     height:rem-calc($boushh-spacing*3);
   }
 
+  &:hover{
+    color:#fff;
+  }
+
   em,
   span{
     color:color(70%);

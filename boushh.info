@@ -51,6 +51,8 @@ stylesheets[all][] = assets/scss/components/_ops-bar.scss
 stylesheets[all][] = assets/scss/components/_chosen.scss
 stylesheets[all][] = assets/scss/components/_features.scss
 stylesheets[all][] = assets/scss/components/_module-filter.scss
+stylesheets[all][] = assets/scss/components/_inline-entity-form.scss
+stylesheets[all][] = assets/scss/components/_manualcrop.scss
 
 ; Sections
 stylesheets[all][] = assets/scss/sections/_global.scss

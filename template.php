@@ -111,6 +111,8 @@ function boushh_fett_icons_alter(&$icons){
   $icons['url redirects'] = 'mail-forward';
   $icons['clean urls'] = 'random';
   $icons['^save'] = array('icon' => 'save', 'class' => array('primary'));
+  $icons['^publish'] = array('icon' => 'check', 'class' => array('primary'));
+  $icons['^unpublish'] = array('icon' => 'times');
   $icons['^edit'] = array('icon' => 'edit', 'class' => array('primary'));
   $icons['^view'] = array('icon' => 'eye', 'class' => array('primary'));
   $icons['^list'] = array('icon' => 'list', 'class' => array('primary'));
@@ -327,7 +329,7 @@ function boushh_menu_local_action__ops($vars) {
 /**
  * Implements theme_menu_local_task().
  */
-function fett_menu_local_task__ops(&$vars) {
+function boushh_menu_local_task__ops(&$vars) {
   $link = $vars['element']['#link'];
   $link['attributes'] = !empty($link['attributes']) ? $link['attributes'] : array();
   if(!empty($vars['element']['#active'])){
@@ -950,6 +952,90 @@ function boushh_fieldset($variables) {
   }
   $output .= '</div>';
   $output .= "</fieldset>\n";
+  return $output;
+}
+
+/**
+ * Implements hook_inline_entity_form_entity_form_alter().
+ */
+function boushh_inline_entity_form_entity_form_alter(&$form, &$form_state){
+  $form['#prefix'] = '<div class="ief-form-wrapper"><div class="ief-form-inner">';
+  if(isset($form['actions']['ief_edit_save']['#value'])){
+    $form['#prefix'] .= '<div class="ief-form-title">'.$form['actions']['ief_edit_save']['#value'].'</div>';
+  }
+  if(isset($form['actions']['ief_add_save']['#value'])){
+    $form['#prefix'] .= '<div class="ief-form-title">'.$form['actions']['ief_add_save']['#value'].'</div>';
+  }
+  if(isset($form['actions']['ief_edit_cancel'])){
+    $form['actions']['ief_edit_cancel']['#attributes']['class'][] = 'ief-edit-cancel';
+  }
+  if(isset($form['actions']['ief_add_cancel'])){
+    $form['actions']['ief_add_cancel']['#attributes']['class'][] = 'ief-edit-cancel';
+  }
+  $form['#suffix'] = '</div></div>';
+  $form['actions']['#attributes']['class'][] = 'ief-form-actions';
+}
+
+
+
+
+/**
+ * Returns HTML for the overlay crop area of an image.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - "attributes": An array of attributes.
+ *   - "image": An array of variables for the image theming function.
+ *
+ * @return
+ *   HTML for the overlay crop tool.
+ *
+ * @ingroup themeable
+ */
+function boushh_manualcrop_croptool_overlay($variables) {
+  $variables['attributes']['class'][] = 'page';
+  $output = '<div ' . drupal_attributes($variables['attributes']) . '>';
+
+  $output .= '<div class="manualcrop-overlay-bg"></div>';
+
+  $output .= '<div class="manualcrop-image-holder">';
+  $output .= theme('image', $variables["image"]);
+  $output .= '</div>';
+
+  if ($variables['crop_info']) {
+    $output .= '<div class="manualcrop-selection-info hidden">';
+    $output .= '<div class="manualcrop-selection-label manualcrop-selection-xy">';
+    $output .= '<div class="manualcrop-selection-label-content">';
+    $output .= '<span class="manualcrop-selection-x">-</span> x <span class="manualcrop-selection-y">-</span>';
+    $output .= '</div>';
+    $output .= '</div>';
+    $output .= '<div class="manualcrop-selection-label manualcrop-selection-width">';
+    $output .= '<div class="manualcrop-selection-label-content">-</div>';
+    $output .= '</div>';
+    $output .= '<div class="manualcrop-selection-label manualcrop-selection-height">';
+    $output .= '<div class="manualcrop-selection-label-content">-</div>';
+    $output .= '</div>';
+    $output .= '</div>';
+  }
+
+  if ($variables['instant_preview']) {
+    $output .= '<div class="manualcrop-instantpreview"></div>';
+  }
+
+  $output .= '<div class="manualcrop-style-info">';
+  $output .= t('Image style') . ': <span class="manualcrop-style-name">&nbsp;</span>';
+  $output .= '</div>';
+
+  $output .= '<div class="manualcrop-buttons">';
+  $output .= '<a class="button tiny secondary manualcrop-cancel" href="javascript:void(0);" onmousedown="ManualCrop.closeCroptool(true);">' . t('Cancel') . '</a>';
+  $output .= '<a class="button tiny secondary manualcrop-maximize" href="javascript:void(0);" onmousedown="ManualCrop.maximizeSelection();">' . t('Maximize selection') . '</a>';
+  $output .= '<a class="button tiny secondary manualcrop-clear" href="javascript:void(0);" onmousedown="ManualCrop.clearSelection();">' . t('Remove selection') . '</a>';
+  $output .= '<a class="button tiny secondary manualcrop-reset" href="javascript:void(0);" onmousedown="ManualCrop.resetSelection();">' . t('Revert selection') . '</a>';
+  $output .= '<a class="button small primary manualcrop-close" href="javascript:void(0);" onmousedown="ManualCrop.closeCroptool();"><i class="fa fa-save"></i> ' . t('Save') . '</a>';
+  $output .= '</div>';
+
+  $output .= '</div>';
+
   return $output;
 }
 

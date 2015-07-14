@@ -1,0 +1,13 @@
+.manualcrop-overlay{
+
+  .manualcrop-buttons{
+    text-align:right;
+    border-radius:rem-calc(3);
+    overflow: hidden;
+    display:inline-block;
+
+    a{
+      margin:0;
+    }
+  }
+}
