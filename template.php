@@ -8,10 +8,21 @@
 function boushh_js_alter(&$js){
   if(module_exists('jquery_update') && strpos($_GET['q'], 'admin/structure/views/') !== FALSE || strpos($_GET['q'], 'admin/config/content/ckeditor/edit') !== FALSE){
     $path = drupal_get_path('module', 'jquery_update');
-    if(isset($js[$path . '/replace/jquery/1.10/jquery.min.js'])){
-      $js[$path . '/replace/jquery/1.7/jquery.min.js'] = $js[$path . '/replace/jquery/1.10/jquery.min.js'];
-      $js[$path . '/replace/jquery/1.7/jquery.min.js']['data'] = $path . '/replace/jquery/1.7/jquery.min.js';
-      unset($js[$path . '/replace/jquery/1.10/jquery.min.js']);
+    $locations = array(
+      $path . '/replace/jquery/1.10/jquery.min.js',
+      '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
+    );
+    foreach($locations as $location){
+      if(isset($js[$location])){
+        $js[$path . '/replace/jquery/1.7/jquery.min.js'] = $js[$location];
+        $js[$path . '/replace/jquery/1.7/jquery.min.js']['data'] = url($path . '/replace/jquery/1.7/jquery.min.js');
+        unset($js[$location]);
+      }
+    }
+    foreach($js as $key => $data){
+      if($data['type'] == 'inline' && strpos($data['data'], 'window.jQuery') !== FALSE){
+        unset($js[$key]);
+      }
     }
   }
 }
