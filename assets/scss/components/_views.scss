@@ -25,6 +25,10 @@
           text-align: center;
           border-radius: rem-calc(15);
 
+          span{
+            display:none;
+          }
+
           &:hover{
             background:lighten($boushh-primary, 20%);
           }

@@ -4,6 +4,20 @@
 // Date
 ////////////////////////////////////////////////////////////////////////////////
 
+.form-type-date-select{
+
+  .date-padding{
+    float:none;
+    padding:0 !important;
+
+    > .form-item{
+      @include boushh-reset();
+      margin:rem-calc(0 $boushh-spacing 0 0);
+      padding:0;
+    }
+  }
+}
+
 .field-widget-date-popup{
 
   .fieldset-description{

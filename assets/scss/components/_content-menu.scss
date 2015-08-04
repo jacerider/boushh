@@ -1,0 +1,34 @@
+.page{
+
+////////////////////////////////////////////////////////////////////////////////
+// Content Menu
+////////////////////////////////////////////////////////////////////////////////
+
+#menu-overview{
+
+  tr.ok{
+    background:none;
+    border:none;
+
+    td{
+      background:darken($boushh-bg, 5%);
+    }
+
+    &.odd{
+
+      td{
+        background: darken($boushh-bg, 3%);
+      }
+    }
+  }
+
+  .menu-overview-title-edit-trigger{
+    @include boushh-button();
+    padding:rem-calc(2 10);
+    font-size:rem-calc(11);
+    text-transform: uppercase;
+    margin-left:rem-calc(10);
+  }
+}
+
+}
