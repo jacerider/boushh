@@ -970,21 +970,39 @@ function boushh_fieldset($variables) {
  * Implements hook_inline_entity_form_entity_form_alter().
  */
 function boushh_inline_entity_form_entity_form_alter(&$form, &$form_state){
-  $form['#prefix'] = '<div class="ief-form-wrapper"><div class="ief-form-inner">';
-  if(isset($form['actions']['ief_edit_save']['#value'])){
-    $form['#prefix'] .= '<div class="ief-form-title">'.$form['actions']['ief_edit_save']['#value'].'</div>';
+  // #ief_row_delta means it is using the single ief widget.
+  if(isset($form['#type']) && $form['#type'] == 'fieldset'){
+    $form['#prefix'] = isset($form['#prefix']) ? $form['#prefix'] : '';
+    $form['#suffix'] = isset($form['#suffix']) ? $form['#suffix'] : '';
+    $form['#prefix'] = $form['#prefix'] . '<div class="ief-form-wrapper"><div class="ief-form-inner">';
+    if(isset($form['actions']['ief_edit_save']['#value'])){
+      $form['#prefix'] .= '<div class="ief-form-title">'.$form['actions']['ief_edit_save']['#value'].'</div>';
+    }
+    if(isset($form['actions']['ief_add_save']['#value'])){
+      $form['#prefix'] .= '<div class="ief-form-title">'.$form['actions']['ief_add_save']['#value'].'</div>';
+    }
+    if(isset($form['actions']['ief_edit_cancel'])){
+      $form['actions']['ief_edit_cancel']['#attributes']['class'][] = 'ief-edit-cancel';
+    }
+    if(isset($form['actions']['ief_add_cancel'])){
+      $form['actions']['ief_add_cancel']['#attributes']['class'][] = 'ief-edit-cancel';
+    }
+    if(isset($form['actions']['ief_reference_cancel'])){
+      $form['actions']['ief_reference_cancel']['#attributes']['class'][] = 'ief-edit-cancel';
+    }
+    $form['#suffix'] = '</div></div>' . $form['#suffix'];
+    $form['actions']['#attributes']['class'][] = 'ief-form-actions';
   }
-  if(isset($form['actions']['ief_add_save']['#value'])){
-    $form['#prefix'] .= '<div class="ief-form-title">'.$form['actions']['ief_add_save']['#value'].'</div>';
+}
+
+/**
+ * Implements hook_inline_entity_form_reference_form_alter().
+ */
+function boushh_inline_entity_form_reference_form_alter(&$form, &$form_state) {
+  if($form['#entity_type'] == 'asset'){
+    boushh_inline_entity_form_entity_form_alter($form, $form_state);
   }
-  if(isset($form['actions']['ief_edit_cancel'])){
-    $form['actions']['ief_edit_cancel']['#attributes']['class'][] = 'ief-edit-cancel';
-  }
-  if(isset($form['actions']['ief_add_cancel'])){
-    $form['actions']['ief_add_cancel']['#attributes']['class'][] = 'ief-edit-cancel';
-  }
-  $form['#suffix'] = '</div></div>';
-  $form['actions']['#attributes']['class'][] = 'ief-form-actions';
+  // $reference_form['entity_id']['#description'] = t('New autocomplete description');
 }
 
 

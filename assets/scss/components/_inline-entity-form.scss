@@ -118,7 +118,7 @@ table.ief-entity-table{
     right:rem-calc(100);
     background:#fff;
     margin:0;
-    padding:rem-calc($boushh-spacing / 2);
+    padding:rem-calc($boushh-spacing / 2) !important;
     z-index:101;
     @include transition(all 600ms 600ms);
   }

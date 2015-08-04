@@ -234,8 +234,11 @@ fieldset:not(.vertical-tabs-pane){
 
       .form-wrapper{
         border:none;
-        margin:rem-calc($boushh-spacing 0 $boushh-spacing);
         padding:0;
+        margin:0;
+        // border:none;
+        // margin:rem-calc($boushh-spacing 0 $boushh-spacing);
+        // padding:0;
       }
     }
   }
@@ -273,13 +276,13 @@ fieldset:not(.vertical-tabs-pane){
   .asset-browser{
 
     .view-content{
-      @include boushh-outset();
+      @include boushh-inset();
       padding:rem-calc($boushh-spacing);
       margin:0;
     }
 
     .views-exposed-form{
-      @include boushh-outset();
+      @include boushh-inset();
     }
   }
 }
