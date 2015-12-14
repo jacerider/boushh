@@ -774,7 +774,10 @@ function boushh_admin_block_content($vars) {
       // }
       $options = array();
       $title = $item['title'];
-      if($icon = fett_icon_link($title, $options, TRUE)){
+      if(!empty($item['options']['fawesome'])){
+        $output .= '<span class="icon"><i class="fa fa-' . $item['options']['fawesome'] . '"></i></span>';
+      }
+      elseif($icon = fett_icon_link($title, $options, TRUE)){
         $output .= '<span class="icon">' . $title . '</span>';
       }
       elseif(module_exists('fawesome')){
