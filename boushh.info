@@ -1,73 +1,42 @@
 name = Boushh
-description = An admin theme of awesomeness based on Fett.
+description = [Fett] [Foundation] [SASS] Boba Fett was a Mandalorian warrior and bounty hunter. Not a clone.
 screenshot = assets/images/screenshot.png
 core = 7.x
-version = "7.x-1.3"
 engine = phptemplate
 base theme = fett
 
 
-;-------------- F E A T U R E S -------------
+;-------------- FEATURES
 features[] = logo
-features[] = favicon
 features[] = name
 features[] = slogan
-; features[] = node_user_picture
-features[] = comment_user_picture
-features[] = comment_user_verification
 features[] = main_menu
 features[] = secondary_menu
 
 
-;-------------- R E G I O N S -------------
-regions[page_header]              = Page header
-regions[page_footer]           = Page footer
-regions[help]                  = Help
-regions[content]               = Content
-regions[boushh_sidebar_first]  = Left Sidebar
-regions[boushh_sidebar_second] = Right Sidebar
+;-------------- REGIONS
+regions[header]         = Header
+regions[navigation]     = Navigation
+regions[help]           = Help
+regions[featured]       = Featured
+regions[content]        = Content
+regions[sidebar_first]  = First Sidebar
+regions[sidebar_second] = Second Sidebar
+regions[footer]         = Footer
 
 
-;-------------- S C S S -------------
-; These files are empty, just uncomment this line and start editing!
-
-; Libraries
-; stylesheets[all][] = assets/scss/libraries/_variables.scss
-stylesheets[all][] = assets/scss/libraries/_mixins.scss
+;-------------- STYLESHEETS
+; Custom SCSS stylesheets should be added here.
 
 ; Components
-stylesheets[all][] = assets/scss/components/_jquery-ui.scss
-stylesheets[all][] = assets/scss/components/_forms.scss
-stylesheets[all][] = assets/scss/components/_table.scss
-stylesheets[all][] = assets/scss/components/_views.scss
-stylesheets[all][] = assets/scss/components/_rules.scss
-stylesheets[all][] = assets/scss/components/_tfa.scss
-stylesheets[all][] = assets/scss/components/_context.scss
-stylesheets[all][] = assets/scss/components/_date.scss
-stylesheets[all][] = assets/scss/components/_masquerade.scss
-stylesheets[all][] = assets/scss/components/_ctools.scss
-stylesheets[all][] = assets/scss/components/_office-hours.scss
-stylesheets[all][] = assets/scss/components/_ops-bar.scss
-stylesheets[all][] = assets/scss/components/_chosen.scss
-stylesheets[all][] = assets/scss/components/_features.scss
-stylesheets[all][] = assets/scss/components/_module-filter.scss
-stylesheets[all][] = assets/scss/components/_inline-entity-form.scss
-stylesheets[all][] = assets/scss/components/_manualcrop.scss
-stylesheets[all][] = assets/scss/components/_content-menu.scss
+scss[] = assets/scss/components/_typography.scss
+scss[] = assets/scss/components/_header.scss
+scss[] = assets/scss/components/_footer.scss
 
 ; Sections
-stylesheets[all][] = assets/scss/sections/_global.scss
-stylesheets[all][] = assets/scss/sections/_content.scss
+scss[] = assets/scss/sections/_global.scss
 
 
-;-------------- S C R I P T -------------
+;-------------- JAVASCRIPT
 ; This file is empty, just uncomment this line and start editing!
-scripts[] = assets/js/boushh.js
-
-
-;-------------- S E T T I N G S -------------
-settings[fett_css_onefile] = 1
-settings[fett_js_footer] = 1
-settings[fett_js_onefile] = 1
-settings[fett_html_tags] = 1
-settings[fett_foundation_settings] = 1
+; scripts[] = assets/js/boushh.js
