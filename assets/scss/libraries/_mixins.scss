@@ -3,3 +3,380 @@
  * SCSS Mixins used throughout this project. This file is included automatically
  * and does not need to added via the theme.info file.
  */
+
+@mixin boushh-font() {
+  font-family: $font-family-sans-serif;
+}
+
+@mixin boushh-font-thin() {
+  font-family: $font-family-sans-serif-thin;
+}
+
+@mixin boushh-h2() {
+  @include boushh-font();
+  font-weight:700;
+  font-size:rem-calc(26);
+}
+
+@mixin boushh-h3() {
+  @include boushh-font-thin();
+  font-weight:700;
+  font-size:rem-calc(23);
+}
+
+@mixin boushh-h4() {
+  @include boushh-font();
+  font-weight:600;
+  font-size:rem-calc(18);
+}
+
+@mixin boushh-h5() {
+  @include boushh-font-thin();
+  font-weight:700;
+  font-size:rem-calc(16);
+}
+
+@mixin boushh-text-small() {
+  color: boushh-color($boushh-content-bg, 35%);
+  font-size: rem-calc(11.5);
+}
+
+
+
+@mixin boushh-grid($item: '.item', $element: a, $title: '.title', $description: '.description', $icon: '.icon', $column: 3){
+  @include grid-row(nest);
+  @include boushh-panel(true);
+  list-style: none;
+
+  #{$item}{
+    @include grid-column(6);
+    margin-top: $column-gutter/2;
+    margin-bottom: $column-gutter/2;
+
+    @media #{$medium-up} {
+      @include grid-column(4);
+    }
+
+    @media #{$large-up} {
+      @include grid-column($column);
+    }
+  }
+
+  #{$element} {
+    display:block;
+    position: relative;
+    background: $primary-color;
+    box-shadow: inset 0 0 0px 4px #fff, inset 0 0 15px 15px darken($primary-color, 6%);
+    border: 1px solid darken($boushh-content-bg, 8%);
+    padding: $column-gutter;
+    overflow:hidden;
+
+    &:before{
+      display:block;
+      content:"";
+      position: absolute;
+      top:4px;
+      right:4px;
+      bottom:4px;
+      left:4px;
+      z-index: 1;
+      background: darken($boushh-content-bg, 3%);
+      // box-shadow:inset 0px 0px 0px rgba(#000, .4);
+      @include transition(opacity 300ms);
+    }
+
+    &:hover {
+
+      &:before {
+        opacity:0;
+      }
+
+      #{$title} {
+        color:#fff;
+        // text-shadow: 0 -1px 0 darken($primary-color, 20%);
+      }
+
+      #{$description} {
+        color:#fff;
+      }
+
+      #{$icon} {
+        @include transform(scale(1.5));
+        color: darken($primary-color, 10%);
+        // opacity: .05;
+        // color: darken($primary-color, 2%);
+      }
+    }
+  }
+
+  #{$title} {
+    position: relative;
+    z-index:3;
+    @include boushh-h3();
+    color: darken($boushh-content-bg, 50%);
+    text-transform: uppercase;
+    font-size:rem-calc(26);
+    line-height:rem-calc(20);
+    text-align: center;
+    padding: $column-gutter/2;
+    // text-shadow: 0 -1px 0 lighten($boushh-content-bg, 10%);
+    @include transition(color 300ms);
+
+    @media #{$small-only} {
+      font-size:rem-calc(18);
+    }
+  }
+
+  #{$description} {
+    // color:#fff;
+    font-size:rem-calc(16);
+    line-height:rem-calc(18);
+    text-transform: none;
+    // opacity: 0;
+    font-weight:500;
+    padding:rem-calc(5 0 0);
+    @include transition(color 300ms);
+  }
+
+  #{$icon} {
+    @include transition(transform 300ms, color 300ms);
+    display:block;
+    position: relative;
+    z-index:2;
+    font-size:rem-calc(30);
+    line-height:rem-calc(30);
+    display:block;
+    text-align: center;
+    color: darken($boushh-content-bg, 6%);
+    padding: $column-gutter $column-gutter $column-gutter/2;
+    @include transform(scale(3));
+  }
+}
+
+@mixin boushh-simple-grid($item: '.item', $element: a, $column: 3, $panel: true){
+  @include grid-row(nest);
+  list-style: none;
+
+  @if $panel {
+    @include boushh-panel(true);
+  }
+
+  #{$item}{
+    @include grid-column(6);
+    margin-top: $column-gutter/2;
+    margin-bottom: $column-gutter/2;
+
+    @media #{$medium-up} {
+      @include grid-column(4);
+    }
+
+    @media #{$large-up} {
+      @include grid-column($column);
+    }
+  }
+
+  #{$element} {
+    @include boushh-h3();
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow:hidden;
+    display:block;
+    border: 4px solid #fff;
+    text-align: center;
+    padding: $column-gutter/2;
+    color: darken($boushh-content-bg, 50%);
+    background: darken($boushh-content-bg, 3%);
+    // text-shadow: 0 -1px 0 lighten($boushh-content-bg, 10%);
+    box-shadow: 0 0 0 1px darken($boushh-content-bg, 8%);
+    @include transition(background 300ms);
+
+    @media #{$small-only} {
+      font-size:rem-calc(16);
+    }
+
+    &:hover,
+    &.active {
+      background:$primary-color;
+      color:#fff;
+      // text-shadow: 0 -1px 0 darken($primary-color, 10%);
+    }
+  }
+}
+
+@mixin boushh-thumbnail-grid($item: '.item', $element: a, $title: '.title', $hidden: '.hidden'){
+  @include grid-row(nest);
+  @include boushh-panel(true);
+
+  #{$item} {
+    @include grid-column(12);
+    margin-top: $column-gutter/2;
+    margin-bottom: $column-gutter/2;
+
+    @media #{$medium-up} {
+      @include grid-column(4);
+    }
+
+    @media #{$large-up} {
+      @include grid-column(3);
+    }
+  }
+
+  #{$element} {
+    position: relative;
+    display:block;
+    border: 1px solid darken($boushh-content-bg, 8%);
+    overflow:hidden;
+    background: $primary-color;
+    @include transition(border-color 300ms, box-shadow 300ms);
+
+    &:before{
+      display:block;
+      content:"";
+      position: absolute;
+      top:0px;
+      right:0px;
+      bottom:0px;
+      left:0px;
+      border: 4px solid #fff;
+      z-index:3;
+      box-shadow:inset 0px 0px 0px rgba(#000, .4);
+      pointer-events:none;
+      @include transition(box-shadow 300ms);
+    }
+
+    &:hover{
+
+      &:before{
+        box-shadow:inset 0px 0px 20px rgba(#000, .4);
+      }
+
+      #{$hidden}{
+        opacity:1;
+      }
+
+      img{
+        @include transform(scale(1));
+        opacity: .3;
+      }
+    }
+  }
+
+  #{$title}{
+    @include boushh-h3();
+    display:block;
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    text-transform: uppercase;
+    color:#fff;
+    font-size:rem-calc(26);
+    line-height:rem-calc(26);
+    text-shadow: 0 1px 3px rgba(#000, .4);
+    z-index:2;
+    text-align: center;
+    padding:$column-gutter;
+    margin:0;
+    @include background-image(linear-gradient(transparent 0, rgba(#000, .6) 90%));
+  }
+
+  #{$hidden}{
+    color:#fff;
+    font-size:rem-calc(16);
+    line-height:rem-calc(18);
+    text-transform: uppercase;
+    opacity: 0;
+    font-weight:500;
+    @include transition(opacity 300ms);
+  }
+
+  img{
+    @include transform(scale(1.12));
+    @include transition(transform 300ms, opacity 300ms);
+    display:block;
+    z-index:1;
+    width:100%;
+  }
+}
+
+
+
+
+@mixin boushh-panel($row: false) {
+  background:boushh-shade($boushh-bg, 5%);
+  border-radius: $global-radius;
+  box-shadow: 0 0 3px rgba(#000,0.1);
+  margin:0 0 $column-gutter;
+  padding:$column-gutter;
+
+  @if $row {
+    margin:0 0 $column-gutter;
+    padding:$column-gutter/2;
+  }
+
+  &.row{
+    margin:0 0 $column-gutter;
+    padding: $column-gutter/2;
+  }
+}
+
+@mixin boushh-cutout() {
+  background:boushh-shade($boushh-bg, 2%);
+  border:none;
+  border-radius: $global-radius;
+  box-shadow: inset 0 0 3px rgba(#000,0.1);
+  margin:0 0 $column-gutter;
+  padding:$column-gutter;
+
+  &.row{
+    margin:0 0 $column-gutter;
+    padding:$column-gutter $column-gutter/2;
+  }
+}
+
+// @mixin boushh-info-mask() {
+//   display:block;
+
+//   @media #{$medium-up} {
+//     position: relative;
+//     overflow:hidden;
+
+//     *{
+//       position: relative;
+//       z-index:10;
+//       @include transition(color 400ms 100ms, border-color 400ms 100ms);
+//     }
+
+//     &:before{
+//       display:block;
+//       content: '';
+//       position: absolute;
+//       top: 0;
+//       bottom:0;
+//       left: 0;
+//       right: 0;
+//       // padding-bottom: 100%;
+//       border-radius: 50%;
+//       opacity: 0;
+//       background-color:$primary-color;
+//       color:white;
+//       z-index:5;
+//       @include transform(scale(0));
+//       @include transition(all 400ms 100ms);
+//     }
+
+//     &:hover{
+//       color:#fff !important;
+
+//       *{
+//         border-color: darken($primary-color, 5%) !important;
+//         color:#fff !important;
+//       }
+
+//       &:before{
+//         opacity: 1;
+//         @include transform(scale(1.5));
+//       }
+//     }
+//   }
+// }

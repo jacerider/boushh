@@ -1,0 +1,80 @@
+
+#field-ui-field-overview-form{
+
+  > div > div{
+    // @include boushh-panel();
+  }
+}
+
+table.field-ui-overview{
+
+  tr.add-new{
+    vertical-align: top;
+
+    .add-new-placeholder{
+      font-weight: bold;
+      padding-bottom: rem-calc(5);
+      text-transform: uppercase;
+      font-size:rem-calc(12);
+    }
+
+    .label-input{
+      float:left;
+    }
+  }
+
+  tr.region-title{
+    box-shadow:none !important;
+
+    td {
+      @include boushh-font-thin();
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: rem-calc(18);
+    }
+  }
+
+  tr.region-populated,
+  tr.region-add-new-title{
+    display:none;
+  }
+
+  tr.region-message td {
+    font-style: italic;
+    color: boushh-color($boushh-content-bg, 30%);
+    font-size:rem-calc(14);
+  }
+
+  tr.field-group{
+
+    > td:first-child{
+      font-weight:bold;
+    }
+  }
+}
+
+#field-ui-field-overview-form,
+#field-ui-display-overview-form{
+
+  #edit-refresh{
+    display:none;
+  }
+}
+
+#field-display-overview-wrapper{
+
+  .field-formatter-summary{
+
+    &,
+    li{
+      font-size:rem-calc(10);
+      line-height:normal;
+    }
+
+    ul{
+      margin:0;
+      padding:0;
+      list-style-type: none;
+    }
+  }
+}

@@ -10,5 +10,74 @@
 body,
 .oc-content{
   /** ONLY BACKGROUND STYLING SHOULD BE PLACED HERE */
-  background: $body-bg; // See _foundation.scss file to change this variable.
+  background: $boushh-bg; // See _foundation.scss file to change this variable.
 }
+
+#header{
+  background: $boushh-header-bg;
+  padding: $column-gutter $column-gutter/2;
+}
+
+#page-title{
+  color: boushh-color($boushh-header-bg, 60%);
+  font-size:rem-calc(26);
+  line-height:rem-calc(26);
+  padding:0;
+  margin:$column-gutter/2 0 0;
+  font-weight:300;
+}
+
+img{
+  // Fix Firefox flicker.
+  @include transform(translateZ(0));
+}
+
+.breadcrumbs{
+  background:transparent;
+  margin:0;
+  padding:0;
+
+  a{
+    @include transition(color 300ms);
+  }
+
+  li:not(.current) a:hover{
+    color:boushh-color($boushh-header-bg, 70%);
+  }
+}
+
+#content{
+  padding:$column-gutter/2 0;
+
+  @media #{$medium-up} {
+    padding:$column-gutter*2;
+  }
+}
+
+#footer{
+  padding:0 0 $column-gutter/2;
+
+  @media #{$medium-up} {
+    margin-top:-($column-gutter);
+    padding:0 0 $column-gutter*2;
+  }
+}
+
+#copyright{
+  font-size:rem-calc(10);
+  color:#bfbfbf;
+  text-align: center;
+  text-transform: uppercase;
+
+  a{
+    color:#9A9A9A;
+
+    &:hover{
+      color:#C5442B;
+    }
+  }
+}
+
+// .boushh-panel{
+//   @include boushh-panel();
+// }

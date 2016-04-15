@@ -10,8 +10,8 @@ base theme = fett
 features[] = logo
 features[] = name
 features[] = slogan
-features[] = main_menu
-features[] = secondary_menu
+; features[] = main_menu
+; features[] = secondary_menu
 
 
 ;-------------- REGIONS
@@ -20,9 +20,15 @@ regions[navigation]     = Navigation
 regions[help]           = Help
 regions[featured]       = Featured
 regions[content]        = Content
-regions[sidebar_first]  = First Sidebar
-regions[sidebar_second] = Second Sidebar
 regions[footer]         = Footer
+
+
+;-------------- MODULE STYLESHEETS
+; These stylesheets are loaded if their module [key] exists.
+scss_module[feeds] = assets/scss/modules/_feeds.scss
+scss_module[ctools] = assets/scss/modules/_ctools.scss
+scss_module[inline_entity_form] = assets/scss/modules/_inline-entity-form.scss
+scss_module[manualcrop] = assets/scss/modules/_manual-crop.scss
 
 
 ;-------------- STYLESHEETS
@@ -30,8 +36,14 @@ regions[footer]         = Footer
 
 ; Components
 scss[] = assets/scss/components/_typography.scss
-scss[] = assets/scss/components/_header.scss
-scss[] = assets/scss/components/_footer.scss
+scss[] = assets/scss/components/_form.scss
+scss[] = assets/scss/components/_field-ui.scss
+scss[] = assets/scss/components/_themes-list.scss
+scss[] = assets/scss/components/_fieldset.scss
+scss[] = assets/scss/components/_vertical-tabs.scss
+scss[] = assets/scss/components/_tabledrag.scss
+scss[] = assets/scss/components/_table.scss
+scss[] = assets/scss/components/_grid.scss
 
 ; Sections
 scss[] = assets/scss/sections/_global.scss
@@ -39,4 +51,15 @@ scss[] = assets/scss/sections/_global.scss
 
 ;-------------- JAVASCRIPT
 ; This file is empty, just uncomment this line and start editing!
-; scripts[] = assets/js/boushh.js
+scripts[] = assets/js/boushh.js
+
+
+;-------------- CRAWL CSS
+; Folders within sites/all/modules that should be crawled for CSS files that
+; can be excluded via the theme settings page.
+css_folders_crawl[] = 'contrib'
+
+;-------------- UNSET CSS
+; Stylesheets you may want to unset - includes all cores CSS files, except
+; for overlay.
+unset_core[misc/vertical-tabs.css] = 'misc/vertical-tabs.css'

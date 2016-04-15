@@ -1,0 +1,39 @@
+.draggable{
+
+  a.tabledrag-handle{
+    cursor: move;
+    float:left;
+    @include fa-before($icon: arrows, $color: boushh-color($boushh-content-bg, 30%));
+
+    &:before{
+      @include transition(color 300ms);
+    }
+
+    &:hover:before{
+      color: $primary-color;
+    }
+
+    .handle{
+      display:none;
+    }
+  }
+
+  div.indentation {
+    float: left; /* LTR */
+    height: rem-calc(16);
+    padding: rem-calc(0 0 0 20);
+    width: rem-calc(20);
+  }
+}
+
+.tabledrag-toggle-weight-wrapper{
+  text-align:right;
+  line-height:rem-calc(9.5);
+  padding:0 0 rem-calc(3);
+  margin-top:rem-calc(-12);
+
+  a{
+    font-size:rem-calc(9.5);
+    text-transform: uppercase;
+  }
+}

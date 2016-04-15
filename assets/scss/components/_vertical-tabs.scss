@@ -1,0 +1,88 @@
+
+div.vertical-tabs{
+  @include grid-row(nest-collapse);
+  margin:0 0 $column-gutter;
+  // border-radius: $global-radius;
+  // box-shadow: 0 0 3px rgba(#000,0.1);
+  // overflow:hidden;
+
+  div.vertical-tabs{
+    @include boushh-panel();
+    background: $boushh-bg;
+    border: 1px solid darken($boushh-bg, 5%);
+    box-shadow:none;
+  }
+
+  ul.vertical-tabs-list{
+    list-style-type: none;
+    @include grid-column(3, $collapse:true);
+    margin:0;
+    // margin:0 -5px -1px 0;
+    // border-right:5px solid $primary-color;
+  }
+
+  li.vertical-tab-button{
+    padding: 0 $column-gutter $column-gutter/2 0;
+
+    a{
+      display:block;
+      padding:$column-gutter/2 $column-gutter;
+      font-size:rem-calc(19);
+      @include linear-gradient(to bottom, rgba(lighten($boushh-content-bg, 5%), 0.9), rgba(lighten($boushh-content-bg,  10%), 0.25), $fallback: rgba($boushh-content-bg, 0.01));
+      box-shadow: 0 0 3px rgba(#000,0.1);
+      border-radius: $global-radius;
+      color: $primary-color;
+      @include transition(box-shadow 300ms);
+      @include boushh-font-thin();
+
+      strong{
+        font-weight:normal;
+      }
+
+      span.summary{
+        display:block;
+        font-size:rem-calc(11);
+        opacity:.7;
+        @include boushh-font();
+        color: $boushh-body-font-color;
+      }
+
+      &:hover{
+        @include linear-gradient(to bottom, rgba(lighten($boushh-content-bg, 5%), 1), rgba(lighten($boushh-content-bg,  10%), 0.4), $fallback: rgba($boushh-content-bg, 0.01));
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      }
+    }
+
+    &.selected{
+
+      a{
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        @include linear-gradient(to bottom, rgba($boushh-header-bg, 1), lighten($boushh-header-bg,  5%), $fallback: rgba($boushh-header-bg, 0.01));
+        color:boushh-color($boushh-header-bg, 70%);
+
+        span.summary{
+          color:boushh-color($boushh-header-bg, 60%);
+        }
+      }
+    }
+
+    &:last-child{
+      padding-bottom:0;
+
+      a{
+        // border-bottom:0;
+      }
+    }
+  }
+
+  div.vertical-tabs-panes{
+    @include grid-column(9, $collapse:true);
+    // border-left:5px solid $primary-color;
+  }
+
+  fieldset.vertical-tabs-pane{
+    margin-bottom:0;
+    margin-right:-5px;
+    box-shadow:none;
+  }
+}

@@ -1,48 +1,39 @@
 <div id="page" class="<?php print $classes; ?>" <?php print $attributes;?>>
 <?php print render($page_prefix); ?>
 
-  <header id="header">
-    <div class="row">
-      <div class="columns small-12">
+  <?php if (!empty($page['featured']) || !$is_front): ?>
+    <header id="header">
+      <div class="row">
+        <div class="columns small-12">
 
-        <!-- region.secondary-nav.start -->
-        <?php if ($secondary_nav): ?>
-          <?php print render($secondary_nav); ?>
-        <?php endif; ?>
-        <!-- region.main-nav.end -->
+          <?php if ($site_name): ?>
+            <div id="site-name" class="element-invisible">
+              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
+            </div>
+          <?php endif; ?>
 
-        <?php if ($linked_logo): ?>
-          <?php print $linked_logo; ?>
-        <?php endif; ?>
+          <?php if (!empty($breadcrumb) && empty($print)): ?>
+              <?php print $breadcrumb; ?>
+          <?php endif; ?>
 
-        <?php if ($site_name): ?>
-          <div id="site-name" class="element-invisible">
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-          </div>
-        <?php endif; ?>
+          <?php if ($title && !$is_front): ?>
+            <?php print render($title_prefix); ?>
+            <h1 id="page-title" class="title"><?php print $title; ?></h1>
+            <?php print render($title_suffix); ?>
+          <?php endif; ?>
 
-        <!-- region.main-nav.start -->
-        <?php print $offcanvas_main_nav_link; ?>
-        <?php if ($main_nav): ?>
-          <?php print render($main_nav); ?>
-        <?php endif; ?>
-        <!-- region.main-nav.end -->
+          <?php if ($page['header']): ?>
+            <?php print render($page['header']); ?>
+          <?php endif; ?>
 
-        <?php if ($page['header']): ?>
-          <?php print render($page['header']); ?>
-        <?php endif; ?>
-
+        </div>
       </div>
-    </div>
-  </header><!-- /#header -->
+    </header><!-- /#header -->
+  <?php endif; ?>
 
   <?php if (!empty($messages)): ?>
     <section id="messages">
-      <div class="row">
-        <div class="columns small-12">
-          <?php print render($messages); ?>
-        </div>
-      </div>
+      <?php print render($messages); ?>
     </section><!--/#messages -->
   <?php endif; ?>
 
@@ -83,14 +74,8 @@
     <div class="row">
 
       <main id="main" class="<?php print $content_classes; ?>">
-        <?php if ($title && !$is_front): ?>
-          <?php print render($title_prefix); ?>
-          <h1 id="page-title" class="title"><?php print $title; ?></h1>
-          <?php print render($title_suffix); ?>
-        <?php endif; ?>
         <?php print $offcanvas_sidebar_first_link; ?>
         <?php print $offcanvas_sidebar_second_link; ?>
-        <?php if ($breadcrumb): print $breadcrumb; endif; ?>
         <?php print render($page['content']); ?>
       </main>
 

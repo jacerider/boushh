@@ -5,8 +5,33 @@
  * Library load order is _variables -> _mixins -> _foundation.
  */
 
+////////////////////////////////////////////////////////////////////////////////
+/// Functions
+////////////////////////////////////////////////////////////////////////////////
+
+@function boushh-color($color, $percent: 10%) {
+  @if (lightness($color) > 50) {
+    @return darken($color, $percent); // Lighter background, return dark color
+  } @else {
+    @return lighten($color, $percent); // Darker background, return light color
+  }
+}
+
+@function boushh-shade($color, $percent: 10%) {
+  @if (lightness($color) > 50) {
+    @return lighten($color, $percent); // Lighter background, return dark color
+  } @else {
+    @return darken($color, $percent); // Darker background, return light color
+  }
+}
+
 // a. Site Specifc (include custom variables in this section)
 // - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$boushh-bg: #F1F3F4;
+$boushh-body-font-color: #333;
+$boushh-header-bg: #273035;
+$boushh-content-bg: #fff;
 
 
 

@@ -1,0 +1,62 @@
+
+.system-themes-list{
+  // @include boushh-panel();
+  @include boushh-thumbnail-grid('.theme-selector', '.inner', '.theme-info', '.theme-description, .operations');
+
+  h2{
+    margin:0 $column-gutter/2;
+  }
+
+  .theme-description{
+    text-transform: none;
+  }
+
+  .no-screenshot{
+    padding:$column-gutter;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size:rem-calc(12);
+    opacity:.5;
+  }
+
+  .notes{
+    font-size:rem-calc(12);
+    vertical-align: top;
+  }
+
+  .operations{
+    margin:0;
+    padding:rem-calc(7 0 5);
+    list-style-type: none;
+
+    li{
+      display:inline-block;
+
+      a{
+        display:block;
+        padding:rem-calc(2 4);
+        background:#fff;
+        font-weight:normal;
+        text-shadow:none;
+        @include boushh-font();
+        font-size:rem-calc(12);
+        text-transform: none;
+        opacity:.7;
+        @include transition(opacity 300ms);
+
+        &:hover{
+          opacity:1;
+        }
+      }
+    }
+  }
+
+  &.system-themes-list-disabled img{
+    opacity:.4;
+
+    &:hover{
+      opacity:.2;
+    }
+  }
+}

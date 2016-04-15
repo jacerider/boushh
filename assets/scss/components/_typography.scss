@@ -2,3 +2,20 @@
  * @file
  * Styles that control theme typography.
  */
+
+h2{
+  @include boushh-h2();
+}
+
+h3{
+  @include boushh-h3();
+}
+
+h4{
+  @include boushh-h4();
+}
+
+div.description{
+  @include boushh-text-small();
+  margin:0;
+}

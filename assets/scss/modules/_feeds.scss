@@ -1,0 +1,43 @@
+.feeds-settings{
+
+  .feeds-container{
+
+    &.active-container > h4{
+      @include boushh-h2();
+    }
+
+    &.config-set > h4{
+      @include boushh-h3();
+    }
+
+    &.plain > h4{
+      @include boushh-h5();
+    }
+  }
+
+  .left-bar{
+    @include boushh-panel();
+
+    .feeds-container.plain{
+      @include boushh-cutout();
+
+      .feeds-container-body,
+      li{
+        font-size:rem-calc(13);
+      }
+    }
+  }
+
+  .configuration{
+    padding-top:0;
+
+    .feeds-container{
+      @include boushh-panel();
+    }
+  }
+
+  div.configuration-squeeze{
+    margin-left:rem-calc(250);
+  }
+
+}

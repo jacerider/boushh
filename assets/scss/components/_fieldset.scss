@@ -1,0 +1,59 @@
+fieldset{
+  margin:0 0 $column-gutter;
+  padding:0;
+  background: boushh-shade($boushh-bg, 5%);
+  border:none;
+
+  fieldset{
+    background: boushh-shade($boushh-bg, 3%);
+
+    &:last-child{
+      margin:0;
+    }
+  }
+
+  legend{
+    margin:0;
+    padding:$column-gutter/2 $column-gutter;
+    width:100%;
+    border: 1px solid darken($boushh-content-bg, 8%);
+  }
+
+  .fieldset-wrapper{
+    padding: $column-gutter;
+    border: 1px solid darken($boushh-content-bg, 8%);
+    margin: -1px 0 0;
+
+    > *:last-child{
+      margin-bottom:0;
+    }
+  }
+
+  .fieldset-description{
+
+    &,
+    p{
+      font-size:rem-calc(13);
+      color: boushh-color($boushh-body-font-color, 40%);
+    }
+  }
+}
+
+html.js{
+
+  fieldset.collapsed{
+    height: 1em;
+
+    .fieldset-wrapper {
+      display: none;
+    }
+  }
+}
+
+fieldset.collapsible {
+  position: relative;
+
+  .fieldset-legend {
+    display: block;
+  }
+}

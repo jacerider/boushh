@@ -1,0 +1,34 @@
+.boushh-grid-wrapper{
+  @include grid-row(nest);
+
+  .boushh-grid-region{
+    @include grid-column(12);
+
+    @media #{$large-up} {
+      @include grid-column(6);
+    }
+
+    ul.boushh-grid > li{
+      @include grid-column(6);
+    }
+  }
+}
+
+.boushh-grid-panel{
+
+  h3{
+    font-size:rem-calc(18);
+    text-transform: uppercase;
+    @include boushh-font-thin();
+    padding:0 0 rem-calc(3);
+    margin:0;
+  }
+}
+
+.boushh-grid{
+  @include boushh-grid($item: li, $description: '.description');
+}
+
+.boushh-thumbnail-grid{
+  @include boushh-thumbnail-grid();
+}
