@@ -1,0 +1,20 @@
+
+.field-widget-date-select {
+
+  .container-inline-date {
+
+    .date-padding {
+      @include display(flex);
+      @include flex-direction(row);
+      @include align-items(center);
+
+      > * {
+        padding: 0 $column-gutter/4;
+      }
+
+      > .select {
+        @include flex(auto);
+      }
+    }
+  }
+}

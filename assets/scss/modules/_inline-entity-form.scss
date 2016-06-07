@@ -7,7 +7,7 @@ $boushh-spacing: 20;
 table.ief-entity-table{
 
   tr.ief-row-entity:not(.draggable){
-    display:none;
+    // display:none;
   }
 
   tr.ief-row-form{
@@ -131,68 +131,34 @@ table.ief-entity-table{
 
   // Nested forms
   .ief-form-wrapper{
-    background:rgba(#000, .2);
-    z-index:102;
-  }
-}
+    background:rgba(#000, .3);
 
-.asset-inline-entity-browser{
+    .ief-form-inner,
+    .ief-form-bottom{
+      top: $column-gutter*5 !important;
+      bottom: $column-gutter*5 !important;
 
-  fieldset.ief-form .fieldset-wrapper{
-    margin:0;
-    padding:0;
-    background:none;
-  }
+      .ief-form-inner,
+      .ief-form-bottom {
+        top: $column-gutter*6 !important;
+        bottom: $column-gutter*6 !important;
 
-  .asset-browser .views-exposed-form .views-exposed-widgets{
-    margin:0;
-    padding:0 0 $column-gutter;
-    border:none;
-  }
-
-  .asset-browser{
-
-    > .view{
-      @include display(flex);
-      @include flex-direction(column);
-      position: absolute;
-      top:$column-gutter;
-      left:$column-gutter;
-      right: $column-gutter;
-      bottom:$column-gutter;
-
-      > .view-content{
-        // @include display(flex);
-        // @include flex-direction(row);
-        // @include flex-wrap(wrap);
-        @include flex(auto);
-        overflow:auto;
-        padding:$column-gutter 0;
-
-        // > .asset-browser-items{
-        //   @include flex(auto);
-        //   display:block;
-        //   width:20%;
-        // }
-      }
-
-      > .view-filters{
-        border-bottom: 1px solid darken($boushh-content-bg, 8%) !important;
-        margin-left:$column-gutter*-1;
-        margin-right:$column-gutter*-1;
-        padding:0 $column-gutter;
-      }
-
-      > .item-list{
-        border-top: 1px solid darken($boushh-content-bg, 8%) !important;
-        margin-left:$column-gutter*-1;
-        margin-right:$column-gutter*-1;
-        padding:$column-gutter $column-gutter 0;
+        .ief-form-inner,
+        .ief-form-bottom {
+          top: $column-gutter*7 !important;
+          bottom: $column-gutter*7 !important;
+        }
       }
     }
-  }
+    // margin-top: $column-gutter/2;
+    // background:rgba(#000, .2);
+    // z-index:102;
 
-  .pagination{
-    margin-bottom:0;
+    // // Nested forms
+    // .ief-form-wrapper{
+    //   margin-top: $column-gutter;
+    //   background:rgba(#000, .2);
+    //   z-index:103;
+    // }
   }
 }

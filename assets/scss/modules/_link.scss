@@ -1,0 +1,33 @@
+.field-type-link-field {
+
+  .link-field-subrow {
+    @include display(flex);
+
+    label {
+      font-family: $font-family-sans-serif !important;
+      font-weight: normal !important;
+      font-size: rem-calc(13) !important;
+    }
+
+    > * {
+      @include flex(auto);
+
+      &:first-child{
+        padding-right: $column-gutter/2;
+      }
+
+      &:last-child{
+        padding-left: $column-gutter/2;
+      }
+
+      &:first-child:last-child{
+        padding: 0;
+      }
+    }
+  }
+
+  .link-field-column {
+    // @include display(flex);
+    // @include flex-direction(column);
+  }
+}

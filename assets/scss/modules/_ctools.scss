@@ -26,3 +26,42 @@
     @include button-style($bg:$secondary-button-bg-color, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color);
   }
 }
+
+.ctools-dropbutton-processed {
+  padding-right: 18px;
+  position: relative;
+  background-color: inherit;
+
+  &.open{
+    z-index: 200;
+
+    li + li {
+      padding-top: 4px;
+    }
+  }
+
+  .ctools-content li,
+  .ctools-content a {
+    display: block;
+  }
+
+  .ctools-link {
+    bottom: 0;
+    display: block;
+    height: auto;
+    position: absolute;
+    right: 0;
+    text-indent: -9999px; /* LTR */
+    top: 0;
+    width: 17px;
+  }
+
+  .ctools-link a {
+    overflow: hidden;
+  }
+
+  .ctools-content ul {
+    margin: 0;
+    overflow: hidden;
+  }
+}

@@ -434,3 +434,21 @@ function boushh_button($vars) {
     return '<button' . drupal_attributes($element['#attributes']) . '>'. fett_icon_text($label) ."</button>\n"; // This line break adds inherent margin between multiple buttons
   }
 }
+
+/**
+ * Implements theme_select().
+ */
+function boushh_select($variables) {
+  $element = $variables['element'];
+  element_set_attributes($element, array('id', 'name', 'size'));
+  _form_set_class($element, array('form-select'));
+
+  // Fix HTML entities in options.
+  foreach($element['#options'] as &$value){
+    if (is_string($value)) {
+      $value = html_entity_decode($value);
+    }
+  }
+
+  return '<select' . drupal_attributes($element['#attributes']) . '>' . form_select_options($element) . '</select>';
+}

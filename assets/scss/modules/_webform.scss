@@ -1,0 +1,15 @@
+#webform-components {
+
+  .webform-component-name{
+    @include display(flex);
+    @include align-items(center);
+
+    .tabledrag-handle {
+      float: none;
+    }
+
+    .textfield {
+      @include flex(auto);
+    }
+  }
+}

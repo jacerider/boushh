@@ -1,0 +1,16 @@
+#help{
+  padding:$column-gutter/2 0;
+
+  @media #{$medium-up} {
+    padding:$column-gutter*2 $column-gutter*2 0;
+  }
+
+  p{
+    font-size: rem-calc(13);
+    color: boushh-color($boushh-body-font-color, 30%);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

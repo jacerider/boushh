@@ -1,0 +1,73 @@
+
+.form-type-password {
+
+  .password-strength {
+    float: right;
+    font-size: rem-calc(12);
+    text-transform: uppercase;
+  }
+
+  .password-strength-title {
+    display: inline;
+    padding-right: rem-calc(5);
+    color: boushh-color($boushh-body-font-color, 30%);
+  }
+
+  .password-strength-text {
+    float: right;
+    font-weight: bold;
+  }
+
+  .password-indicator {
+    background-color: boushh-color($boushh-body-font-color, 60%);
+    height: 0.3em;
+    width: 100%;
+  }
+
+  .password-indicator div {
+    height: 100%;
+    width: 0%;
+    background-color: $primary-color;
+  }
+
+  .confirm-parent{
+    padding: $column-gutter/2 0 0;
+  }
+
+  div.password-confirm {
+    float: right;
+    font-size: rem-calc(12);
+    text-transform: uppercase;
+    color: boushh-color($boushh-body-font-color, 30%);
+
+    span.error {
+      display: inline-block;
+      padding: 0 $column-gutter/2;
+      margin: 0;
+    }
+
+    span.ok {
+      display: inline-block;
+      padding: 0 $column-gutter/2;
+      margin: 0;
+      background: $success-color;
+      color: $white;
+    }
+  }
+
+  .password-suggestions{
+    font-size: rem-calc(12);
+    text-transform: uppercase;
+    color: boushh-color($boushh-body-font-color, 30%);
+
+    ul {
+      margin-bottom: 0;
+    }
+
+    li {
+      font-size: rem-calc(12);
+      text-transform: none;
+      color: boushh-color($boushh-body-font-color, 50%);
+    }
+  }
+}

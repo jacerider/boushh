@@ -1,0 +1,13 @@
+
+#permissions {
+
+  .module {
+    @include boushh-font-thin();
+    font-weight: bold;
+    font-size: rem-calc(18);
+    line-height: rem-calc(18);
+    text-transform: uppercase;
+    background: lighten($boushh-header-bg, 5%);
+    color: $white;
+  }
+}

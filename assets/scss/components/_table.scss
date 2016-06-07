@@ -51,13 +51,43 @@ table{
   td > button,
   td > .button,
   td > div > button,
-  td > div > .button{
+  td > div > .button,
+  td > div > div > .button{
+    margin: 0;
     padding:$button-tny/2 $button-tny*1.5;
     font-size: $button-font-tny;
     @include button-style($bg:$secondary-button-bg-color, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color);
 
     &.radius{
       border-radius:0;
+    }
+  }
+
+  ul.operations {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: rem-calc(10);
+    line-height: rem-calc(14);
+    vertical-align: middle;
+    text-transform: uppercase;
+
+    li {
+      display: inline-block;
+      padding: rem-calc(0 5);
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    .fa {
+      font-size: rem-calc(16);
+      vertical-align: middle;
     }
   }
 }

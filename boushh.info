@@ -29,6 +29,14 @@ scss_module[feeds] = assets/scss/modules/_feeds.scss
 scss_module[ctools] = assets/scss/modules/_ctools.scss
 scss_module[inline_entity_form] = assets/scss/modules/_inline-entity-form.scss
 scss_module[manualcrop] = assets/scss/modules/_manual-crop.scss
+scss_module[features] = assets/scss/modules/_features.scss
+scss_module[link] = assets/scss/modules/_link.scss
+scss_module[asset] = assets/scss/modules/_asset.scss
+scss_module[date] = assets/scss/modules/_date.scss
+scss_module[views] = assets/scss/modules/_views.scss
+scss_module[webform] = assets/scss/modules/_webform.scss
+scss_module[context] = assets/scss/modules/_context.scss
+scss_module[autocomplete_deluxe] = assets/scss/modules/_autocomplete_deluxe.scss
 
 
 ;-------------- STYLESHEETS
@@ -40,10 +48,14 @@ scss[] = assets/scss/components/_form.scss
 scss[] = assets/scss/components/_field-ui.scss
 scss[] = assets/scss/components/_themes-list.scss
 scss[] = assets/scss/components/_fieldset.scss
+scss[] = assets/scss/components/_image-style.scss
 scss[] = assets/scss/components/_vertical-tabs.scss
 scss[] = assets/scss/components/_tabledrag.scss
 scss[] = assets/scss/components/_table.scss
 scss[] = assets/scss/components/_grid.scss
+scss[] = assets/scss/components/_help.scss
+scss[] = assets/scss/components/_user.scss
+scss[] = assets/scss/components/_permissions.scss
 
 ; Sections
 scss[] = assets/scss/sections/_global.scss

@@ -19,7 +19,7 @@
     margin:0;
   }
 
-  &:not(.checkbox):not(.radio) > label,{
+  &:not(.form-type-checkbox):not(.form-type-radio) > label,{
     @include boushh-font-thin();
     font-weight:bold;
     font-size:rem-calc(16);
@@ -91,5 +91,62 @@ html.js input.form-autocomplete {
   &.throbbing {
     // background-image: url(../../misc/throbber-active.gif);
     background-position: 100% center; /* LTR */
+  }
+}
+
+/**
+ * Page filters
+ */
+.exposed-filters {
+
+  > .form-wrapper {
+    @include display(flex);
+    @include flex-flow(row wrap);
+    margin: 0;
+
+    > * {
+      margin: 0;
+    }
+  }
+
+  .filters{
+    @include flex(auto);
+    @include display(flex);
+    @include flex-flow(row wrap);
+
+    > *{
+      @include flex(auto);
+      padding: 0 $column-gutter/4;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        @include flex(0 0 auto);
+        padding-right: 0;
+      }
+    }
+
+    label {
+      @include boushh-font-thin();
+      font-weight: bold;
+      font-size: rem-calc(14);
+      line-height: rem-calc(14);
+      text-transform: uppercase;
+      padding: rem-calc(0 0 3);
+    }
+
+    .form-item {
+      margin: 0;
+    }
+  }
+
+  .form-actions{
+    padding: rem-calc(16 0 0 10);
+
+    button {
+      padding: $column-gutter/1.5 $column-gutter*1.5;
+    }
   }
 }

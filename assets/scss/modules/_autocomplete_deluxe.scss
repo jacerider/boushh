@@ -1,0 +1,38 @@
+
+.autocomplete-deluxe-container {
+  @include form-element();
+  padding: 0;
+  white-space: nowrap;
+
+  span.autocomplete-deluxe-item {
+    display: inline-block;
+    background: $primary-color;
+    color: $white;
+    border-radius: $global-radius;
+    font-size: rem-calc(13);
+    vertical-align: top;
+    padding: $form-spacing / 4;
+    margin: $form-spacing / 4;
+  }
+
+  a.autocomplete-deluxe-item-delete {
+    @include fa-after(times);
+    color: $white;
+    vertical-align: top;
+    opacity: 0.8;
+    @include transition(opacity 300ms);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  input.autocomplete-deluxe-multiple {
+    display: inline-block;
+    width: auto;
+    border: 0;
+    max-width: rem-calc(160);
+    background: none;
+    box-shadow: none;
+  }
+}
