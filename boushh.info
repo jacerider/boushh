@@ -37,6 +37,7 @@ scss_module[views] = assets/scss/modules/_views.scss
 scss_module[webform] = assets/scss/modules/_webform.scss
 scss_module[context] = assets/scss/modules/_context.scss
 scss_module[autocomplete_deluxe] = assets/scss/modules/_autocomplete_deluxe.scss
+scss_module[fawesome] = assets/scss/modules/_fawesome.scss
 
 
 ;-------------- STYLESHEETS

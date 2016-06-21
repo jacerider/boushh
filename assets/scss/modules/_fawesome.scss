@@ -1,0 +1,9 @@
+
+form span.fawesome-select-wrapper.prefix {
+  @include clearfix();
+  padding: $column-gutter;
+  height: auto;
+  border-right-width: 1px;
+  border-right-style: solid;
+  background: $white;
+}

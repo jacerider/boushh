@@ -54,10 +54,12 @@ table.ief-entity-table{
   .ief-form-inner,
   .ief-form-bottom{
     position:absolute;
-    top:50%;
+    // top:50%;
     left:$column-gutter*4;
-    bottom:50%;
+    // bottom:50%;
     right:$column-gutter*4;
+    top:$column-gutter*4;
+    bottom:$column-gutter*4;
     z-index:100;
     background:boushh-shade($boushh-bg, 5%);
     border-radius: $global-radius;
@@ -161,4 +163,9 @@ table.ief-entity-table{
     //   z-index:103;
     // }
   }
+}
+
+.ief-cardinality-count {
+  font-size: rem-calc(11);
+  // margin: $column-gutter*-1 0 $column-gutter;
 }
