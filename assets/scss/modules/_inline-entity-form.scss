@@ -16,6 +16,14 @@ table.ief-entity-table{
       padding:0;
     }
   }
+
+  .ief-form-row {
+    padding: $column-gutter;
+  }
+
+  .ief-form-inner .ief-form-row {
+    padding: 0;
+  }
 }
 
 .ief-entity-operations{
@@ -49,7 +57,7 @@ table.ief-entity-table{
   z-index:99;
   background:rgba(#000, .8);
   opacity:0;
-  @include transition(opacity 600ms);
+  @include transition(opacity 300ms);
 
   .ief-form-inner,
   .ief-form-bottom{
@@ -65,7 +73,7 @@ table.ief-entity-table{
     border-radius: $global-radius;
     box-shadow: 0 0 3px rgba(#000,0.1);
     overflow:hidden;
-    @include transition(top 600ms, bottom 600ms);
+    @include transition(top 300ms, bottom 300ms);
 
     > .ief-form-row,
     > .fieldset-wrapper{
@@ -124,7 +132,7 @@ table.ief-entity-table{
 
     .ief-form-wrapper.ief-animate{
       > .ief-form-inner{
-        @include transition(all 600ms);
+        @include transition(all 300ms);
         top:$column-gutter*5;
         bottom:$column-gutter*3;
       }

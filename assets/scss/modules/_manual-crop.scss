@@ -16,4 +16,13 @@
   .manualcrop-style-button-holder {
     padding: 0;
   }
+
+  .form-type-select {
+    padding-left: $column-gutter/2;
+
+    label,
+    .description {
+      display: none;
+    }
+  }
 }

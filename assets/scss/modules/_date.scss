@@ -2,6 +2,7 @@
 .field-widget-date-select {
 
   .container-inline-date {
+    padding-top: $column-gutter/2;
 
     .date-padding {
       @include display(flex);
@@ -9,7 +10,18 @@
       @include align-items(center);
 
       > * {
-        padding: 0 $column-gutter/4;
+        @include flex(auto);
+        padding: 0 $column-gutter/2 0 0;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+      label {
+        font-weight: normal !important;
+        font-size: rem-calc(11) !important;
+        font-family: $font-family-sans-serif !important;
       }
 
       > .select {
